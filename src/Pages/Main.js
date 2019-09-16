@@ -10,9 +10,7 @@ const MainWrap = styled.div`
 const Main = () => {
   return (
     <ThemeProvider theme={theme}>
-      <>
-        <MainWrap>hihi</MainWrap>
-      </>
+      <MainWrap>hihi</MainWrap>
     </ThemeProvider>
   );
 };
