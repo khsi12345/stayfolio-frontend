@@ -7,6 +7,7 @@ const theme = {
 
   BorderGray: '#d3d3d3',
   BorderDarkGray: '#d0d0d0',
+  BorderLightGray: '#e5e5e5',
 
   GrayBG: '#939498',
   DarkGrayBG: '#222',
@@ -16,7 +17,8 @@ const theme = {
   ButtonDarkGrayBG: '#2d3039',
 
   FooterBG: '#222',
-  FooterGrayFont: '#999',
+  FooterLightGrayFont: '#999',
+  FooterGrayFont: '#666',
   FooterDarkGrayFont: '#474747',
 };
 
