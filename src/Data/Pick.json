@@ -1,0 +1,36 @@
+{
+  "pick_info": {
+    "pick_info_list": [
+      {
+        "id": 1,
+        "name": "돌채",
+        "english_name": "DOLCHAE",
+        "descript": "잠시 쉬어가도 좋은 우도의 하루",
+        "location": "제주/우도",
+        "location_adress": "제주특별자치도 제주시 우도면 우목길 60-3",
+        "type": "렌탈하우스",
+        "type2": "사색, 가족여행, 고택체험",
+        "price": "150,000~300,000",
+        "people": "1 ~ 5명",
+        "rooms": "2객실",
+        "time": " 16:00 ~ 11:00",
+        "style": "재생건축",
+        "activity": "명상, 스파, 쾌적한 정원",
+        "thumbnail_img": "https://stayfolio.com/system/pictures/images/000/037/808/medium/f7f3462c036b6604769b916de6309c7082244205.jpg?1567645828",
+        "large_img": "https://stayfolio.com/system/pictures/images/000/037/809/display/63bf399db0ef4e1fd2754928dbc1fbf0ced01a9d.jpg?1567645869",
+        "slider_img": [
+          "https://stayfolio.com/system/pictures/images/000/037/809/thumb/049d4d796ea187dbe4ef1cb3ebadea45c4b0946c.jpg?1567645869",
+          "https://stayfolio.com/system/pictures/images/000/037/810/thumb/fb7f089ec47dacb7a0a7fd459b2f93ad2b7f6fd6.jpg?1567645879",
+          "https://stayfolio.com/system/pictures/images/000/037/812/thumb/eae2f77aa698c28b99ae2051a495c6b1bc4392b8.jpg?1567645899",
+          "https://stayfolio.com/system/pictures/images/000/037/811/thumb/3522b0ab30bbb631f2ff83ea6d4cbdbca262fc85.jpg?1567645897",
+          "https://stayfolio.com/system/pictures/images/000/037/819/thumb/750bc9ef63a551136dde45433061deaa5def5d0a.jpg?1567646056",
+          "https://stayfolio.com/system/pictures/images/000/037/817/thumb/0f96b80d1fe5a2cbf175ce1d67ff9e8d25c08ece.jpg?1567646035"
+        ],
+        "hompage": "http://bit.ly/2m0TwWo",
+        "email": "ging1977@naver.com",
+        "facebook": "http://facebook.com/dolchae",
+        "tell": "0504-0904-2346"
+      }
+    ]
+  }
+}

@@ -1,8 +1,28 @@
 import React , {memo}from 'react';
 import styled from 'styled-components'
+import PickItem from 'Components/PickItem';
 import theme from 'Components/Theme';
 import {device} from 'Components/Device';
 
+const Pick = memo( () => {
+    return(
+      <>
+        <PickWrap>
+          <PickMainWrap>
+            <PickMainHeader>
+              PICK
+              <PickMainHeaderSmall>매일 하루 한번! 스테이폴리오가 추천합니다!</PickMainHeaderSmall>
+            </PickMainHeader>
+            <PickMainContainer>
+              <PickMain>
+                <PickItem />
+              </PickMain>
+            </PickMainContainer>
+          </PickMainWrap>
+        </PickWrap>
+      </>
+    )
+});
 
 const PickWrap = styled.div`
   margin-top: 102px;
@@ -42,7 +62,6 @@ const PickMainHeaderSmall = styled.small`
 const PickMainContainer = styled.div`
 `
 const PickMain = styled.div`
-  margin: 0 -15px;
   &::before {
     display: table;
     content: " ";
@@ -55,23 +74,5 @@ const PickMain = styled.div`
 `
 // const PickPageNum = styled.div`
 // `
-const Pick = memo( () => {
-    return(
-      <>
-        <PickWrap>
-          <PickMainWrap>
-            <PickMainHeader>
-              PICK
-              <PickMainHeaderSmall>매일 하루 한번! 스테이폴리오가 추천합니다!</PickMainHeaderSmall>
-            </PickMainHeader>
-            <PickMainContainer>
-              <PickMain />
-            </PickMainContainer>
-          </PickMainWrap>
-        </PickWrap>
-      </>
-    )
-});
-
 export default Pick;
 
