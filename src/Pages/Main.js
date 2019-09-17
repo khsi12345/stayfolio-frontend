@@ -1,18 +1,20 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-import theme from '../Components/Theme';
+import styled from 'styled-components';
+import theme from 'Components/Theme';
+import Header from 'Components/Header';
+import Footer from 'Components/Footer';
 
 const MainWrap = styled.div`
-  border: 1px solid ${theme.FontDarkGray};
-  background-color: ${theme.GrayBG};
+  margin-top: 102px;
+  height: 600px;
 `;
 
-const Main = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <MainWrap>hihi</MainWrap>
-    </ThemeProvider>
-  );
-};
+const Main = () => (
+  <>
+    <Header />
+    <MainWrap>test</MainWrap>
+    <Footer />
+  </>
+);
 
 export default Main;
