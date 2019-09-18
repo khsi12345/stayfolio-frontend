@@ -6,6 +6,90 @@ import { device } from 'Components/Device';
 
 import Logo from 'Images/Logo.png';
 
+const Header = () => (
+  <HeaderWrap>
+    <HeaderContainer>
+      <LogoWrap>
+        <Link to="/">
+          <LogoImg src={Logo} />
+        </Link>
+        <Copy>
+          Where to go, <br />
+          Here to stay STAYFOLIO
+        </Copy>
+      </LogoWrap>
+      <NavWrap>
+        <TopNav>
+          <SearchWrap>
+            <SearchContainer>
+              <SearchInput placeholder="Search" />
+              <SearchIcon className="fas fa-search" />
+            </SearchContainer>
+          </SearchWrap>
+          <SocialWrap>
+            <SocialIconList>
+              <SocialAnchor
+                href="https://www.facebook.com/stayfolio"
+                target="_blank"
+              >
+                <SocialIcon className="fab fa-facebook-f" />
+              </SocialAnchor>
+            </SocialIconList>
+            <SocialIconList>
+              <SocialAnchor
+                href="https://www.instagram.com/stayfolio/"
+                target="_blank"
+              >
+                <SocialIcon className="fab fa-instagram" />
+              </SocialAnchor>
+            </SocialIconList>
+            <SocialIconList>
+              <SocialAnchor href="https://stayfolio.blog.me/" target="_blank">
+                <SocialImg src="https://stayfolio.com/images/main/ad596eb8.naver.png" />
+              </SocialAnchor>
+            </SocialIconList>
+            <SocialIconList>
+              <SocialAnchor
+                href="https://brunch.co.kr/@stayfolio#magazines"
+                target="_blank"
+              >
+                <SocialImg src="https://stayfolio.com/images/main/40dfa72b.brunch.png" />
+              </SocialAnchor>
+            </SocialIconList>
+          </SocialWrap>
+          <LoginWrap>
+            <LoginContainer>
+              <Link to="/login">LOGIN</Link>
+              <Divider>or</Divider>
+              <Link to="/">REGISTER</Link>
+            </LoginContainer>
+          </LoginWrap>
+        </TopNav>
+        <MainNav>
+          <Link to="/">
+            <NavList home>HOME</NavList>
+          </Link>
+          <Link to="/">
+            <NavList>ABOUT</NavList>
+          </Link>
+          <Link to="/">
+            <NavList>MAGAZINE</NavList>
+          </Link>
+          <Link to="/">
+            <NavList>PICK</NavList>
+          </Link>
+          <Link to="/">
+            <NavList>EVENT</NavList>
+          </Link>
+          <Link to="/">
+            <NavBooking>BOOKING</NavBooking>
+          </Link>
+        </MainNav>
+      </NavWrap>
+    </HeaderContainer>
+  </HeaderWrap>
+);
+
 const HeaderWrap = styled.header`
   position: fixed;
   width: 100%;
@@ -13,6 +97,7 @@ const HeaderWrap = styled.header`
   left: 0;
   display: flex;
   justify-content: center;
+  z-index: 99;
   border-bottom: 1px solid ${theme.BorderLightGray};
   background-color: #fff;
   height: 102px;
@@ -152,92 +237,9 @@ const NavList = styled.p`
 const NavBooking = styled.span`
   background-color: ${theme.MainBlack};
   color: #fff;
-  padding: 5px 8px;
+  padding: 4px 8px;
+  line-height: 50px;
   margin-right: 16px;
 `;
-
-const Header = () => (
-  <HeaderWrap>
-    <HeaderContainer>
-      <LogoWrap>
-        <Link to="/">
-          <LogoImg src={Logo} />
-        </Link>
-        <Copy>
-          Where to go, <br />
-          Here to stay STAYFOLIO
-        </Copy>
-      </LogoWrap>
-      <NavWrap>
-        <TopNav>
-          <SearchWrap>
-            <SearchContainer>
-              <SearchInput placeholder="Search" />
-              <SearchIcon className="fas fa-search" />
-            </SearchContainer>
-          </SearchWrap>
-          <SocialWrap>
-            <SocialIconList>
-              <SocialAnchor
-                href="https://www.facebook.com/stayfolio"
-                target="_blank"
-              >
-                <SocialIcon className="fab fa-facebook-f" />
-              </SocialAnchor>
-            </SocialIconList>
-            <SocialIconList>
-              <SocialAnchor
-                href="https://www.instagram.com/stayfolio/"
-                target="_blank"
-              >
-                <SocialIcon className="fab fa-instagram" />
-              </SocialAnchor>
-            </SocialIconList>
-            <SocialIconList>
-              <SocialAnchor href="https://stayfolio.blog.me/" target="_blank">
-                <SocialImg src="https://stayfolio.com/images/main/ad596eb8.naver.png" />
-              </SocialAnchor>
-            </SocialIconList>
-            <SocialIconList>
-              <SocialAnchor
-                href="https://brunch.co.kr/@stayfolio#magazines"
-                target="_blank"
-              >
-                <SocialImg src="https://stayfolio.com/images/main/40dfa72b.brunch.png" />
-              </SocialAnchor>
-            </SocialIconList>
-          </SocialWrap>
-          <LoginWrap>
-            <LoginContainer>
-              <Link to="/">LOGIN</Link>
-              <Divider>or</Divider>
-              <Link to="/">REGISTER</Link>
-            </LoginContainer>
-          </LoginWrap>
-        </TopNav>
-        <MainNav>
-          <Link to="/">
-            <NavList home>HOME</NavList>
-          </Link>
-          <Link to="/">
-            <NavList>ABOUT</NavList>
-          </Link>
-          <Link to="/">
-            <NavList>MAGAZINE</NavList>
-          </Link>
-          <Link to="/">
-            <NavList>PICK</NavList>
-          </Link>
-          <Link to="/">
-            <NavList>EVENT</NavList>
-          </Link>
-          <Link to="/">
-            <NavBooking>BOOKING</NavBooking>
-          </Link>
-        </MainNav>
-      </NavWrap>
-    </HeaderContainer>
-  </HeaderWrap>
-);
 
 export default Header;
