@@ -13,7 +13,7 @@ const theme = {
   BorderDarkGray: '#d0d0d0',
   BorderLightGray: '#ebebeb',
   BorderLightBlack: '#363636',
-  
+  BorderLightGray: '#e5e5e5',
 
   GrayBG: '#939498',
   DarkGrayBG: '#222',
