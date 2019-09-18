@@ -1,11 +1,10 @@
 import React, {memo} from 'react';
 import styled from 'styled-components';
-import data from 'DATA/Pick';
+import data from 'Data/pick';
 import {device} from 'Components/Device';
 import theme from 'Components/Theme';
 
 const PickItem = memo( () => {
-  console.log(data)
   return (
     <PickItemWrap>
       <PickItemContainer>
@@ -20,18 +19,31 @@ const PickItem = memo( () => {
         <ItemDescriptionWrap>
           <ItemDescriptionTitleWrap>
             <ItemDescriptionTitle>{data.pick_info.pick_info_list[0].name}</ItemDescriptionTitle>
+            <BookingNow>
+              <BookingNowText>BOOKING NOW</BookingNowText>
+            </BookingNow>
             <ItemDescriptionTitleEnglish>{data.pick_info.pick_info_list[0].english_name}</ItemDescriptionTitleEnglish>
           </ItemDescriptionTitleWrap>
           <ItemDescriptionTitleDescription>{data.pick_info.pick_info_list[0].descript}</ItemDescriptionTitleDescription>
           <ItemDescriptionTableWrap>
             <ItemDescriptionTableColunm>
               <ItemDescriptionTableContents>
-                <LocationIcon className="fas fa-map-marker-alt" />
+                <Icon2 className="fas fa-map-marker-alt" />
                 {data.pick_info.pick_info_list[0].location}
               </ItemDescriptionTableContents>
               <ItemDescriptionTableContents>
-                <LocationIcon className="fas fa-map-marker-alt" />
+                <Icon2 className="fas fa-home" />
                 {data.pick_info.pick_info_list[0].type}
+              </ItemDescriptionTableContents>
+            </ItemDescriptionTableColunm>
+            <ItemDescriptionTableColunm>
+              <ItemDescriptionTableContents>
+                <Icon2 className="fas fa-coins" />
+                {data.pick_info.pick_info_list[0].price}
+              </ItemDescriptionTableContents>
+              <ItemDescriptionTableContents>
+                <Icon2 className="fas fa-star" />
+                {data.pick_info.pick_info_list[0].type2}
               </ItemDescriptionTableContents>
             </ItemDescriptionTableColunm>
             <ItemDescriptionTableColunm />
@@ -44,6 +56,7 @@ const PickItem = memo( () => {
 
 const PickItemWrap = styled.div`
   position: relative;
+  padding: 0 15px;
   @media ${device.tablet} {
     width: 50%;
   }
@@ -108,7 +121,7 @@ const Icon = styled.i`
 const ItemDescriptionWrap = styled.div`
   position: relative;
   padding: 15px 20px 20px;
-  height: 270px;
+  height: 207px;
 `
 const ItemDescriptionTitleWrap = styled.h4`
   margin: 10px 0;
@@ -135,7 +148,6 @@ const ItemDescriptionTitleDescription = styled.div`
 const ItemDescriptionTableWrap = styled.div`
   margin-top: 10px;
   border-top: 2px solid ${theme.BorderBlack};
-  color: ${theme.FontLightGray};
 `
 const ItemDescriptionTableColunm = styled.div`
   display:flex;
@@ -144,13 +156,34 @@ const ItemDescriptionTableContents = styled.div`
   padding: 7px 0;
   width: 50%;
   border-bottom: 1px solid ${theme.BorderLightGray};
+  color: ${theme.FontLightGray};
   font-size: 13px;
+  line-height: 1.42;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   letter-spacing: -1;
 `
-const LocationIcon = styled.i`
+const Icon2 = styled.i`
   margin-right: 5px;
+  color: ${theme.FontLightGray};
+`
+const BookingNow = styled.div`
+  position: absolute;
+  display: flex;
+  width: 100px;
+  height: 34px;
+  top: 23px;
+  right: -5px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.1;
+  align-items: center;
+  background-image: url('https://stayfolio.com/images/pick/5d995e0a.pick-booking@3x.png');
+  background-size: cover;
+`
+const BookingNowText = styled.a`
+  padding-left: 7px;
+  color: ${theme.MainWhite};
 `
 export default PickItem;

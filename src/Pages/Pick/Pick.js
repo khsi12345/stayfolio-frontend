@@ -1,12 +1,17 @@
 import React , {memo}from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Header from 'Components/Header';
 import PickItem from 'Components/PickItem';
+import Pagination from 'Components/Pagination';
+import Footer from 'Components/Footer'
 import theme from 'Components/Theme';
 import {device} from 'Components/Device';
 
+
 const Pick = memo( () => {
-    return(
+    return (
       <>
+        <Header />
         <PickWrap>
           <PickMainWrap>
             <PickMainHeader>
@@ -16,18 +21,32 @@ const Pick = memo( () => {
             <PickMainContainer>
               <PickMain>
                 <PickItem />
+                <PickItem />
+                <PickItem />
+                <PickItem />
+                <PickItem />
+                <PickItem />
+                <PickItem />
+                <PickItem />
+                <PickItem />
+                <PickItem />
+                <PickItem />
+                <PickItem />
               </PickMain>
+              <Pagination />
             </PickMainContainer>
           </PickMainWrap>
         </PickWrap>
+        <Footer />
       </>
     )
 });
 
 const PickWrap = styled.div`
-  margin-top: 102px;
+  margin-top: 162px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 15px;
   min-height: 934px;
   @media ${device.tablet} {
     width: 750px;
@@ -62,6 +81,10 @@ const PickMainHeaderSmall = styled.small`
 const PickMainContainer = styled.div`
 `
 const PickMain = styled.div`
+  display: flex;
+  margin: 0 -15px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   &::before {
     display: table;
     content: " ";
@@ -72,7 +95,4 @@ const PickMain = styled.div`
     clear: both;
   }
 `
-// const PickPageNum = styled.div`
-// `
 export default Pick;
-

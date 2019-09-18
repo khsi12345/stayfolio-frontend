@@ -8,20 +8,24 @@ const theme = {
   FontLessGray: '#777',
   FontLessGray2: '#717171',
 
+  BorderBlack: '#222',
   BorderGray: '#d3d3d3',
-  BorderLightGray: '#ebebeb',
   BorderDarkGray: '#d0d0d0',
-  BorderBlack: '#363636',
+  BorderLightGray: '#ebebeb',
+  BorderLightBlack: '#363636',
+  
 
   GrayBG: '#939498',
   DarkGrayBG: '#222',
   LightGrayBG: '#c2c2c2',
+  BlackBG: '#2c3e50',
 
   ButtonLightGrayBG: '#c2c2c2',
   ButtonDarkGrayBG: '#2d3039',
 
   FooterBG: '#222',
-  FooterGrayFont: '#999',
+  FooterLightGrayFont: '#999',
+  FooterGrayFont: '#666',
   FooterDarkGrayFont: '#474747',
 };
 
