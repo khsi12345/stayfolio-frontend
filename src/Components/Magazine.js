@@ -49,7 +49,6 @@ const MagazineHeader = styled.div`
 `;
 
 const MagazineTitleWrap = styled.div`
-  width: 100%;
   line-height: 1.1;
 `;
 
@@ -63,7 +62,10 @@ const MagazineTitleDescription = styled.p`
   margin-top: 3px;
 `;
 const MagazineButtonWrap = styled.div`
-  width: 150px;
+  display: none;
+  @media ${device.mobile} {
+    display: block;
+  }
 `;
 
 const MagazineMoreButton = styled.button`

@@ -1,53 +1,37 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import Header from 'Components/Header';
 import PickItem from 'Components/PickItem';
-import Pagination from 'Components/Pagination';
-import Footer from 'Components/Footer';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
 const Pick = memo(() => {
   return (
-    <>
-      <Header />
-      <PickWrap>
-        <PickMainWrap>
-          <PickMainHeader>
-            PICK
-            <PickMainHeaderSmall>
-              매일 하루 한번! 스테이폴리오가 추천합니다!
-            </PickMainHeaderSmall>
-          </PickMainHeader>
-          <PickMainContainer>
-            <PickMain>
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-            </PickMain>
-            <Pagination />
-          </PickMainContainer>
-        </PickMainWrap>
-      </PickWrap>
-      <Footer />
-    </>
+    <PickWrap>
+      <PickMainWrap>
+        <PickMainHeader>
+          PICK
+          <PickMainHeaderSmall>
+            매일 하루 한번! 스테이폴리오가 추천합니다!
+          </PickMainHeaderSmall>
+        </PickMainHeader>
+        <PickMainContainer>
+          <PickMain>
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+          </PickMain>
+        </PickMainContainer>
+      </PickMainWrap>
+    </PickWrap>
   );
 });
 
 const PickWrap = styled.div`
-  margin-top: 162px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 15px;
+  margin: 30px auto 15px;
+  padding: 0 15px 30px;
   min-height: 934px;
   @media ${device.tablet} {
     width: 750px;
@@ -61,8 +45,8 @@ const PickWrap = styled.div`
 `;
 
 const PickMainWrap = styled.div``;
+
 const PickMainHeader = styled.h2`
-  margin-top: 60px;
   margin-bottom: 10px;
   padding: 30px 0 40px;
   border-top: 7px solid ${theme.DarkGrayBG};
@@ -93,4 +77,5 @@ const PickMain = styled.div`
     clear: both;
   }
 `;
+
 export default Pick;

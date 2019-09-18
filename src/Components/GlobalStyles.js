@@ -30,6 +30,10 @@ const GlobalStyles = createGlobalStyle`
     }
 
     input {
+        border: none;
+        background: none;
+        background-color: transparent;
+        box-shadow: none;
         &:focus {
             outline: none;
         }

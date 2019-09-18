@@ -1,94 +1,124 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
-
 import Logo from 'Images/Logo.png';
+import Close from 'Images/Close.png';
 
-const Header = () => (
-  <HeaderWrap>
-    <HeaderContainer>
-      <LogoWrap>
-        <Link to="/">
-          <LogoImg src={Logo} />
-        </Link>
-        <Copy>
-          Where to go, <br />
-          Here to stay STAYFOLIO
-        </Copy>
-      </LogoWrap>
-      <NavWrap>
-        <TopNav>
-          <SearchWrap>
-            <SearchContainer>
-              <SearchInput placeholder="Search" />
-              <SearchIcon className="fas fa-search" />
-            </SearchContainer>
-          </SearchWrap>
-          <SocialWrap>
-            <SocialIconList>
-              <SocialAnchor
-                href="https://www.facebook.com/stayfolio"
-                target="_blank"
-              >
-                <SocialIcon className="fab fa-facebook-f" />
-              </SocialAnchor>
-            </SocialIconList>
-            <SocialIconList>
-              <SocialAnchor
-                href="https://www.instagram.com/stayfolio/"
-                target="_blank"
-              >
-                <SocialIcon className="fab fa-instagram" />
-              </SocialAnchor>
-            </SocialIconList>
-            <SocialIconList>
-              <SocialAnchor href="https://stayfolio.blog.me/" target="_blank">
-                <SocialImg src="https://stayfolio.com/images/main/ad596eb8.naver.png" />
-              </SocialAnchor>
-            </SocialIconList>
-            <SocialIconList>
-              <SocialAnchor
-                href="https://brunch.co.kr/@stayfolio#magazines"
-                target="_blank"
-              >
-                <SocialImg src="https://stayfolio.com/images/main/40dfa72b.brunch.png" />
-              </SocialAnchor>
-            </SocialIconList>
-          </SocialWrap>
-          <LoginWrap>
-            <LoginContainer>
-              <Link to="/login">LOGIN</Link>
-              <Divider>or</Divider>
-              <Link to="/">REGISTER</Link>
-            </LoginContainer>
-          </LoginWrap>
-        </TopNav>
-        <MainNav>
-          <Link to="/">
-            <NavList home>HOME</NavList>
-          </Link>
-          <Link to="/">
-            <NavList>ABOUT</NavList>
-          </Link>
-          <Link to="/">
-            <NavList>MAGAZINE</NavList>
-          </Link>
-          <Link to="/">
-            <NavList>PICK</NavList>
-          </Link>
-          <Link to="/">
-            <NavList>EVENT</NavList>
-          </Link>
-          <Link to="/">
-            <NavBooking>BOOKING</NavBooking>
-          </Link>
-        </MainNav>
-      </NavWrap>
-    </HeaderContainer>
-  </HeaderWrap>
-);
+const Header = () => {
+  const [mode, setMode] = useState(true);
+
+  return (
+    <>
+      <HeaderWrap>
+        <HeaderContainer>
+          <LogoWrap>
+            <Link to="/">
+              <LogoImg src={Logo} />
+            </Link>
+            <Copy>
+              Where to go, <br />
+              Here to stay STAYFOLIO
+            </Copy>
+          </LogoWrap>
+          <NavWrap>
+            <TopNav>
+              <SearchWrap>
+                <SearchContainer>
+                  <SearchInput placeholder="Search" />
+                  <SearchIcon className="fas fa-search" />
+                </SearchContainer>
+              </SearchWrap>
+              <SocialWrap>
+                <SocialIconList>
+                  <SocialAnchor
+                    href="https://www.facebook.com/stayfolio"
+                    target="_blank"
+                  >
+                    <SocialIcon className="fab fa-facebook-f" />
+                  </SocialAnchor>
+                </SocialIconList>
+                <SocialIconList>
+                  <SocialAnchor
+                    href="https://www.instagram.com/stayfolio/"
+                    target="_blank"
+                  >
+                    <SocialIcon className="fab fa-instagram" />
+                  </SocialAnchor>
+                </SocialIconList>
+                <SocialIconList>
+                  <SocialAnchor
+                    href="https://stayfolio.blog.me/"
+                    target="_blank"
+                  >
+                    <SocialImg src="https://stayfolio.com/images/main/ad596eb8.naver.png" />
+                  </SocialAnchor>
+                </SocialIconList>
+                <SocialIconList>
+                  <SocialAnchor
+                    href="https://brunch.co.kr/@stayfolio#magazines"
+                    target="_blank"
+                  >
+                    <SocialImg src="https://stayfolio.com/images/main/40dfa72b.brunch.png" />
+                  </SocialAnchor>
+                </SocialIconList>
+              </SocialWrap>
+              <LoginWrap>
+                <LoginContainer>
+                  <Link to="/login">LOGIN</Link>
+                  <Divider>or</Divider>
+                  <Link to="/signup">REGISTER</Link>
+                </LoginContainer>
+              </LoginWrap>
+            </TopNav>
+            <MainNav>
+              <Link to="/">
+                <NavList home>HOME</NavList>
+              </Link>
+              <Link to="/">
+                <NavList>ABOUT</NavList>
+              </Link>
+              <Link to="/">
+                <NavList>MAGAZINE</NavList>
+              </Link>
+              <Link to="/pick">
+                <NavList>PICK</NavList>
+              </Link>
+              <Link to="/">
+                <NavList>EVENT</NavList>
+              </Link>
+              <Link to="/">
+                <NavBooking>BOOKING</NavBooking>
+              </Link>
+            </MainNav>
+            <BarsNav>
+              <BarsIcon className="fas fa-bars" />
+            </BarsNav>
+          </NavWrap>
+        </HeaderContainer>
+      </HeaderWrap>
+      <BarsMenuWrap>
+        <BarsHeader>
+          <BarsLogin>
+            <BarsAnchor href="/login">LOGIN</BarsAnchor>or
+            <BarsAnchor href="signup">REGISTER</BarsAnchor>
+          </BarsLogin>
+          <CloseBtnWrap>
+            <CloseBtn src={Close} />
+          </CloseBtnWrap>
+        </BarsHeader>
+        <BarsNavList>
+          <BarsLink href="/">HOME</BarsLink>
+          <BarsLink href="/about">ABOUT</BarsLink>
+          <BarsLink href="/magazine">MAGAZINE</BarsLink>
+          <BarsLink href="/pick">PICK</BarsLink>
+          <BarsLink href="/event">EVENT</BarsLink>
+        </BarsNavList>
+      </BarsMenuWrap>
+    </>
+  );
+};
 
 const HeaderWrap = styled.header`
   position: fixed;
@@ -96,11 +126,18 @@ const HeaderWrap = styled.header`
   top: 0;
   left: 0;
   display: flex;
-  justify-content: center;
   z-index: 99;
   border-bottom: 1px solid ${theme.BorderLightGray};
   background-color: #fff;
-  height: 102px;
+  height: 70px;
+  @media ${device.tablet} {
+    height: 102px;
+    justify-content: space-between;
+  }
+  @media ${device.desktop} {
+    height: 102px;
+    justify-content: center;
+  }
 `;
 
 const HeaderContainer = styled.div`
@@ -108,18 +145,32 @@ const HeaderContainer = styled.div`
   max-width: 1200px;
   padding: 0 15px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  @media ${device.tablet} {
+    justify-content: center;
+  }
 `;
 
 const LogoWrap = styled.div`
   display: flex;
   align-items: center;
-  width: 50%;
+  @media ${device.tablet} {
+    display: flex;
+    width: 40%;
+  }
+  @media ${device.wide} {
+    display: flex;
+    width: 50%;
+  }
 `;
 
 const LogoImg = styled.img`
-  margin-left: 20px;
-  width: 66px;
+  width: 42px;
+  margin-left: 10px;
+  @media ${device.tablet} {
+    width: 66px;
+    margin-left: 20px;
+  }
 `;
 
 const Copy = styled.p`
@@ -127,21 +178,35 @@ const Copy = styled.p`
   font-size: 13px;
   line-height: 18px;
   margin-left: 40px;
+  display: none;
+  @media ${device.tablet} {
+    display: block;
+  }
 `;
 
 const NavWrap = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  width: 50%;
-  border-left: 1px solid ${theme.BorderLightGray};
-  border-right: 1px solid ${theme.BorderLightGray};
+  border: none;
+  @media ${device.tablet} {
+    border-left: 1px solid ${theme.BorderLightGray};
+    border-right: 1px solid ${theme.BorderLightGray};
+    width: 60%;
+  }
+  @media ${device.wide} {
+    width: 50%;
+  }
 `;
 
 const TopNav = styled.div`
-  display: flex;
+  display: none;
   align-items: center;
   height: 50px;
   border-bottom: 1px solid ${theme.BorderLightGray};
+  @media ${device.tablet} {
+    display: flex;
+  }
 `;
 
 const SearchWrap = styled.div`
@@ -174,12 +239,12 @@ const SearchIcon = styled.i`
 `;
 
 const SocialWrap = styled.ul`
+  display: flex;
+  justify-content: space-around;
   width: 30%;
   height: 100%;
   border-left: 1px solid ${theme.BorderLightGray};
   border-right: 1px solid ${theme.BorderLightGray};
-  display: flex;
-  justify-content: space-around;
   color: ${theme.FontGray};
 `;
 
@@ -189,9 +254,7 @@ const SocialIconList = styled.li`
   align-items: center;
 `;
 
-const SocialAnchor = styled.a`
-  padding: 18px 16px;
-`;
+const SocialAnchor = styled.a``;
 
 const SocialIcon = styled.i`
   font-size: 14px;
@@ -219,14 +282,17 @@ const Divider = styled.p`
 `;
 
 const MainNav = styled.div`
-  height: 50%;
-  display: flex;
+  display: none;
   justify-content: space-around;
   align-items: center;
+  height: 50%;
   color: #000;
   font-weight: 700;
   line-height: 48px;
   font-size: 13px;
+  @media ${device.tablet} {
+    display: flex;
+  }
 `;
 
 const NavList = styled.p`
@@ -239,7 +305,81 @@ const NavBooking = styled.span`
   color: #fff;
   padding: 4px 8px;
   line-height: 50px;
-  margin-right: 16px;
+`;
+
+const BarsNav = styled.div`
+  display: flex;
+  margin-right: 8px;
+  cursor: pointer;
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
+
+const BarsIcon = styled.i`
+  font-size: 20px;
+`;
+
+const BarsMenuWrap = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background-color: #fff;
+  border-bottom: 1px solid ${theme.BorderLightGray};
+
+  display: none;
+`;
+
+const BarsHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  border-bottom: 1px solid ${theme.BorderLightGray};
+`;
+
+const BarsLogin = styled.span`
+  font-size: 13px;
+  margin-left: 24px;
+`;
+
+const BarsAnchor = styled.a`
+  font-size: 12px;
+  padding: 0 4px;
+  letter-spacing: 0.4px;
+  &:first-child {
+    padding-left: 0;
+  }
+`;
+
+const CloseBtnWrap = styled.div`
+  padding: 25px;
+  text-align: center;
+  border-left: 1px solid ${theme.BorderLightGray};
+  cursor: pointer;
+`;
+
+const CloseBtn = styled.img`
+  width: 18px;
+`;
+
+const BarsNavList = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const BarsLink = styled.a`
+  display: flex;
+  align-items: center;
+  height: 70px;
+  border-bottom: 1px solid ${theme.BorderLightGray};
+  padding: 26px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
 `;
 
 export default Header;

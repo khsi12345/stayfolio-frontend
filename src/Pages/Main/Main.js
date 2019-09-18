@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import MainSlider from './MainSlider';
 import Header from 'Components/Header';
 import Magazine from 'Components/Magazine';
+import Pick from './Pick';
 import Footer from 'Components/Footer';
+import { device } from 'Components/Device';
 
 const Main = () => (
   <>
@@ -12,6 +14,7 @@ const Main = () => (
       <MainSlider />
     </MainWrap>
     <Magazine />
+    <Pick />
     <Footer />
   </>
 );
@@ -19,7 +22,12 @@ const Main = () => (
 const MainWrap = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 102px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 70px;
+  @media ${device.tablet} {
+    margin-top: 102px;
+  }
 `;
 
 export default Main;
