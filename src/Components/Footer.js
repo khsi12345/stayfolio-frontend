@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
-import Logo from 'Images/Logo.png';
 
 const FooterWrap = styled.footer`
   display: flex;
