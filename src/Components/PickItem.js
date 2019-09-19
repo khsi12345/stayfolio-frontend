@@ -1,10 +1,10 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import data from 'Data/pick';
-import {device} from 'Components/Device';
+import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-const PickItem = memo( () => {
+const PickItem = memo(() => {
   return (
     <PickItemWrap>
       <PickItemContainer>
@@ -13,18 +13,28 @@ const PickItem = memo( () => {
             <ItemImg src={data.pick_info.pick_info_list[0].thumbnail_img} />
           </ItemImgContainer>
           <ItemTextWrap>
-            <ItemText> <Icon className="fas fa-search" />VIEW</ItemText>
+            <ItemText>
+              {' '}
+              <Icon className="fas fa-search" />
+              VIEW
+            </ItemText>
           </ItemTextWrap>
         </ItemImgWrap>
         <ItemDescriptionWrap>
           <ItemDescriptionTitleWrap>
-            <ItemDescriptionTitle>{data.pick_info.pick_info_list[0].name}</ItemDescriptionTitle>
+            <ItemDescriptionTitle>
+              {data.pick_info.pick_info_list[0].name}
+            </ItemDescriptionTitle>
             <BookingNow>
               <BookingNowText>BOOKING NOW</BookingNowText>
             </BookingNow>
-            <ItemDescriptionTitleEnglish>{data.pick_info.pick_info_list[0].english_name}</ItemDescriptionTitleEnglish>
+            <ItemDescriptionTitleEnglish>
+              {data.pick_info.pick_info_list[0].english_name}
+            </ItemDescriptionTitleEnglish>
           </ItemDescriptionTitleWrap>
-          <ItemDescriptionTitleDescription>{data.pick_info.pick_info_list[0].descript}</ItemDescriptionTitleDescription>
+          <ItemDescriptionTitleDescription>
+            {data.pick_info.pick_info_list[0].descript}
+          </ItemDescriptionTitleDescription>
           <ItemDescriptionTableWrap>
             <ItemDescriptionTableColunm>
               <ItemDescriptionTableContents>
@@ -51,7 +61,7 @@ const PickItem = memo( () => {
         </ItemDescriptionWrap>
       </PickItemContainer>
     </PickItemWrap>
-  )
+  );
 });
 
 const PickItemWrap = styled.div`
@@ -63,27 +73,27 @@ const PickItemWrap = styled.div`
   @media ${device.desktop} {
     width: 33.3333333333%;
   }
-`
+`;
 const PickItemContainer = styled.div`
   margin-bottom: 30px;
   border-bottom: 2px solid #e2e3e4;
   background-color: ${theme.MainWhite};
-`
+`;
 const ItemImgWrap = styled.div`
   position: relative;
   overflow: hidden;
-`
+`;
 const ItemImgContainer = styled.div`
   width: 100%;
   overflow: hidden;
-`
+`;
 const ItemImg = styled.img`
   width: 100%;
-  transition: all .3s cubic-bezier(0.25, .8, .4, .95);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.4, 0.95);
   ${ItemImgWrap}:hover & {
-  transform: scale(1.2,1.2);
+    transform: scale(1.2, 1.2);
   }
-`
+`;
 const ItemTextWrap = styled.a`
   position: absolute;
   display: flex;
@@ -93,14 +103,14 @@ const ItemTextWrap = styled.a`
   height: 100%;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
   opacity: 0;
   cursor: pointer;
   ${ItemImgWrap}:hover & {
     opacity: 1;
   }
-`
+`;
 const ItemText = styled.div`
   display: flex;
   justify-content: center;
@@ -112,46 +122,46 @@ const ItemText = styled.div`
   border-radius: 5px;
   font-size: 12px;
   font-weight: 400;
-`
+`;
 const Icon = styled.i`
   line-height: 1;
   color: ${theme.MainWhite};
   margin-right: 5px;
-`
+`;
 const ItemDescriptionWrap = styled.div`
   position: relative;
   padding: 15px 20px 20px;
   height: 207px;
-`
+`;
 const ItemDescriptionTitleWrap = styled.h4`
   margin: 10px 0;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.1;
-`
+`;
 const ItemDescriptionTitle = styled.a`
   color: ${theme.MainBlack};
-`
+`;
 const ItemDescriptionTitleEnglish = styled.div`
   padding: 2px 0;
   font-size: 12px;
   font-weight: 400;
   line-height: 1;
   color: ${theme.FontLessGray};
-`
+`;
 const ItemDescriptionTitleDescription = styled.div`
   padding: 5px 0;
   font-size: 13px;
   height: 40px;
   color: ${theme.FontLessGray2};
-`
+`;
 const ItemDescriptionTableWrap = styled.div`
   margin-top: 10px;
   border-top: 2px solid ${theme.BorderBlack};
-`
+`;
 const ItemDescriptionTableColunm = styled.div`
-  display:flex;
-`
+  display: flex;
+`;
 const ItemDescriptionTableContents = styled.div`
   padding: 7px 0;
   width: 50%;
@@ -163,11 +173,11 @@ const ItemDescriptionTableContents = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   letter-spacing: -1;
-`
+`;
 const Icon2 = styled.i`
   margin-right: 5px;
   color: ${theme.FontLightGray};
-`
+`;
 const BookingNow = styled.div`
   position: absolute;
   display: flex;
@@ -181,9 +191,9 @@ const BookingNow = styled.div`
   align-items: center;
   background-image: url('https://stayfolio.com/images/pick/5d995e0a.pick-booking@3x.png');
   background-size: cover;
-`
+`;
 const BookingNowText = styled.a`
   padding-left: 7px;
   color: ${theme.MainWhite};
-`
+`;
 export default PickItem;

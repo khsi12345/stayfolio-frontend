@@ -1,1 +1,1 @@
-export {default} from './Pick';
+export { default } from './Pick';

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
 const MagazineContainer = props => {
@@ -45,16 +46,25 @@ const MagazineContainer = props => {
 
 const MagazineDetail = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 1140px;
-  height: 415px;
   margin-bottom: 30px;
+  @media ${device.desktop} {
+    flex-direction: row;
+    height: inherit;
+  }
 `;
 
 const MagazineImageWrap = styled.div`
   position: relative;
   overflow: hidden;
-  width: 760px;
+  line-height: 0;
+  width: 100%;
+  @media ${device.desktop} {
+    max-width: 760px;
+    max-height: 415px;
+  }
 `;
 
 const MagazineImage = styled.img`
@@ -107,9 +117,15 @@ const MagazineCoverIcon = styled.i`
 const MagazineContentWrap = styled.div`
   display: flex;
   flex-direction: column;
-  width: 380px;
-  padding: 37px 30px;
+  width: 100%;
+  margin-top: -2px;
+  padding: 30px 30px;
   background-color: #fff;
+  @media ${device.desktop} {
+    width: 380px;
+    margin-top: 0;
+    max-height: 415px;
+  }
 `;
 
 const MagazineContentHeader = styled.div`
@@ -142,8 +158,12 @@ const MagazineContentLocation = styled.span`
 `;
 
 const MagazineContentBody = styled.div`
-  border-bottom: 1px solid ${theme.BorderGray};
-  padding-bottom: 20px;
+  border-bottom: none;
+  padding-bottom: 0;
+  @media ${device.tablet} {
+    border-bottom: 1px solid ${theme.BorderGray};
+    padding-bottom: 20px;
+  }
 `;
 
 const MagazineContentSubtitle = styled.h3`
@@ -159,10 +179,16 @@ const MagazineContentDescription = styled.p`
   height: 156px;
   overflow: hidden;
   padding-top: 10px;
-  padding-bottom: 20px;
   color: ${theme.FontGray};
   font-size: 14px;
   line-height: 150%;
+  display: none;
+  padding-bottom: 0;
+
+  @media ${device.tablet} {
+    display: block;
+    padding-bottom: 20px;
+  }
 `;
 
 const MagazineContentMore = styled.a`

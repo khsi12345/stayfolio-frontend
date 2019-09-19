@@ -13,7 +13,6 @@ const theme = {
   BorderDarkGray: '#d0d0d0',
   BorderLightGray: '#ebebeb',
   BorderLightBlack: '#363636',
-  BorderLightGray: '#e5e5e5',
 
   GrayBG: '#939498',
   DarkGrayBG: '#222',
@@ -22,6 +21,9 @@ const theme = {
 
   ButtonLightGrayBG: '#c2c2c2',
   ButtonDarkGrayBG: '#2d3039',
+
+  LoginInputBeforeBG: '#e9e9e9',
+  LoginInputAfterBG: '#E8F0FE',
 
   FooterBG: '#222',
   FooterLightGrayFont: '#999',

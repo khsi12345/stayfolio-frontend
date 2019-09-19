@@ -1,45 +1,46 @@
-import React , {memo}from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import Header from 'Components/Header';
 import PickItem from 'Components/PickItem';
 import Pagination from 'Components/Pagination';
-import Footer from 'Components/Footer'
+import Footer from 'Components/Footer';
 import theme from 'Components/Theme';
-import {device} from 'Components/Device';
+import { device } from 'Components/Device';
 
-
-const Pick = memo( () => {
-    return (
-      <>
-        <Header />
-        <PickWrap>
-          <PickMainWrap>
-            <PickMainHeader>
-              PICK
-              <PickMainHeaderSmall>매일 하루 한번! 스테이폴리오가 추천합니다!</PickMainHeaderSmall>
-            </PickMainHeader>
-            <PickMainContainer>
-              <PickMain>
-                <PickItem />
-                <PickItem />
-                <PickItem />
-                <PickItem />
-                <PickItem />
-                <PickItem />
-                <PickItem />
-                <PickItem />
-                <PickItem />
-                <PickItem />
-                <PickItem />
-                <PickItem />
-              </PickMain>
-              <Pagination />
-            </PickMainContainer>
-          </PickMainWrap>
-        </PickWrap>
-        <Footer />
-      </>
-    )
+const Pick = memo(() => {
+  return (
+    <>
+      <Header />
+      <PickWrap>
+        <PickMainWrap>
+          <PickMainHeader>
+            PICK
+            <PickMainHeaderSmall>
+              매일 하루 한번! 스테이폴리오가 추천합니다!
+            </PickMainHeaderSmall>
+          </PickMainHeader>
+          <PickMainContainer>
+            <PickMain>
+              <PickItem />
+              <PickItem />
+              <PickItem />
+              <PickItem />
+              <PickItem />
+              <PickItem />
+              <PickItem />
+              <PickItem />
+              <PickItem />
+              <PickItem />
+              <PickItem />
+              <PickItem />
+            </PickMain>
+            <Pagination />
+          </PickMainContainer>
+        </PickMainWrap>
+      </PickWrap>
+      <Footer />
+    </>
+  );
 });
 
 const PickWrap = styled.div`
@@ -57,10 +58,9 @@ const PickWrap = styled.div`
   @media ${device.wide} {
     width: 1170px;
   }
-`
+`;
 
-const PickMainWrap = styled.div`
-`
+const PickMainWrap = styled.div``;
 const PickMainHeader = styled.h2`
   margin-top: 60px;
   margin-bottom: 10px;
@@ -69,17 +69,15 @@ const PickMainHeader = styled.h2`
   height: 125px;
   font-weight: 700;
   font-size: 32px;
-`
+`;
 const PickMainHeaderSmall = styled.small`
-  display:block;
+  display: block;
   margin-top: 3px;
   color: ${theme.FontGray};
   font-weight: 400;
   font-size: 14px;
-
-`
-const PickMainContainer = styled.div`
-`
+`;
+const PickMainContainer = styled.div``;
 const PickMain = styled.div`
   display: flex;
   margin: 0 -15px;
@@ -87,12 +85,12 @@ const PickMain = styled.div`
   justify-content: space-evenly;
   &::before {
     display: table;
-    content: " ";
+    content: ' ';
   }
   &::after {
     display: table;
-    content: " ";
+    content: ' ';
     clear: both;
   }
-`
+`;
 export default Pick;
