@@ -1,22 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import { device } from 'Components/Device';
+import Layout from 'Components/Layout';
 import MainSlider from './MainSlider';
-import Header from 'Components/Header';
 import Magazine from 'Components/Magazine';
 import Pick from './Pick';
-import Footer from 'Components/Footer';
-import { device } from 'Components/Device';
 
 const Main = () => (
-  <>
-    <Header />
+  <Layout>
     <MainWrap>
       <MainSlider />
     </MainWrap>
     <Magazine />
     <Pick />
-    <Footer />
-  </>
+  </Layout>
 );
 
 const MainWrap = styled.div`

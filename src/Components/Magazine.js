@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import MagazineContainer from 'Components/MagazineContainer';
-import theme from 'Components/Theme';
-import Data from 'Data/magazine.json';
 import { device } from 'Components/Device';
+import theme from 'Components/Theme';
+import MagazineContainer from 'Components/MagazineContainer';
+import Data from 'Data/magazine.json';
 
 const Magazine = () => (
   <MagazineWrap>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from 'Components/Theme';
 import { device } from 'Components/Device';
+import theme from 'Components/Theme';
 import Logo from 'Images/Logo.png';
 import Close from 'Images/Close.png';
 

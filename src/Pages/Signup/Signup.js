@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Header from 'Components/Header';
-import Footer from 'Components/Footer';
-import theme from 'Components/Theme';
 import { device } from 'Components/Device';
+import theme from 'Components/Theme';
+import Layout from 'Components/Layout';
 import SignupImg from 'Images/Signup.png';
 
 const Signup = () => {
   return (
-    <>
-      <Header />
+    <Layout>
       <SignupWrap>
         <SignupContainer>
           <SignupHeader>
@@ -23,8 +21,7 @@ const Signup = () => {
           </SocialWrap>
         </SignupContainer>
       </SignupWrap>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

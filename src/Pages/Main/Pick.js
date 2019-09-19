@@ -1,30 +1,26 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import PickItem from 'Components/PickItem';
-import theme from 'Components/Theme';
 import { device } from 'Components/Device';
+import theme from 'Components/Theme';
+import PickItem from 'Components/PickItem';
 
 const Pick = memo(() => {
   return (
     <PickWrap>
-      <PickMainWrap>
         <PickMainHeader>
           PICK
           <PickMainHeaderSmall>
             매일 하루 한번! 스테이폴리오가 추천합니다!
           </PickMainHeaderSmall>
         </PickMainHeader>
-        <PickMainContainer>
-          <PickMain>
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-          </PickMain>
-        </PickMainContainer>
-      </PickMainWrap>
+        <PickMain>
+          <PickItem />
+          <PickItem />
+          <PickItem />
+          <PickItem />
+          <PickItem />
+          <PickItem />
+        </PickMain>
     </PickWrap>
   );
 });
@@ -44,8 +40,6 @@ const PickWrap = styled.div`
   }
 `;
 
-const PickMainWrap = styled.div``;
-
 const PickMainHeader = styled.h2`
   margin-bottom: 10px;
   padding: 30px 0 40px;
@@ -61,7 +55,7 @@ const PickMainHeaderSmall = styled.small`
   font-weight: 400;
   font-size: 14px;
 `;
-const PickMainContainer = styled.div``;
+
 const PickMain = styled.div`
   display: flex;
   margin: 0 -15px;

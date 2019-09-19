@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Header from 'Components/Header';
-import Footer from 'Components/Footer';
-import theme from 'Components/Theme';
 import { device } from 'Components/Device';
+import theme from 'Components/Theme';
+import Layout from 'Components/Layout';
 import LoginImg from 'Images/Login.png';
 
 const Login = () => {
   return (
-    <>
-      <Header />
+    <Layout>
       <LoginWrap>
         <LoginContainer>
           <LoginHeader>
@@ -43,8 +41,7 @@ const Login = () => {
           </LoginFooterWrap>
         </LoginContainer>
       </LoginWrap>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Slider from 'react-slick';
-import SliderImg from 'Images/Slider/slider-01.jpg';
 import { device } from 'Components/Device';
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import SliderImg from 'Images/Slider/slider-01.jpg';
 
 const settings = {
   // dots: true,
