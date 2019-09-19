@@ -7,9 +7,8 @@ import theme from 'Components/Theme';
 const FooterWrap = styled.footer`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  height: 345px;
+  min-height: 345px;
   padding: 40px 0;
   background-color: ${theme.FooterBG};
 `;
@@ -64,6 +63,7 @@ const FooterDetail = styled.div`
   color: ${theme.FooterDarkGrayFont};
   font-size: 12px;
   line-height: 1.6;
+  text-align: center;
 `;
 
 const Footer = () => (
@@ -91,12 +91,16 @@ const Footer = () => (
       </FooterPrivacy>
       <FooterDetail>- 상호 : (주)스테이폴리오 - 대표자 : 이상묵</FooterDetail>
       <FooterDetail>
-        - 사업장소재지 : 서울특별시 종로구 자하문로9길 24, 2층(통인동) - TEL :
-        1670-4123
+        - 소재지 : 서울특별시 종로구 자하문로9길 24, 2층(통인동)
       </FooterDetail>
       <FooterDetail>
-        - 사업자등록번호: 676-87-00055 - 통신판매업신고 : 제2015-서울종로-0499호
-        [사업자정보확인]
+        - TEL : 1670-4123
+      </FooterDetail>
+      <FooterDetail>
+        - 사업자등록번호: 676-87-00055 
+      </FooterDetail>
+      <FooterDetail>
+        - 통신판매업신고 : 제2015-서울종로-0499호
       </FooterDetail>
       <FooterDetail>
         - 관광사업자등록 : 일반여행업 2018-000049호(종로구청)

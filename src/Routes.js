@@ -8,6 +8,7 @@ import {
 import Main from 'Pages/Main';
 import Login from 'Pages/Login';
 import Signup from 'Pages/Signup';
+import Agreement from 'Pages/Agreement';
 import Pick from 'Pages/Pick';
 import GlobalStyles from './Components/GlobalStyles';
 
@@ -17,6 +18,7 @@ const Routes = () => (
       <Route exact path="/" component={Main} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
+      <Route exact path="/agreement" component={Agreement} />
       <Route exact path="/pick" component={Pick} />
       <Redirect from="*" to="/" />
     </Switch>
