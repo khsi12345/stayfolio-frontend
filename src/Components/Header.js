@@ -76,10 +76,10 @@ const Header = () => {
               <Link to="/">
                 <NavList home>HOME</NavList>
               </Link>
-              <Link to="/">
+              <Link to="/about">
                 <NavList>ABOUT</NavList>
               </Link>
-              <Link to="/">
+              <Link to="/magazines">
                 <NavList>MAGAZINE</NavList>
               </Link>
               <Link to="/pick">
@@ -111,7 +111,7 @@ const Header = () => {
         <BarsNavList>
           <BarsLink href="/">HOME</BarsLink>
           <BarsLink href="/about">ABOUT</BarsLink>
-          <BarsLink href="/magazine">MAGAZINE</BarsLink>
+          <BarsLink href="/magazines">MAGAZINE</BarsLink>
           <BarsLink href="/pick">PICK</BarsLink>
           <BarsLink href="/event">EVENT</BarsLink>
         </BarsNavList>
