@@ -120,8 +120,6 @@ const SocialButton = styled.div`
   cursor: pointer;
 `;
 
-const SignupButton = styled(SocialButton.withComponent('div'))`
-  
-`;
+const SignupButton = SocialButton.withComponent('div');
 
 export default Agreement;

@@ -10,7 +10,9 @@ import Login from 'Pages/Login';
 import Signup from 'Pages/Signup';
 import Agreement from 'Pages/Agreement';
 import Pick from 'Pages/Pick';
-import GlobalStyles from './Components/GlobalStyles';
+import Magazines from 'Pages/Magazines';
+import MagazineDetail from 'Components/MagazineDetail';
+import GlobalStyles from 'Components/GlobalStyles';
 
 const Routes = () => (
   <Router>
@@ -20,6 +22,8 @@ const Routes = () => (
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/agreement" component={Agreement} />
       <Route exact path="/pick" component={Pick} />
+      <Route exact path="/magazines" component={Magazines} />
+      <Route exact path="/magazines/stay-sodo" component={MagazineDetail} />
       <Redirect from="*" to="/" />
     </Switch>
     <GlobalStyles />
