@@ -423,7 +423,7 @@ const PickDetailMainContentsDescriptionRightTop = styled.div`
     letter-spacing: -1px;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: wrap;
     color: ${theme.FontLightGray};
 `
 const PickDetailMainContentsDescriptionRightBottomWrap = styled.div`
@@ -443,7 +443,7 @@ const PickDetailMainContentsDescriptionRightBottomContainer = styled.a`
 const PickDetailMainContentsDescriptionRightBottomBox = styled.div`
   font-size:14px;
   line-height: 1.428571429;
-  white-space: nowrap;
+  white-space: wrap;
   text-overflow: ellipsis;
   color: ${theme.MainWhite};
 `
@@ -612,6 +612,7 @@ const ComentButton = styled.button`
   width: 100%;
   height: 50px;
   background-color: #2d3039;
+  cursor: pointer;
   @media ${device.desktop} {
     width: 100%;
     height: 120px;
