@@ -1,16 +1,14 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import Header from 'Components/Header';
+import Layout from 'Components/Layout';
 import PickItem from 'Components/PickItem';
 import Pagination from 'Components/Pagination';
-import Footer from 'Components/Footer';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
 const Pick = memo(() => {
   return (
-    <>
-      <Header />
+    <Layout>
       <PickWrap>
         <PickMainWrap>
           <PickMainHeader>
@@ -38,8 +36,7 @@ const Pick = memo(() => {
           </PickMainContainer>
         </PickMainWrap>
       </PickWrap>
-      <Footer />
-    </>
+      </Layout>
   );
 });
 
