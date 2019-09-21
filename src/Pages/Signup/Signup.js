@@ -6,24 +6,22 @@ import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
 import SignupImg from 'Images/Signup.png';
 
-const Signup = () => {
-  return (
-    <Layout>
-      <SignupWrap>
-        <SignupContainer>
-          <SignupHeader>
-            <SignupImage src={SignupImg} />
-          </SignupHeader>
-          <SocialWrap>
-            <SignupFacebook>Signup with Facebook</SignupFacebook>
-            <SignupNaver>Signup with Naver</SignupNaver>
-            <SignupEmail href="/agreement">Signup with Email</SignupEmail>
-          </SocialWrap>
-        </SignupContainer>
-      </SignupWrap>
-    </Layout>
-  );
-};
+const Signup = () => (
+  <Layout>
+    <SignupWrap>
+      <SignupContainer>
+        <SignupHeader>
+          <SignupImage src={SignupImg} />
+        </SignupHeader>
+        <SocialWrap>
+          <SignupFacebook>Signup with Facebook</SignupFacebook>
+          <SignupNaver>Signup with Naver</SignupNaver>
+          <SignupEmail href="/agreement">Signup with Email</SignupEmail>
+        </SocialWrap>
+      </SignupContainer>
+    </SignupWrap>
+  </Layout>
+);
 
 const SignupWrap = styled.div`
   display: flex;

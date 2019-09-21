@@ -1,12 +1,48 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Layout from 'Components/Layout';
 import PickItem from 'Components/PickItem';
 import Pagination from 'Components/Pagination';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
+const getPicks = async (url, setData) => {
+  const response = await axios.get(url);
+  setData(response);
+};
 const Pick = memo(() => {
+  const [getPick, setPick] = useState([]);
+
+  useEffect(() => {
+    getPicks('http://10.58.5.78:8080/pick', setPick);
+  }, []);
+  console.log('i', getPick);
+
+  const LoadPciks = () => {
+    console.log(getPick, '1111');
+    if (getPick.data) {
+      console.log(getPick, '22');
+      return getPick.data.map((ele) => (
+        // <Link to="">
+        <PickItem
+          key={ele.pick_id}
+          name={ele.place_info.name}
+          eng={ele.identifier}
+          des={ele.title}
+          location={ele.place_info.city}
+          minpr={ele.place_info.price_min}
+          maxpr={ele.place_info.price_max}
+          targets={ele.place_info.targets}
+        />
+        // </Link>
+      ));
+    }
+    // return Item;
+    // console.log(Item);
+  };
+
   return (
     <Layout>
       <PickWrap>
@@ -19,6 +55,7 @@ const Pick = memo(() => {
           </PickMainHeader>
           <PickMainContainer>
             <PickMain>
+              {LoadPciks()}
               <PickItem />
               <PickItem />
               <PickItem />
@@ -36,7 +73,7 @@ const Pick = memo(() => {
           </PickMainContainer>
         </PickMainWrap>
       </PickWrap>
-      </Layout>
+    </Layout>
   );
 });
 

@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   showAlert: false,
 };
 
-export default function(state = INITIAL_STATE, action) {
+export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case SHOW_MODAL:
       return {

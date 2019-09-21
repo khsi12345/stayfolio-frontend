@@ -4,8 +4,29 @@ import data from 'Data/pick';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-const PickItem = memo(() => {
-  return (
+
+const unitConversion = (minp) => {
+  const min = Number(minp).toString().split('');
+  let cou = 0;
+  for (let i = min.length; i > 0; i--) {
+    if (cou === 3) {
+      min.splice(i, 0, ',');
+      cou = 0;
+    }
+    cou += 1;
+  }
+  const result = min.join('');
+  return result;
+};
+unitConversion('45');
+
+const PickItem = memo(({
+  name, eng, des, location, minpr, maxpr, targets,
+}) =>
+// const newTargets = targets.toString();
+// console.log(Number(minpr));
+
+  (
     <PickItemWrap>
       <PickItemContainer>
         <ItemImgWrap>
@@ -23,23 +44,23 @@ const PickItem = memo(() => {
         <ItemDescriptionWrap>
           <ItemDescriptionTitleWrap>
             <ItemDescriptionTitle>
-              {data.pick_info.pick_info_list[0].name}
+              {name}
             </ItemDescriptionTitle>
             <BookingNow>
               <BookingNowText>BOOKING NOW</BookingNowText>
             </BookingNow>
             <ItemDescriptionTitleEnglish>
-              {data.pick_info.pick_info_list[0].english_name}
+              {eng}
             </ItemDescriptionTitleEnglish>
           </ItemDescriptionTitleWrap>
           <ItemDescriptionTitleDescription>
-            {data.pick_info.pick_info_list[0].descript}
+            {des}
           </ItemDescriptionTitleDescription>
           <ItemDescriptionTableWrap>
             <ItemDescriptionTableColunm>
               <ItemDescriptionTableContents>
                 <Icon2 className="fas fa-map-marker-alt" />
-                {data.pick_info.pick_info_list[0].location}
+                {location}
               </ItemDescriptionTableContents>
               <ItemDescriptionTableContents>
                 <Icon2 className="fas fa-home" />
@@ -49,11 +70,11 @@ const PickItem = memo(() => {
             <ItemDescriptionTableColunm>
               <ItemDescriptionTableContents>
                 <Icon2 className="fas fa-coins" />
-                {data.pick_info.pick_info_list[0].price}
+                {`${unitConversion(minpr)} ~ ${unitConversion(maxpr)}`}
               </ItemDescriptionTableContents>
               <ItemDescriptionTableContents>
                 <Icon2 className="fas fa-star" />
-                {data.pick_info.pick_info_list[0].type2}
+                {/* {newTargets} */}
               </ItemDescriptionTableContents>
             </ItemDescriptionTableColunm>
             <ItemDescriptionTableColunm />
@@ -61,8 +82,7 @@ const PickItem = memo(() => {
         </ItemDescriptionWrap>
       </PickItemContainer>
     </PickItemWrap>
-  );
-});
+  ));
 
 const PickItemWrap = styled.div`
   position: relative;
@@ -141,6 +161,7 @@ const ItemDescriptionTitleWrap = styled.h4`
 `;
 const ItemDescriptionTitle = styled.a`
   color: ${theme.MainBlack};
+  cursor: pointer;
 `;
 const ItemDescriptionTitleEnglish = styled.div`
   padding: 2px 0;
@@ -191,6 +212,7 @@ const BookingNow = styled.div`
   align-items: center;
   background-image: url('https://stayfolio.com/images/pick/5d995e0a.pick-booking@3x.png');
   background-size: cover;
+  cursor: pointer;
 `;
 const BookingNowText = styled.a`
   padding-left: 7px;

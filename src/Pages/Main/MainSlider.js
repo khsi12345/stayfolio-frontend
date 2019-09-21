@@ -19,74 +19,72 @@ const settings = {
   pauseOnHover: true,
 };
 
-const MainSlider = () => {
-  return (
-    <SliderContainer>
-      <Slider {...settings}>
-        <SliderContents>
-          <SliderBox>
-            <BoxCategory>CARE BY</BoxCategory>
-            <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
-            <BoxDescription>
+const MainSlider = () => (
+  <SliderContainer>
+    <Slider {...settings}>
+      <SliderContents>
+        <SliderBox>
+          <BoxCategory>CARE BY</BoxCategory>
+          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxDescription>
               지나간 시간의
-              <br />
+            <br />
               아름다움을 담다
-            </BoxDescription>
-            <BoxButton href="/">SHOW NOW</BoxButton>
-          </SliderBox>
-        </SliderContents>
-        <SliderContents>
-          <SliderBox>
-            <BoxCategory>CARE BY</BoxCategory>
-            <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
-            <BoxDescription>
+          </BoxDescription>
+          <BoxButton href="/">SHOW NOW</BoxButton>
+        </SliderBox>
+      </SliderContents>
+      <SliderContents>
+        <SliderBox>
+          <BoxCategory>CARE BY</BoxCategory>
+          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxDescription>
               지나간 시간의
-              <br />
+            <br />
               아름다움을 담다
-            </BoxDescription>
-            <BoxButton href="/">SHOW NOW</BoxButton>
-          </SliderBox>
-        </SliderContents>
-        <SliderContents>
-          <SliderBox>
-            <BoxCategory>CARE BY</BoxCategory>
-            <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
-            <BoxDescription>
+          </BoxDescription>
+          <BoxButton href="/">SHOW NOW</BoxButton>
+        </SliderBox>
+      </SliderContents>
+      <SliderContents>
+        <SliderBox>
+          <BoxCategory>CARE BY</BoxCategory>
+          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxDescription>
               지나간 시간의
-              <br />
+            <br />
               아름다움을 담다
-            </BoxDescription>
-            <BoxButton href="/">SHOW NOW</BoxButton>
-          </SliderBox>
-        </SliderContents>
-        <SliderContents>
-          <SliderBox>
-            <BoxCategory>CARE BY</BoxCategory>
-            <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
-            <BoxDescription>
+          </BoxDescription>
+          <BoxButton href="/">SHOW NOW</BoxButton>
+        </SliderBox>
+      </SliderContents>
+      <SliderContents>
+        <SliderBox>
+          <BoxCategory>CARE BY</BoxCategory>
+          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxDescription>
               지나간 시간의
-              <br />
+            <br />
               아름다움을 담다
-            </BoxDescription>
-            <BoxButton href="/">SHOW NOW</BoxButton>
-          </SliderBox>
-        </SliderContents>
-        <SliderContents>
-          <SliderBox>
-            <BoxCategory>CARE BY</BoxCategory>
-            <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
-            <BoxDescription>
+          </BoxDescription>
+          <BoxButton href="/">SHOW NOW</BoxButton>
+        </SliderBox>
+      </SliderContents>
+      <SliderContents>
+        <SliderBox>
+          <BoxCategory>CARE BY</BoxCategory>
+          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxDescription>
               지나간 시간의
-              <br />
+            <br />
               아름다움을 담다
-            </BoxDescription>
-            <BoxButton href="/">SHOW NOW</BoxButton>
-          </SliderBox>
-        </SliderContents>
-      </Slider>
-    </SliderContainer>
-  );
-};
+          </BoxDescription>
+          <BoxButton href="/">SHOW NOW</BoxButton>
+        </SliderBox>
+      </SliderContents>
+    </Slider>
+  </SliderContainer>
+);
 
 const SliderContainer = styled.div`
   height: 300px;
