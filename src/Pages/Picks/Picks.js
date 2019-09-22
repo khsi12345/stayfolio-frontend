@@ -1,33 +1,28 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, {
+  memo, useState, useEffect, useCallback,
+} from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { getPicks } from 'Util/service';
 import Layout from 'Components/Layout';
 import PickItem from 'Components/PickItem';
 import Pagination from 'Components/Pagination';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
-const getPicks = async (url, setData) => {
-  const response = await axios.get(url);
-  setData(response);
-};
 const Pick = memo(() => {
   const [getPick, setPick] = useState([]);
 
   useEffect(() => {
-    getPicks('http://10.58.5.78:8080/pick', setPick);
+    getPicks('http://10.58.5.78:8080/pick?offset=0&limit=12', setPick);
   }, []);
-  console.log('i', getPick);
 
   const LoadPciks = () => {
     console.log(getPick, '1111');
-    if (getPick.data) {
-      console.log(getPick, '22');
-      return getPick.data.map((ele) => (
-        // <Link to="">
+    if (getPick.data && getPick.data !== undefined) {
+      return getPick.data.result.map((ele) => (
         <PickItem
           key={ele.pick_id}
+          id={ele.pick_id}
           name={ele.place_info.name}
           eng={ele.identifier}
           des={ele.title}
@@ -35,45 +30,39 @@ const Pick = memo(() => {
           minpr={ele.place_info.price_min}
           maxpr={ele.place_info.price_max}
           targets={ele.place_info.targets}
+          type={ele.place_info.place_type}
+          img={ele.main_image_url}
         />
-        // </Link>
       ));
     }
-    // return Item;
-    // console.log(Item);
   };
 
+  const pageChangeHandler = (id) => {
+    console.log(id * 12 - 1, id * 12 + 12);
+    getPicks(`http://10.58.5.78:8080/pick?offset=${(id - 1) * 12}&limit=${(id - 1) * 12 + 12}`, setPick);
+  };
   return (
-    <Layout>
-      <PickWrap>
-        <PickMainWrap>
-          <PickMainHeader>
+    <>
+    ${console.log('렌더렌더')}
+      <Layout>
+        <PickWrap>
+          <PickMainWrap>
+            <PickMainHeader>
             PICK
-            <PickMainHeaderSmall>
+              <PickMainHeaderSmall>
               매일 하루 한번! 스테이폴리오가 추천합니다!
-            </PickMainHeaderSmall>
-          </PickMainHeader>
-          <PickMainContainer>
-            <PickMain>
-              {LoadPciks()}
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-            </PickMain>
-            <Pagination />
-          </PickMainContainer>
-        </PickMainWrap>
-      </PickWrap>
-    </Layout>
+              </PickMainHeaderSmall>
+            </PickMainHeader>
+            <PickMainContainer>
+              <PickMain>
+                {LoadPciks()}
+              </PickMain>
+              <Pagination handleClick={pageChangeHandler} />
+            </PickMainContainer>
+          </PickMainWrap>
+        </PickWrap>
+      </Layout>
+    </>
   );
 });
 

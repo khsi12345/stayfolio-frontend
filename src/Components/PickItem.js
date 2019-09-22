@@ -1,5 +1,6 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import data from 'Data/pick';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
@@ -18,34 +19,40 @@ const unitConversion = (minp) => {
   const result = min.join('');
   return result;
 };
-unitConversion('45');
 
 const PickItem = memo(({
-  name, eng, des, location, minpr, maxpr, targets,
-}) =>
-// const newTargets = targets.toString();
-// console.log(Number(minpr));
+  id, name, eng, des, location, minpr, maxpr, targets, type, img,
+}) => {
+  // console.log(targets);
+  const [newTargets, setTargets] = useState(targets.toString());
+  // useEffect(() => {
 
-  (
+  // }, [targets]);
+  // const newTargets = targets.toString();
+  return (
     <PickItemWrap>
       <PickItemContainer>
-        <ItemImgWrap>
-          <ItemImgContainer>
-            <ItemImg src={data.pick_info.pick_info_list[0].thumbnail_img} />
-          </ItemImgContainer>
-          <ItemTextWrap>
-            <ItemText>
-              {' '}
-              <Icon className="fas fa-search" />
+        <Link to={`/pick_detail/${id}`}>
+          <ItemImgWrap>
+            <ItemImgContainer>
+              <ItemImg src={img} />
+            </ItemImgContainer>
+            <ItemTextWrap>
+              <ItemText>
+                {' '}
+                <Icon className="fas fa-search" />
               VIEW
-            </ItemText>
-          </ItemTextWrap>
-        </ItemImgWrap>
+              </ItemText>
+            </ItemTextWrap>
+          </ItemImgWrap>
+        </Link>
         <ItemDescriptionWrap>
           <ItemDescriptionTitleWrap>
-            <ItemDescriptionTitle>
-              {name}
-            </ItemDescriptionTitle>
+            <Link to={`/pick_detail/${id}`}>
+              <ItemDescriptionTitle>
+                {name}
+              </ItemDescriptionTitle>
+            </Link>
             <BookingNow>
               <BookingNowText>BOOKING NOW</BookingNowText>
             </BookingNow>
@@ -64,7 +71,7 @@ const PickItem = memo(({
               </ItemDescriptionTableContents>
               <ItemDescriptionTableContents>
                 <Icon2 className="fas fa-home" />
-                {data.pick_info.pick_info_list[0].type}
+                {type}
               </ItemDescriptionTableContents>
             </ItemDescriptionTableColunm>
             <ItemDescriptionTableColunm>
@@ -74,7 +81,7 @@ const PickItem = memo(({
               </ItemDescriptionTableContents>
               <ItemDescriptionTableContents>
                 <Icon2 className="fas fa-star" />
-                {/* {newTargets} */}
+                {newTargets}
               </ItemDescriptionTableContents>
             </ItemDescriptionTableColunm>
             <ItemDescriptionTableColunm />
@@ -82,7 +89,8 @@ const PickItem = memo(({
         </ItemDescriptionWrap>
       </PickItemContainer>
     </PickItemWrap>
-  ));
+  );
+});
 
 const PickItemWrap = styled.div`
   position: relative;
@@ -114,7 +122,7 @@ const ItemImg = styled.img`
     transform: scale(1.2, 1.2);
   }
 `;
-const ItemTextWrap = styled.a`
+const ItemTextWrap = styled.div`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -159,7 +167,7 @@ const ItemDescriptionTitleWrap = styled.h4`
   font-weight: 500;
   line-height: 1.1;
 `;
-const ItemDescriptionTitle = styled.a`
+const ItemDescriptionTitle = styled.div`
   color: ${theme.MainBlack};
   cursor: pointer;
 `;
