@@ -6,43 +6,41 @@ import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
 import SignupImg from 'Images/Signup.png';
 
-const Agreement = () => {
-  return (
-    <Layout>
-      <SignupWrap>
-        <SignupContainer>
-          <SignupHeader>
-            <SignupImage src={SignupImg} />
-          </SignupHeader>
-          <EmailSignupWrap>
-            <SignupInputWrap>
-              <SignupInput
-                type="email"
-                name="email"
-                placeholder="Email Address"
-              />
-            </SignupInputWrap>
-            <SignupInputWrap>
-              <SignupInput
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
-            </SignupInputWrap>
-            <SignupInputWrap>
-              <SignupInput
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            </SignupInputWrap>
-            <SignupButton>Signup</SignupButton>
-          </EmailSignupWrap>
-        </SignupContainer>
-      </SignupWrap>
-    </Layout>
-  );
-};
+const Agreement = () => (
+  <Layout>
+    <SignupWrap>
+      <SignupContainer>
+        <SignupHeader>
+          <SignupImage src={SignupImg} />
+        </SignupHeader>
+        <EmailSignupWrap>
+          <SignupInputWrap>
+            <SignupInput
+              type="email"
+              name="email"
+              placeholder="Email Address"
+            />
+          </SignupInputWrap>
+          <SignupInputWrap>
+            <SignupInput
+              type="text"
+              name="name"
+              placeholder="Name"
+            />
+          </SignupInputWrap>
+          <SignupInputWrap>
+            <SignupInput
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+          </SignupInputWrap>
+          <SignupButton>Signup</SignupButton>
+        </EmailSignupWrap>
+      </SignupContainer>
+    </SignupWrap>
+  </Layout>
+);
 
 const SignupWrap = styled.div`
   display: flex;

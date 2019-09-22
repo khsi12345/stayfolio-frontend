@@ -9,7 +9,8 @@ import Main from 'Pages/Main';
 import Login from 'Pages/Login';
 import Signup from 'Pages/Signup';
 import Agreement from 'Pages/Agreement';
-import Pick from 'Pages/Pick';
+import Picks from 'Pages/Picks';
+import Booking from 'Pages/Booking';
 import Magazines from 'Pages/Magazines';
 import MagazineDetail from 'Components/MagazineDetail';
 import GlobalStyles from 'Components/GlobalStyles';
@@ -21,7 +22,8 @@ const Routes = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/agreement" component={Agreement} />
-      <Route exact path="/pick" component={Pick} />
+      <Route exact path="/picks" component={Picks} />
+      <Route exact path="/picks/stay-sodo" component={Booking} />
       <Route exact path="/magazines" component={Magazines} />
       <Route exact path="/magazines/stay-sodo" component={MagazineDetail} />
       <Redirect from="*" to="/" />

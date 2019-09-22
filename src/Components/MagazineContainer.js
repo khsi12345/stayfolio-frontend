@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-const MagazineContainer = props => {
+const MagazineContainer = (props) => {
   const { result } = props;
   return (
     <MagazineDetail>

@@ -4,26 +4,24 @@ import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import PickItem from 'Components/PickItem';
 
-const Pick = memo(() => {
-  return (
-    <PickWrap>
-        <PickMainHeader>
+const Pick = memo(() => (
+  <PickWrap>
+    <PickMainHeader>
           PICK
-          <PickMainHeaderSmall>
+      <PickMainHeaderSmall>
             매일 하루 한번! 스테이폴리오가 추천합니다!
-          </PickMainHeaderSmall>
-        </PickMainHeader>
-        <PickMain>
-          <PickItem />
-          <PickItem />
-          <PickItem />
-          <PickItem />
-          <PickItem />
-          <PickItem />
-        </PickMain>
-    </PickWrap>
-  );
-});
+      </PickMainHeaderSmall>
+    </PickMainHeader>
+    <PickMain>
+      <PickItem />
+      <PickItem />
+      <PickItem />
+      <PickItem />
+      <PickItem />
+      <PickItem />
+    </PickMain>
+  </PickWrap>
+));
 
 const PickWrap = styled.div`
   margin: 30px auto 15px;

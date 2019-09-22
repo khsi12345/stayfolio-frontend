@@ -4,65 +4,63 @@ import data from 'Data/pick';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-const PickItem = memo(() => {
-  return (
-    <PickItemWrap>
-      <PickItemContainer>
-        <ItemImgWrap>
-          <ItemImgContainer>
-            <ItemImg src={data.pick_info.pick_info_list[0].thumbnail_img} />
-          </ItemImgContainer>
-          <ItemTextWrap>
-            <ItemText>
-              {' '}
-              <Icon className="fas fa-search" />
+const PickItem = memo(() => (
+  <PickItemWrap>
+    <PickItemContainer>
+      <ItemImgWrap>
+        <ItemImgContainer>
+          <ItemImg src={data.pick_info.pick_info_list[0].thumbnail_img} />
+        </ItemImgContainer>
+        <ItemTextWrap>
+          <ItemText>
+            {' '}
+            <Icon className="fas fa-search" />
               VIEW
-            </ItemText>
-          </ItemTextWrap>
-        </ItemImgWrap>
-        <ItemDescriptionWrap>
-          <ItemDescriptionTitleWrap>
-            <ItemDescriptionTitle>
-              {data.pick_info.pick_info_list[0].name}
-            </ItemDescriptionTitle>
-            <BookingNow>
-              <BookingNowText>BOOKING NOW</BookingNowText>
-            </BookingNow>
-            <ItemDescriptionTitleEnglish>
-              {data.pick_info.pick_info_list[0].english_name}
-            </ItemDescriptionTitleEnglish>
-          </ItemDescriptionTitleWrap>
-          <ItemDescriptionTitleDescription>
-            {data.pick_info.pick_info_list[0].descript}
-          </ItemDescriptionTitleDescription>
-          <ItemDescriptionTableWrap>
-            <ItemDescriptionTableColunm>
-              <ItemDescriptionTableContents>
-                <Icon2 className="fas fa-map-marker-alt" />
-                {data.pick_info.pick_info_list[0].location}
-              </ItemDescriptionTableContents>
-              <ItemDescriptionTableContents>
-                <Icon2 className="fas fa-home" />
-                {data.pick_info.pick_info_list[0].type}
-              </ItemDescriptionTableContents>
-            </ItemDescriptionTableColunm>
-            <ItemDescriptionTableColunm>
-              <ItemDescriptionTableContents>
-                <Icon2 className="fas fa-coins" />
-                {data.pick_info.pick_info_list[0].price}
-              </ItemDescriptionTableContents>
-              <ItemDescriptionTableContents>
-                <Icon2 className="fas fa-star" />
-                {data.pick_info.pick_info_list[0].type2}
-              </ItemDescriptionTableContents>
-            </ItemDescriptionTableColunm>
-            <ItemDescriptionTableColunm />
-          </ItemDescriptionTableWrap>
-        </ItemDescriptionWrap>
-      </PickItemContainer>
-    </PickItemWrap>
-  );
-});
+          </ItemText>
+        </ItemTextWrap>
+      </ItemImgWrap>
+      <ItemDescriptionWrap>
+        <ItemDescriptionTitleWrap>
+          <ItemDescriptionTitle>
+            {data.pick_info.pick_info_list[0].name}
+          </ItemDescriptionTitle>
+          <BookingNow>
+            <BookingNowText>BOOKING NOW</BookingNowText>
+          </BookingNow>
+          <ItemDescriptionTitleEnglish>
+            {data.pick_info.pick_info_list[0].english_name}
+          </ItemDescriptionTitleEnglish>
+        </ItemDescriptionTitleWrap>
+        <ItemDescriptionTitleDescription>
+          {data.pick_info.pick_info_list[0].descript}
+        </ItemDescriptionTitleDescription>
+        <ItemDescriptionTableWrap>
+          <ItemDescriptionTableColunm>
+            <ItemDescriptionTableContents>
+              <Icon2 className="fas fa-map-marker-alt" />
+              {data.pick_info.pick_info_list[0].location}
+            </ItemDescriptionTableContents>
+            <ItemDescriptionTableContents>
+              <Icon2 className="fas fa-home" />
+              {data.pick_info.pick_info_list[0].type}
+            </ItemDescriptionTableContents>
+          </ItemDescriptionTableColunm>
+          <ItemDescriptionTableColunm>
+            <ItemDescriptionTableContents>
+              <Icon2 className="fas fa-coins" />
+              {data.pick_info.pick_info_list[0].price}
+            </ItemDescriptionTableContents>
+            <ItemDescriptionTableContents>
+              <Icon2 className="fas fa-star" />
+              {data.pick_info.pick_info_list[0].type2}
+            </ItemDescriptionTableContents>
+          </ItemDescriptionTableColunm>
+          <ItemDescriptionTableColunm />
+        </ItemDescriptionTableWrap>
+      </ItemDescriptionWrap>
+    </PickItemContainer>
+  </PickItemWrap>
+));
 
 const PickItemWrap = styled.div`
   position: relative;

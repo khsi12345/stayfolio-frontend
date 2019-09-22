@@ -4,6 +4,60 @@ import styled from 'styled-components';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
+const Footer = () => (
+  <FooterWrap>
+    <FooterMenu>
+      <FooterMenuList>
+        <Link to="/about">About</Link>
+      </FooterMenuList>
+      <FooterMenuList>
+        <Link to="/">4point of view</Link>
+      </FooterMenuList>
+      <FooterMenuList>
+        <Link to="/">Contact us</Link>
+      </FooterMenuList>
+    </FooterMenu>
+    <FooterDetailWrap>
+      <FooterPrivacy>
+        <Link to="/">
+          <PrivacyList>개인정보취급방침</PrivacyList>
+        </Link>
+        <Divider>|</Divider>
+        <Link to="/">
+          <PrivacyList>이용약관</PrivacyList>
+        </Link>
+      </FooterPrivacy>
+      <FooterDetail>- 상호 : (주)스테이폴리오 - 대표자 : 이상묵</FooterDetail>
+      <FooterDetail>
+        - 소재지 : 서울특별시 종로구 자하문로9길 24, 2층(통인동)
+      </FooterDetail>
+      <FooterDetail>
+        - TEL : 1670-4123
+      </FooterDetail>
+      <FooterDetail>
+        - 사업자등록번호: 676-87-00055
+      </FooterDetail>
+      <FooterDetail>
+        - 통신판매업신고 : 제2015-서울종로-0499호
+      </FooterDetail>
+      <FooterDetail>
+        - 관광사업자등록 : 일반여행업 2018-000049호(종로구청)
+      </FooterDetail>
+      <FooterDetail>&nbsp;</FooterDetail>
+      <FooterDetail>
+        * 스테이폴리오의 모든 거래에 대한 책임과 환불, 민원 등의 처리는
+        스테이폴리오에서 진행합니다.
+      </FooterDetail>
+      <FooterDetail>
+        * 자세한 문의는 웹사이트의 Contact 또는 유선(1670-4123)으로 가능합니다.
+      </FooterDetail>
+      <FooterDetail>
+        COPYRIGHT©2015 STAYFOLIO. ALL RIGHTS RESERVED.
+      </FooterDetail>
+    </FooterDetailWrap>
+  </FooterWrap>
+);
+
 const FooterWrap = styled.footer`
   display: flex;
   flex-direction: column;
@@ -65,59 +119,5 @@ const FooterDetail = styled.div`
   line-height: 1.6;
   text-align: center;
 `;
-
-const Footer = () => (
-  <FooterWrap>
-    <FooterMenu>
-      <FooterMenuList>
-        <Link to="/">About</Link>
-      </FooterMenuList>
-      <FooterMenuList>
-        <Link to="/">4point of view</Link>
-      </FooterMenuList>
-      <FooterMenuList>
-        <Link to="/">Contact us</Link>
-      </FooterMenuList>
-    </FooterMenu>
-    <FooterDetailWrap>
-      <FooterPrivacy>
-        <Link to="/">
-          <PrivacyList>개인정보취급방침</PrivacyList>
-        </Link>
-        <Divider>|</Divider>
-        <Link to="/">
-          <PrivacyList>이용약관</PrivacyList>
-        </Link>
-      </FooterPrivacy>
-      <FooterDetail>- 상호 : (주)스테이폴리오 - 대표자 : 이상묵</FooterDetail>
-      <FooterDetail>
-        - 소재지 : 서울특별시 종로구 자하문로9길 24, 2층(통인동)
-      </FooterDetail>
-      <FooterDetail>
-        - TEL : 1670-4123
-      </FooterDetail>
-      <FooterDetail>
-        - 사업자등록번호: 676-87-00055 
-      </FooterDetail>
-      <FooterDetail>
-        - 통신판매업신고 : 제2015-서울종로-0499호
-      </FooterDetail>
-      <FooterDetail>
-        - 관광사업자등록 : 일반여행업 2018-000049호(종로구청)
-      </FooterDetail>
-      <FooterDetail>&nbsp;</FooterDetail>
-      <FooterDetail>
-        * 스테이폴리오의 모든 거래에 대한 책임과 환불, 민원 등의 처리는
-        스테이폴리오에서 진행합니다.
-      </FooterDetail>
-      <FooterDetail>
-        * 자세한 문의는 웹사이트의 Contact 또는 유선(1670-4123)으로 가능합니다.
-      </FooterDetail>
-      <FooterDetail>
-        COPYRIGHT©2015 STAYFOLIO. ALL RIGHTS RESERVED.
-      </FooterDetail>
-    </FooterDetailWrap>
-  </FooterWrap>
-);
 
 export default Footer;

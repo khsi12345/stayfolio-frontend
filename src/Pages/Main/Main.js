@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { device } from 'Components/Device';
 import Layout from 'Components/Layout';
-import MainSlider from './MainSlider';
 import Magazine from 'Components/Magazine';
+import MainSlider from './MainSlider';
 import Pick from './Pick';
 
 const Main = () => (

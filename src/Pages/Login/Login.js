@@ -6,44 +6,42 @@ import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
 import LoginImg from 'Images/Login.png';
 
-const Login = () => {
-  return (
-    <Layout>
-      <LoginWrap>
-        <LoginContainer>
-          <LoginHeader>
-            <LoginImage src={LoginImg} />
-          </LoginHeader>
-          <SocialWrap>
-            <SocialFacebook>Login with Facebook</SocialFacebook>
-            <SocialNaver>Login with Naver</SocialNaver>
-          </SocialWrap>
-          <EmailLoginWrap>
-            <LoginInputWrap>
-              <LoginInput
-                type="email"
-                name="email"
-                placeholder="Email Address"
-              />
-            </LoginInputWrap>
-            <LoginInputWrap>
-              <LoginInput
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            </LoginInputWrap>
-            <LoginButton>Login</LoginButton>
-          </EmailLoginWrap>
-          <LoginFooterWrap>
-            <FooterButton href="/signup">Sign up Now!</FooterButton>
-            <FooterButton href="/">Forgot Password?</FooterButton>
-          </LoginFooterWrap>
-        </LoginContainer>
-      </LoginWrap>
-    </Layout>
-  );
-};
+const Login = () => (
+  <Layout>
+    <LoginWrap>
+      <LoginContainer>
+        <LoginHeader>
+          <LoginImage src={LoginImg} />
+        </LoginHeader>
+        <SocialWrap>
+          <SocialFacebook>Login with Facebook</SocialFacebook>
+          <SocialNaver>Login with Naver</SocialNaver>
+        </SocialWrap>
+        <EmailLoginWrap>
+          <LoginInputWrap>
+            <LoginInput
+              type="email"
+              name="email"
+              placeholder="Email Address"
+            />
+          </LoginInputWrap>
+          <LoginInputWrap>
+            <LoginInput
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+          </LoginInputWrap>
+          <LoginButton>Login</LoginButton>
+        </EmailLoginWrap>
+        <LoginFooterWrap>
+          <FooterButton href="/signup">Sign up Now!</FooterButton>
+          <FooterButton href="/">Forgot Password?</FooterButton>
+        </LoginFooterWrap>
+      </LoginContainer>
+    </LoginWrap>
+  </Layout>
+);
 
 const LoginWrap = styled.div`
   display: flex;

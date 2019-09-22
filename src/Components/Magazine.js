@@ -16,7 +16,7 @@ const Magazine = () => (
         </MagazineTitleDescription>
       </MagazineTitleWrap>
       <MagazineButtonWrap>
-        <Link to="/">
+        <Link to="/magazines">
           <MagazineMoreButton>
             READ <br />
             MORE MAGAZINE

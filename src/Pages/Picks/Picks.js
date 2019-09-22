@@ -7,41 +7,39 @@ import Footer from 'Components/Footer';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
-const Pick = memo(() => {
-  return (
-    <>
-      <Header />
-      <PickWrap>
-        <PickMainWrap>
-          <PickMainHeader>
+const Picks = memo(() => (
+  <>
+    <Header />
+    <PickWrap>
+      <PickMainWrap>
+        <PickMainHeader>
             PICK
-            <PickMainHeaderSmall>
+          <PickMainHeaderSmall>
               매일 하루 한번! 스테이폴리오가 추천합니다!
-            </PickMainHeaderSmall>
-          </PickMainHeader>
-          <PickMainContainer>
-            <PickMain>
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-              <PickItem />
-            </PickMain>
-            <Pagination />
-          </PickMainContainer>
-        </PickMainWrap>
-      </PickWrap>
-      <Footer />
-    </>
-  );
-});
+          </PickMainHeaderSmall>
+        </PickMainHeader>
+        <PickMainContainer>
+          <PickMain>
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+            <PickItem />
+          </PickMain>
+          <Pagination />
+        </PickMainContainer>
+      </PickMainWrap>
+    </PickWrap>
+    <Footer />
+  </>
+));
 
 const PickWrap = styled.div`
   margin-top: 162px;
@@ -93,4 +91,4 @@ const PickMain = styled.div`
     clear: both;
   }
 `;
-export default Pick;
+export default Picks;
