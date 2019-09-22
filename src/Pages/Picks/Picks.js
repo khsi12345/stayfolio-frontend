@@ -1,21 +1,21 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import Header from 'Components/Header';
+import Layout from 'Components/Layout';
 import PickItem from 'Components/PickItem';
 import Pagination from 'Components/Pagination';
-import Footer from 'Components/Footer';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
+
 const Picks = memo(() => (
-  <>
-    <Header />
+  <Layout>
     <PickWrap>
       <PickMainWrap>
         <PickMainHeader>
             PICK
           <PickMainHeaderSmall>
               매일 하루 한번! 스테이폴리오가 추천합니다!
+
           </PickMainHeaderSmall>
         </PickMainHeader>
         <PickMainContainer>
@@ -37,8 +37,7 @@ const Picks = memo(() => (
         </PickMainContainer>
       </PickMainWrap>
     </PickWrap>
-    <Footer />
-  </>
+  </Layout>
 ));
 
 const PickWrap = styled.div`
