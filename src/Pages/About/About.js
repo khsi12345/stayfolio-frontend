@@ -148,24 +148,43 @@ export default () => (
               the places you discovered through various channels.
             </Content>
             <Content>
-
-            STAYFOLIO is a combination of two words "STAY" and "FOLIO" that means curation of places where you want to stay. It is a webzine that curates and introduces great properties around the country. It was designed to be a channel where people who are leading a culture of good stays can share their stories and that helps travelers select a comfortable place to stay at their travel destinations.
-
+              STAYFOLIO is a combination of two words "STAY" and "FOLIO" that
+              means curation of places where you want to stay. It is a webzine
+              that curates and introduces great properties around the country.
+              It was designed to be a channel where people who are leading a
+              culture of good stays can share their stories and that helps
+              travelers select a comfortable place to stay at their travel
+              destinations.
             </Content>
             <Content>
-
-        STAYFOLIO consists of two sections. In the 'Pick' section, we identify great places to stay through web surfing and reviewing webzines, curate them around a specific theme and provide reviews on them. In the 'Magazine' section, our curators visit the places in person for an interview with the owners to find out their behind stories and provide in-depth information of the places to the readers.
-
+              STAYFOLIO consists of two sections. In the 'Pick' section, we
+              identify great places to stay through web surfing and reviewing
+              webzines, curate them around a specific theme and provide reviews
+              on them. In the 'Magazine' section, our curators visit the places
+              in person for an interview with the owners to find out their
+              behind stories and provide in-depth information of the places to
+              the readers.
             </Content>
             <Content>
-
-        We only cover the places that reflect personal aspirations and dreams. We exclude any places that are operated as a business organization. The places we pick are small but full of charms, such as rental houses, guesthouses and pensions that are leading the sound travel culture by providing affordable but stylish lodging to the travelers, and boutique hotels that are created with a unique theme. Also, a place that may not fit in the category as a standard accommodation can be included, if the place is created by a person's aspirations, aligns with the value of the community and satisfies the five senses of travelers - even if it is nothing but a single room.
-
+              We only cover the places that reflect personal aspirations and
+              dreams. We exclude any places that are operated as a business
+              organization. The places we pick are small but full of charms,
+              such as rental houses, guesthouses and pensions that are leading
+              the sound travel culture by providing affordable but stylish
+              lodging to the travelers, and boutique hotels that are created
+              with a unique theme. Also, a place that may not fit in the
+              category as a standard accommodation can be included, if the place
+              is created by a person's aspirations, aligns with the value of the
+              community and satisfies the five senses of travelers - even if it
+              is nothing but a single room.
             </Content>
             <Content>
-
-        STAYFOLIO strives to improve the quality of the local and travel culture in Korea by serving as a place for people who create and enjoy great places to share valuable information. Ultimately, we would like to become a meaningful channel that stirs up interest in places that improve the value of their local community and awakens aspirations in people to create such a place.
-
+              STAYFOLIO strives to improve the quality of the local and travel
+              culture in Korea by serving as a place for people who create and
+              enjoy great places to share valuable information. Ultimately, we
+              would like to become a meaningful channel that stirs up interest
+              in places that improve the value of their local community and
+              awakens aspirations in people to create such a place.
             </Content>
           </div>
         </AboutContainer>
