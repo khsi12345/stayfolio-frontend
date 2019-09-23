@@ -1,5 +1,5 @@
 import React, {
-  memo, useState, useEffect, useMemo, useCallback,
+  memo, useState, useEffect,
 } from 'react';
 import styled from 'styled-components';
 import theme from 'Components/Theme';
@@ -10,6 +10,9 @@ const Paginatioin = memo(() => {
   const [browserWidth, setBrowserWidth] = useState(window.innerWidth);
   useEffect(() => {
     window.addEventListener('resize', () => {
+      setBrowserWidth(getBrowserWidth());
+    });
+    return window.removeEventListener('resize', () => {
       setBrowserWidth(getBrowserWidth());
     });
   }, []);

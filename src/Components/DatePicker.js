@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import './temp.scss';
+import 'Style/custom.scss';
 import moment from 'moment';
 
 class DatePicker extends Component {

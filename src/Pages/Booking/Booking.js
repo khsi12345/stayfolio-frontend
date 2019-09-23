@@ -1,12 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { showToast, hideToast } from 'Store/Actions/ToastActions';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
 import DatePicker from 'Components/DatePicker';
 
-const Booking = () => (
+const mapStateToProps = (state) => ({
+  show: state.showToast,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  showToast: () => dispatch(showToast()),
+  hideToast: () => dispatch(hideToast()),
+});
+
+const Booking = (props) => (
   <Layout>
     <BookingHeaderWrap>
       <BookingCoverWrap>
@@ -24,7 +35,7 @@ const Booking = () => (
         <RoomSubtitle>제주 동쪽 끝, 우리만의 작은 섬</RoomSubtitle>
         <RoomDetail>
           <RoomDetailHeader>
-              스테이 소도
+                스테이 소도
           </RoomDetailHeader>
         </RoomDetail>
         <RoomDetailContainer>
@@ -36,10 +47,10 @@ const Booking = () => (
             <InfoType>기본형</InfoType>
             <InfoDescription>STAY SODO 는 크게 두 동의 집, 바다를 바라보는 수영장으로 이루어져 있습니다. A동은 거실과 주방, 침실로 나뉘며, 바로 옆의 B동은 2인을 위한 별도의 침실입니다. 노천탕, 바베큐 데크가 있습니다.</InfoDescription>
             <InfoRoomInfo>
-            체크인 16:00 / 체크아웃 11:00 <br /> 기준 인원 1 / 최대 인원 6 <br /> 객실면적 80.16m2  <br /> 퀸사이즈 베드2추가침구
+              체크인 16:00 / 체크아웃 11:00 <br /> 기준 인원 1 / 최대 인원 6 <br /> 객실면적 80.16m2  <br /> 퀸사이즈 베드2추가침구
             </InfoRoomInfo>
             <InfoPrice>₩450,000~</InfoPrice>
-            <BookingButton href="/">
+            <BookingButton onClick={props.showToast}>
               Booking
             </BookingButton>
           </RoomDetailInfoWrap>
@@ -223,7 +234,7 @@ const InfoPrice = styled.div`
   border-bottom: 3px solid ${theme.BorderBlack};
 `;
 
-const BookingButton = styled.a`
+const BookingButton = styled.div`
   display: block;
   width: 100%;
   height: 44px;
@@ -232,6 +243,7 @@ const BookingButton = styled.a`
   text-align: center;
   line-height: 44px;
   background-color: ${theme.DarkGrayBG};
+  cursor: pointer;
 `;
 
-export default Booking;
+export default connect(null, mapDispatchToProps)(Booking);

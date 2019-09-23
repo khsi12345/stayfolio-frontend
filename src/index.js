@@ -8,7 +8,7 @@ import reducers from 'Store/Reducers';
 // + reduxThunk는 리덕스 미들웨어
 // 동기, 비동기를 할 수 있게끔 만들어 주는 것.
 
-// const store = createStore(reducers);
+const store = createStore(reducers);
 
-ReactDOM.render(<Routes />, document.getElementById('root'));
-// ReactDOM.render(<Provider store={store}><Routes /></Provider>, document.getElementById('root'));
+// ReactDOM.render(<Routes />, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><Routes /></Provider>, document.getElementById('root'));

@@ -1,34 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import MagazineContainer from 'Components/MagazineContainer';
 import Data from 'Data/magazine.json';
 
-const Magazine = () => (
-  <MagazineWrap>
-    <MagazineHeader>
-      <MagazineTitleWrap>
-        <MagazineTitle>MAGAZINE</MagazineTitle>
-        <MagazineTitleDescription>
-          매주 한번 스테이폴리오가 이야기하는 유니크한 공간!
-        </MagazineTitleDescription>
-      </MagazineTitleWrap>
-      <MagazineButtonWrap>
-        <Link to="/magazines">
-          <MagazineMoreButton>
-            READ <br />
-            MORE MAGAZINE
-          </MagazineMoreButton>
-        </Link>
-      </MagazineButtonWrap>
-    </MagazineHeader>
-    {Data.result.map((el, i) => (
-      <MagazineContainer result={el} key={i} />
-    ))}
-  </MagazineWrap>
-);
+const getMagazines = async (url, setData) => {
+  const response = await axios.get(url);
+  setData(response.data.items);
+};
+
+const Magazine = () => {
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    getMagazines('http://10.58.3.43:8080/magazines?offset=0', setItems);
+  }, []);
+
+  return (
+    <MagazineWrap>
+      <MagazineHeader>
+        <MagazineTitleWrap>
+          <MagazineTitle>MAGAZINE</MagazineTitle>
+          <MagazineTitleDescription>
+            매주 한번 스테이폴리오가 이야기하는 유니크한 공간!
+          </MagazineTitleDescription>
+        </MagazineTitleWrap>
+        <MagazineButtonWrap>
+          <Link to="/magazines">
+            <MagazineMoreButton>
+              READ <br />
+              MORE MAGAZINE
+            </MagazineMoreButton>
+          </Link>
+        </MagazineButtonWrap>
+      </MagazineHeader>
+      {items.length !== 0
+        && items.map((el, i) => <MagazineContainer items={el} key={i} />)}
+    </MagazineWrap>
+  );
+};
 
 const MagazineWrap = styled.div`
   display: flex;

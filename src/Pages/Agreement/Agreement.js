@@ -1,46 +1,93 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
 import SignupImg from 'Images/Signup.png';
 
-const Agreement = () => (
-  <Layout>
-    <SignupWrap>
-      <SignupContainer>
-        <SignupHeader>
-          <SignupImage src={SignupImg} />
-        </SignupHeader>
-        <EmailSignupWrap>
-          <SignupInputWrap>
-            <SignupInput
-              type="email"
-              name="email"
-              placeholder="Email Address"
-            />
-          </SignupInputWrap>
-          <SignupInputWrap>
-            <SignupInput
-              type="text"
-              name="name"
-              placeholder="Name"
-            />
-          </SignupInputWrap>
-          <SignupInputWrap>
-            <SignupInput
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
-          </SignupInputWrap>
-          <SignupButton>Signup</SignupButton>
-        </EmailSignupWrap>
-      </SignupContainer>
-    </SignupWrap>
-  </Layout>
-);
+const Agreement = (props) => {
+  const [email, setEmail] = useState(null);
+  const updateEmail = (event) => {
+    const { target: { value } } = event;
+    setEmail(value);
+  };
+
+  const [name, setName] = useState(null);
+  const updateName = (event) => {
+    const { target: { value } } = event;
+    setName(value);
+  };
+
+  const [password, setPassword] = useState(null);
+  const updatePassword = (event) => {
+    const { target: { value } } = event;
+    setPassword(value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (email && name && password) {
+      axios({
+        method: 'post',
+        url: 'http://10.58.1.155:8000/account/signup',
+        data: {
+          email, name, password,
+        },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            alert('회원가입을 축하합니다');
+            props.history.push('/login');
+          } else {
+            alert('회원가입에 실패했습니다');
+          }
+        });
+    } else {
+      alert('입력 정보를 확인해주세요!');
+    }
+  };
+  console.log(email, name, password);
+  return (
+    <Layout>
+      <SignupWrap>
+        <SignupContainer>
+          <SignupHeader>
+            <SignupImage src={SignupImg} />
+          </SignupHeader>
+          <EmailSignupWrap>
+            <SignupInputWrap>
+              <SignupInput
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                onChange={updateEmail}
+              />
+            </SignupInputWrap>
+            <SignupInputWrap>
+              <SignupInput
+                type="text"
+                name="name"
+                placeholder="Name"
+                onChange={updateName}
+              />
+            </SignupInputWrap>
+            <SignupInputWrap>
+              <SignupInput
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={updatePassword}
+              />
+            </SignupInputWrap>
+            <SignupButton onClick={handleSubmit}>Signup</SignupButton>
+          </EmailSignupWrap>
+        </SignupContainer>
+      </SignupWrap>
+    </Layout>
+  );
+};
 
 const SignupWrap = styled.div`
   display: flex;
@@ -120,4 +167,4 @@ const SocialButton = styled.div`
 
 const SignupButton = SocialButton.withComponent('div');
 
-export default Agreement;
+export default withRouter(Agreement);

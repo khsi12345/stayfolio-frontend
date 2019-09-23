@@ -7,9 +7,9 @@ import PickItem from 'Components/PickItem';
 const Pick = memo(() => (
   <PickWrap>
     <PickMainHeader>
-          PICK
+      PICK
       <PickMainHeaderSmall>
-            매일 하루 한번! 스테이폴리오가 추천합니다!
+        매일 하루 한번! 스테이폴리오가 추천합니다!
       </PickMainHeaderSmall>
     </PickMainHeader>
     <PickMain>

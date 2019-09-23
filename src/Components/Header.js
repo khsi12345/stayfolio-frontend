@@ -14,16 +14,19 @@ const Header = (props) => {
   };
 
   // 로그인 / 로그아웃 상태 변화 로직
-  const Token = localStorage.getItem('stayfolio_token');
+  const [token, setToken] = useState(localStorage.getItem('stayfolio_token'));
   const logout = () => {
     localStorage.clear();
+    setToken(false);
+    setBars(false);
+    alert('로그아웃 되었습니다!');
   };
 
   // nav 활성화 탭에 underbar style 지정 로직 (미완료)
-  const [selected, setSelected] = useState('/');
-  useEffect(() => {
-    setSelected(props.location.pathname);
-  }, [props.location.pathname, selected]);
+  // const [selected, setSelected] = useState('/');
+  // useEffect(() => {
+  //   setSelected(props.location.pathname);
+  // }, [props.location.pathname, selected]);
 
   return (
     <>
@@ -81,7 +84,7 @@ const Header = (props) => {
                 </SocialIconList>
               </SocialWrap>
               <LoginWrap>
-                {Token ? (
+                {token ? (
                   <LoginContainer>
                     <Link to="/mypage">MYPAGE</Link>
                     <Divider>or</Divider>
@@ -98,16 +101,24 @@ const Header = (props) => {
             </TopNav>
             <MainNav>
               <Link to="/">
-                <NavList name="/" selected>HOME</NavList>
+                <NavList selected={props.location.pathname === '/'}>
+                  HOME
+                </NavList>
               </Link>
               <Link to="/about">
-                <NavList name="/about" selected>ABOUT</NavList>
+                <NavList selected={props.location.pathname === '/about'}>
+                  ABOUT
+                </NavList>
               </Link>
               <Link to="/magazines">
-                <NavList name="/magazines" selected>MAGAZINE</NavList>
+                <NavList selected={props.location.pathname === '/magazines'}>
+                  MAGAZINE
+                </NavList>
               </Link>
               <Link to="/picks">
-                <NavList name="/picks" selected>PICK</NavList>
+                <NavList selected={props.location.pathname === '/picks'}>
+                  PICK
+                </NavList>
               </Link>
               <Link to="/">
                 <NavBooking>BOOKING</NavBooking>
@@ -120,30 +131,30 @@ const Header = (props) => {
         </HeaderContainer>
       </HeaderWrap>
       {bars && (
-      <BarsMenuWrap>
-        <BarsHeader>
-          {Token ? (
-            <BarsLogin>
-              <BarsAnchor to="/mypage">MYPAGE</BarsAnchor>or
-              <Logout onClick={logout}>LOGOUT</Logout>
-            </BarsLogin>
-          ) : (
-            <BarsLogin>
-              <BarsAnchor href="/login">LOGIN</BarsAnchor>or
-              <BarsAnchor href="/signup">REGISTER</BarsAnchor>
-            </BarsLogin>
-          )}
-          <CloseBtnWrap onClick={handleBars}>
-            <CloseBtn src={Close} />
-          </CloseBtnWrap>
-        </BarsHeader>
-        <BarsNavList>
-          <BarsLink href="/">HOME</BarsLink>
-          <BarsLink href="/about">ABOUT</BarsLink>
-          <BarsLink href="/magazines">MAGAZINE</BarsLink>
-          <BarsLink href="/picks">PICK</BarsLink>
-        </BarsNavList>
-      </BarsMenuWrap>
+        <BarsMenuWrap>
+          <BarsHeader>
+            {token ? (
+              <BarsLogin>
+                <BarsAnchor to="/mypage">MYPAGE</BarsAnchor>or
+                <Logout onClick={logout}> LOGOUT</Logout>
+              </BarsLogin>
+            ) : (
+              <BarsLogin>
+                <BarsAnchor href="/login">LOGIN</BarsAnchor>or
+                <BarsAnchor href="/signup">REGISTER</BarsAnchor>
+              </BarsLogin>
+            )}
+            <CloseBtnWrap onClick={handleBars}>
+              <CloseBtn src={Close} />
+            </CloseBtnWrap>
+          </BarsHeader>
+          <BarsNavList>
+            <BarsLink href="/">HOME</BarsLink>
+            <BarsLink href="/about">ABOUT</BarsLink>
+            <BarsLink href="/magazines">MAGAZINE</BarsLink>
+            <BarsLink href="/picks">PICK</BarsLink>
+          </BarsNavList>
+        </BarsMenuWrap>
       )}
     </>
   );
@@ -325,7 +336,7 @@ const MainNav = styled.div`
 `;
 
 const NavList = styled.p`
-  ${(props) => props.name === props.selected && 'border-bottom: 3px solid #000; margin-bottom: 2px;'}
+  ${(props) => props.selected && 'box-shadow: inset 0 -3px 0 0 #000'}
 `;
 
 const NavBooking = styled.span`
@@ -408,6 +419,8 @@ const BarsLink = styled.a`
   cursor: pointer;
 `;
 
-const Logout = styled.span``;
+const Logout = styled.span`
+  cursor: pointer;
+`;
 
 export default withRouter(Header);
