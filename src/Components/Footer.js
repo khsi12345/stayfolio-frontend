@@ -31,15 +31,9 @@ const Footer = () => (
       <FooterDetail>
         - 소재지 : 서울특별시 종로구 자하문로9길 24, 2층(통인동)
       </FooterDetail>
-      <FooterDetail>
-        - TEL : 1670-4123
-      </FooterDetail>
-      <FooterDetail>
-        - 사업자등록번호: 676-87-00055
-      </FooterDetail>
-      <FooterDetail>
-        - 통신판매업신고 : 제2015-서울종로-0499호
-      </FooterDetail>
+      <FooterDetail>- TEL : 1670-4123</FooterDetail>
+      <FooterDetail>- 사업자등록번호: 676-87-00055</FooterDetail>
+      <FooterDetail>- 통신판매업신고 : 제2015-서울종로-0499호</FooterDetail>
       <FooterDetail>
         - 관광사업자등록 : 일반여행업 2018-000049호(종로구청)
       </FooterDetail>

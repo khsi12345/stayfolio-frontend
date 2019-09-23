@@ -1,66 +1,94 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import data from 'Data/pick';
+import { Link } from 'react-router-dom';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-const PickItem = memo(() => (
-  <PickItemWrap>
-    <PickItemContainer>
-      <ItemImgWrap>
-        <ItemImgContainer>
-          <ItemImg src={data.pick_info.pick_info_list[0].thumbnail_img} />
-        </ItemImgContainer>
-        <ItemTextWrap>
-          <ItemText>
-            {' '}
-            <Icon className="fas fa-search" />
-              VIEW
-          </ItemText>
-        </ItemTextWrap>
-      </ItemImgWrap>
-      <ItemDescriptionWrap>
-        <ItemDescriptionTitleWrap>
-          <ItemDescriptionTitle>
-            {data.pick_info.pick_info_list[0].name}
-          </ItemDescriptionTitle>
-          <BookingNow>
-            <BookingNowText>BOOKING NOW</BookingNowText>
-          </BookingNow>
-          <ItemDescriptionTitleEnglish>
-            {data.pick_info.pick_info_list[0].english_name}
-          </ItemDescriptionTitleEnglish>
-        </ItemDescriptionTitleWrap>
-        <ItemDescriptionTitleDescription>
-          {data.pick_info.pick_info_list[0].descript}
-        </ItemDescriptionTitleDescription>
-        <ItemDescriptionTableWrap>
-          <ItemDescriptionTableColunm>
-            <ItemDescriptionTableContents>
-              <Icon2 className="fas fa-map-marker-alt" />
-              {data.pick_info.pick_info_list[0].location}
-            </ItemDescriptionTableContents>
-            <ItemDescriptionTableContents>
-              <Icon2 className="fas fa-home" />
-              {data.pick_info.pick_info_list[0].type}
-            </ItemDescriptionTableContents>
-          </ItemDescriptionTableColunm>
-          <ItemDescriptionTableColunm>
-            <ItemDescriptionTableContents>
-              <Icon2 className="fas fa-coins" />
-              {data.pick_info.pick_info_list[0].price}
-            </ItemDescriptionTableContents>
-            <ItemDescriptionTableContents>
-              <Icon2 className="fas fa-star" />
-              {data.pick_info.pick_info_list[0].type2}
-            </ItemDescriptionTableContents>
-          </ItemDescriptionTableColunm>
-          <ItemDescriptionTableColunm />
-        </ItemDescriptionTableWrap>
-      </ItemDescriptionWrap>
-    </PickItemContainer>
-  </PickItemWrap>
-));
+const unitConversion = (minp) => {
+  const min = Number(minp)
+    .toString()
+    .split('');
+  let cou = 0;
+  for (let i = min.length; i > 0; i--) {
+    if (cou === 3) {
+      min.splice(i, 0, ',');
+      cou = 0;
+    }
+    cou += 1;
+  }
+  const result = min.join('');
+  return result;
+};
+
+const PickItem = memo(
+  ({
+    id, name, eng, des, location, minpr, maxpr, targets, type, img,
+  }) => {
+    // console.log(targets);
+    const [newTargets, setTargets] = useState(targets.toString());
+    // useEffect(() => {
+
+    // }, [targets]);
+    // const newTargets = targets.toString();
+    return (
+      <PickItemWrap>
+        <PickItemContainer>
+          <Link to={`/pick_detail/${id}`}>
+            <ItemImgWrap>
+              <ItemImgContainer>
+                <ItemImg src={img} />
+              </ItemImgContainer>
+              <ItemTextWrap>
+                <ItemText>
+                  {' '}
+                  <Icon className="fas fa-search" />
+                  VIEW
+                </ItemText>
+              </ItemTextWrap>
+            </ItemImgWrap>
+          </Link>
+          <ItemDescriptionWrap>
+            <ItemDescriptionTitleWrap>
+              <Link to={`/pick_detail/${id}`}>
+                <ItemDescriptionTitle>{name}</ItemDescriptionTitle>
+              </Link>
+              <BookingNow>
+                <BookingNowText>BOOKING NOW</BookingNowText>
+              </BookingNow>
+              <ItemDescriptionTitleEnglish>{eng}</ItemDescriptionTitleEnglish>
+            </ItemDescriptionTitleWrap>
+            <ItemDescriptionTitleDescription>
+              {des}
+            </ItemDescriptionTitleDescription>
+            <ItemDescriptionTableWrap>
+              <ItemDescriptionTableColunm>
+                <ItemDescriptionTableContents>
+                  <Icon2 className="fas fa-map-marker-alt" />
+                  {location}
+                </ItemDescriptionTableContents>
+                <ItemDescriptionTableContents>
+                  <Icon2 className="fas fa-home" />
+                  {type}
+                </ItemDescriptionTableContents>
+              </ItemDescriptionTableColunm>
+              <ItemDescriptionTableColunm>
+                <ItemDescriptionTableContents>
+                  <Icon2 className="fas fa-coins" />
+                  {`${unitConversion(minpr)} ~ ${unitConversion(maxpr)}`}
+                </ItemDescriptionTableContents>
+                <ItemDescriptionTableContents>
+                  <Icon2 className="fas fa-star" />
+                  {newTargets}
+                </ItemDescriptionTableContents>
+              </ItemDescriptionTableColunm>
+              <ItemDescriptionTableColunm />
+            </ItemDescriptionTableWrap>
+          </ItemDescriptionWrap>
+        </PickItemContainer>
+      </PickItemWrap>
+    );
+  },
+);
 
 const PickItemWrap = styled.div`
   position: relative;
@@ -92,7 +120,7 @@ const ItemImg = styled.img`
     transform: scale(1.2, 1.2);
   }
 `;
-const ItemTextWrap = styled.a`
+const ItemTextWrap = styled.div`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -137,8 +165,9 @@ const ItemDescriptionTitleWrap = styled.h4`
   font-weight: 500;
   line-height: 1.1;
 `;
-const ItemDescriptionTitle = styled.a`
+const ItemDescriptionTitle = styled.div`
   color: ${theme.MainBlack};
+  cursor: pointer;
 `;
 const ItemDescriptionTitleEnglish = styled.div`
   padding: 2px 0;
@@ -189,6 +218,7 @@ const BookingNow = styled.div`
   align-items: center;
   background-image: url('https://stayfolio.com/images/pick/5d995e0a.pick-booking@3x.png');
   background-size: cover;
+  cursor: pointer;
 `;
 const BookingNowText = styled.a`
   padding-left: 7px;

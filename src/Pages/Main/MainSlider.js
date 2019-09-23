@@ -31,9 +31,9 @@ const MainSlider = () => (
           <BoxCategory>PICK</BoxCategory>
           <BoxTitle>돌채</BoxTitle>
           <BoxDescription>
-              잠시 쉬어가도 좋은
+            잠시 쉬어가도 좋은
             <br />
-              우도의 하루
+            우도의 하루
           </BoxDescription>
           <BoxButton href="/pick_detail/1">SHOW NOW</BoxButton>
         </SliderBox>
@@ -43,9 +43,9 @@ const MainSlider = () => (
           <BoxCategory>PICK</BoxCategory>
           <BoxTitle>올모스트홈 스테이</BoxTitle>
           <BoxDescription>
-              일상의 여유가
+            일상의 여유가
             <br />
-              특별한 여행이 되는 순간
+            특별한 여행이 되는 순간
           </BoxDescription>
           <BoxButton href="/pick_detail/2">SHOW NOW</BoxButton>
         </SliderBox>
@@ -55,9 +55,9 @@ const MainSlider = () => (
           <BoxCategory>PICK</BoxCategory>
           <BoxTitle>어라운드 빌리지</BoxTitle>
           <BoxDescription>
-              조용한 시골 마을에
+            조용한 시골 마을에
             <br />
-              감성을 입히다
+            감성을 입히다
           </BoxDescription>
           <BoxButton href="/pick_detail/3">SHOW NOW</BoxButton>
         </SliderBox>
@@ -67,9 +67,9 @@ const MainSlider = () => (
           <BoxCategory>PICK</BoxCategory>
           <BoxTitle>하다책숙소</BoxTitle>
           <BoxDescription>
-              무해한 휴식
+            무해한 휴식
             <br />
-              그리고 책 한 권
+            그리고 책 한 권
           </BoxDescription>
           <BoxButton href="/pick_detail/4">SHOW NOW</BoxButton>
         </SliderBox>
@@ -79,9 +79,9 @@ const MainSlider = () => (
           <BoxCategory>PICK</BoxCategory>
           <BoxTitle>스테이소도</BoxTitle>
           <BoxDescription>
-              우리만의 작은 섬,
+            우리만의 작은 섬,
             <br />
-              소도
+            소도
           </BoxDescription>
           <BoxButton href="/pick_detail/5">SHOW NOW</BoxButton>
         </SliderBox>
@@ -100,11 +100,11 @@ const SliderContainer = styled.div`
 
 const SliderContents = styled.div`
   height: 400px;
-  ${(props) => props.id === '1' && `background-image: url(${SliderImg01})`};
-  ${(props) => props.id === '2' && `background-image: url(${SliderImg02})`};
-  ${(props) => props.id === '3' && `background-image: url(${SliderImg03})`};
-  ${(props) => props.id === '4' && `background-image: url(${SliderImg04})`};
-  ${(props) => props.id === '5' && `background-image: url(${SliderImg05})`};
+  ${props => props.id === '1' && `background-image: url(${SliderImg01})`};
+  ${props => props.id === '2' && `background-image: url(${SliderImg02})`};
+  ${props => props.id === '3' && `background-image: url(${SliderImg03})`};
+  ${props => props.id === '4' && `background-image: url(${SliderImg04})`};
+  ${props => props.id === '5' && `background-image: url(${SliderImg05})`};
   background-size: cover;
   background-repeat: no-repeat;
 `;

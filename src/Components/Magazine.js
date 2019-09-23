@@ -15,7 +15,7 @@ const getMagazines = async (url, setData) => {
 const Magazine = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    getMagazines('http://10.58.3.43:8080/magazines?offset=0', setItems);
+    getMagazines('http://10.58.3.43:8000/magazines?offset=0', setItems);
   }, []);
 
   return (

@@ -10,13 +10,17 @@ import LoginImg from 'Images/Login.png';
 const Login = (props) => {
   const [email, setEmail] = useState(null);
   const updateEmail = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setEmail(value);
   };
 
   const [password, setPassword] = useState(null);
   const updatePassword = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setPassword(value);
   };
 
@@ -25,19 +29,19 @@ const Login = (props) => {
     if (email && password) {
       axios({
         method: 'post',
-        url: 'http://10.58.1.155:8000/account/login',
+        url: 'http://10.58.5.120:8000/account/login',
         data: {
-          email, password,
+          email,
+          password,
         },
-      })
-        .then((res) => {
-          if (res.status === 200) {
-            localStorage.setItem('stayfolio_token', res.data.access_token);
-            props.history.push('/');
-          } else {
-            alert('아이디 혹은 비밀번호를 확인해주세요.');
-          }
-        });
+      }).then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem('stayfolio_token', res.data.access_token);
+          props.history.push('/');
+        } else {
+          alert('아이디 혹은 비밀번호를 확인해주세요.');
+        }
+      });
     }
   };
   return (
@@ -204,4 +208,4 @@ const FooterButton = styled.a`
   }
 `;
 
-export default Login;
+export default withRouter(Login);

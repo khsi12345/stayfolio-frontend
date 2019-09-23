@@ -6,7 +6,7 @@ import theme from 'Components/Theme';
 import Logo from 'Images/Logo.png';
 import Close from 'Images/Close.png';
 
-const Header = (props) => {
+const Header = props => {
   // bars on/off 세팅 로직
   const [bars, setBars] = useState(false);
   const handleBars = () => {
@@ -21,12 +21,6 @@ const Header = (props) => {
     setBars(false);
     alert('로그아웃 되었습니다!');
   };
-
-  // nav 활성화 탭에 underbar style 지정 로직 (미완료)
-  // const [selected, setSelected] = useState('/');
-  // useEffect(() => {
-  //   setSelected(props.location.pathname);
-  // }, [props.location.pathname, selected]);
 
   return (
     <>
@@ -336,7 +330,7 @@ const MainNav = styled.div`
 `;
 
 const NavList = styled.p`
-  ${(props) => props.selected && 'box-shadow: inset 0 -3px 0 0 #000'}
+  ${props => props.selected && 'box-shadow: inset 0 -3px 0 0 #000'}
 `;
 
 const NavBooking = styled.span`

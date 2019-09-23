@@ -1,5 +1,8 @@
-import React, { memo } from 'react';
+import React, {
+  memo, useState, useEffect, useCallback,
+} from 'react';
 import styled from 'styled-components';
+import { getPicks } from 'Util/service';
 import Layout from 'Components/Layout';
 import PickItem from 'Components/PickItem';
 import Pagination from 'Components/Pagination';
@@ -7,38 +10,61 @@ import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
 
-const Picks = memo(() => (
-  <Layout>
-    <PickWrap>
-      <PickMainWrap>
-        <PickMainHeader>
-            PICK
-          <PickMainHeaderSmall>
-              매일 하루 한번! 스테이폴리오가 추천합니다!
+const Picks = memo(() => {
+  const [getPick, setPick] = useState([]);
 
-          </PickMainHeaderSmall>
-        </PickMainHeader>
-        <PickMainContainer>
-          <PickMain>
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-            <PickItem />
-          </PickMain>
-          <Pagination />
-        </PickMainContainer>
-      </PickMainWrap>
-    </PickWrap>
-  </Layout>
-));
+  useEffect(() => {
+    getPicks('http://10.58.5.78:8080/pick?offset=0&limit=12', setPick);
+  }, []);
+
+  const LoadPciks = () => {
+    if (getPick.data && getPick.data !== undefined) {
+      return getPick.data.result.map((ele) => (
+        <PickItem
+          key={ele.pick_id}
+          id={ele.pick_id}
+          name={ele.place_info.name}
+          eng={ele.identifier}
+          des={ele.title}
+          location={ele.place_info.city}
+          minpr={ele.place_info.price_min}
+          maxpr={ele.place_info.price_max}
+          targets={ele.place_info.targets}
+          type={ele.place_info.place_type}
+          img={ele.main_image_url}
+        />
+      ));
+    }
+  };
+
+  const pageChangeHandler = (id) => {
+    // console.log(id * 12 - 1, id * 12 + 12);
+    getPicks(`http://10.58.5.78:8080/pick?offset=${(id - 1) * 12}&limit=${(id - 1) * 12 + 12}`, setPick);
+  };
+  return (
+    <>
+      {/* ${console.log('렌더렌더')} */}
+      <Layout>
+        <PickWrap>
+          <PickMainWrap>
+            <PickMainHeader>
+            PICK
+              <PickMainHeaderSmall>
+              매일 하루 한번! 스테이폴리오가 추천합니다!
+              </PickMainHeaderSmall>
+            </PickMainHeader>
+            <PickMainContainer>
+              <PickMain>
+                {LoadPciks()}
+              </PickMain>
+              <Pagination handleClick={pageChangeHandler} />
+            </PickMainContainer>
+          </PickMainWrap>
+        </PickWrap>
+      </Layout>
+    </>
+  );
+});
 
 const PickWrap = styled.div`
   margin-top: 162px;

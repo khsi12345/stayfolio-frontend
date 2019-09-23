@@ -1,27 +1,43 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import PickItem from 'Components/PickItem';
+import { getPicks } from 'Util/service';
 
-const Pick = memo(() => (
-  <PickWrap>
-    <PickMainHeader>
+const Pick = memo(() => {
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    getPicks('http://10.58.5.78:8080/pick?offset=0&limit=12', setItems);
+  }, []);
+  return (
+    <PickWrap>
+      <PickMainHeader>
       PICK
-      <PickMainHeaderSmall>
+        <PickMainHeaderSmall>
         매일 하루 한번! 스테이폴리오가 추천합니다!
-      </PickMainHeaderSmall>
-    </PickMainHeader>
-    <PickMain>
-      <PickItem />
-      <PickItem />
-      <PickItem />
-      <PickItem />
-      <PickItem />
-      <PickItem />
-    </PickMain>
-  </PickWrap>
-));
+        </PickMainHeaderSmall>
+      </PickMainHeader>
+      <PickMain>
+        {items.length !== 0 && items.data.result.map((el) => (
+          <PickItem
+            key={el.pick_id}
+            id={el.pick_id}
+            name={el.place_info.name}
+            eng={el.identifier}
+            des={el.title}
+            location={el.place_info.city}
+            minpr={el.place_info.price_min}
+            maxpr={el.place_info.price_max}
+            targets={el.place_info.targets}
+            type={el.place_info.place_type}
+            img={el.main_image_url}
+          />
+        ))}
+      </PickMain>
+    </PickWrap>
+  );
+});
 
 const PickWrap = styled.div`
   margin: 30px auto 15px;

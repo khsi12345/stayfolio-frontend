@@ -10,19 +10,25 @@ import SignupImg from 'Images/Signup.png';
 const Agreement = (props) => {
   const [email, setEmail] = useState(null);
   const updateEmail = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setEmail(value);
   };
 
   const [name, setName] = useState(null);
   const updateName = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setName(value);
   };
 
   const [password, setPassword] = useState(null);
   const updatePassword = (event) => {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     setPassword(value);
   };
 
@@ -31,19 +37,20 @@ const Agreement = (props) => {
     if (email && name && password) {
       axios({
         method: 'post',
-        url: 'http://10.58.1.155:8000/account/signup',
+        url: 'http://10.58.5.120:8000/account/signup',
         data: {
-          email, name, password,
+          email,
+          name,
+          password,
         },
-      })
-        .then((res) => {
-          if (res.status === 200) {
-            alert('회원가입을 축하합니다');
-            props.history.push('/login');
-          } else {
-            alert('회원가입에 실패했습니다');
-          }
-        });
+      }).then((res) => {
+        if (res.status === 200) {
+          alert('회원가입을 축하합니다');
+          props.history.push('/login');
+        } else {
+          alert('회원가입에 실패했습니다');
+        }
+      });
     } else {
       alert('입력 정보를 확인해주세요!');
     }
