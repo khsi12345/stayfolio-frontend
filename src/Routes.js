@@ -14,6 +14,7 @@ import PickDetail from 'Pages/PickDetail';
 import Magazines from 'Pages/Magazines';
 import MagazineDetail from 'Components/MagazineDetail';
 import GlobalStyles from 'Components/GlobalStyles';
+import About from 'Pages/About';
 
 const Routes = () => (
   <Router>
@@ -26,6 +27,7 @@ const Routes = () => (
       <Route exact path="/pick_detail/:id" component={PickDetail} />
       <Route exact path="/magazines" component={Magazines} />
       <Route exact path="/magazines/stay-sodo" component={MagazineDetail} />
+      <Route exact path="/about" component={About} />
       <Redirect from="*" to="/" />
     </Switch>
     <GlobalStyles />
