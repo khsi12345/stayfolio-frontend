@@ -1,13 +1,13 @@
 import React, { memo, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import data from 'Data/pick';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-
 const unitConversion = (minp) => {
-  const min = Number(minp).toString().split('');
+  const min = Number(minp)
+    .toString()
+    .split('');
   let cou = 0;
   for (let i = min.length; i > 0; i--) {
     if (cou === 3) {
@@ -20,77 +20,75 @@ const unitConversion = (minp) => {
   return result;
 };
 
-const PickItem = memo(({
-  id, name, eng, des, location, minpr, maxpr, targets, type, img,
-}) => {
-  // console.log(targets);
-  const [newTargets, setTargets] = useState(targets.toString());
-  // useEffect(() => {
+const PickItem = memo(
+  ({
+    id, name, eng, des, location, minpr, maxpr, targets, type, img,
+  }) => {
+    // console.log(targets);
+    const [newTargets, setTargets] = useState(targets.toString());
+    // useEffect(() => {
 
-  // }, [targets]);
-  // const newTargets = targets.toString();
-  return (
-    <PickItemWrap>
-      <PickItemContainer>
-        <Link to={`/pick_detail/${id}`}>
-          <ItemImgWrap>
-            <ItemImgContainer>
-              <ItemImg src={img} />
-            </ItemImgContainer>
-            <ItemTextWrap>
-              <ItemText>
-                {' '}
-                <Icon className="fas fa-search" />
-              VIEW
-              </ItemText>
-            </ItemTextWrap>
-          </ItemImgWrap>
-        </Link>
-        <ItemDescriptionWrap>
-          <ItemDescriptionTitleWrap>
-            <Link to={`/pick_detail/${id}`}>
-              <ItemDescriptionTitle>
-                {name}
-              </ItemDescriptionTitle>
-            </Link>
-            <BookingNow>
-              <BookingNowText>BOOKING NOW</BookingNowText>
-            </BookingNow>
-            <ItemDescriptionTitleEnglish>
-              {eng}
-            </ItemDescriptionTitleEnglish>
-          </ItemDescriptionTitleWrap>
-          <ItemDescriptionTitleDescription>
-            {des}
-          </ItemDescriptionTitleDescription>
-          <ItemDescriptionTableWrap>
-            <ItemDescriptionTableColunm>
-              <ItemDescriptionTableContents>
-                <Icon2 className="fas fa-map-marker-alt" />
-                {location}
-              </ItemDescriptionTableContents>
-              <ItemDescriptionTableContents>
-                <Icon2 className="fas fa-home" />
-                {type}
-              </ItemDescriptionTableContents>
-            </ItemDescriptionTableColunm>
-            <ItemDescriptionTableColunm>
-              <ItemDescriptionTableContents>
-                <Icon2 className="fas fa-coins" />
-                {`${unitConversion(minpr)} ~ ${unitConversion(maxpr)}`}
-              </ItemDescriptionTableContents>
-              <ItemDescriptionTableContents>
-                <Icon2 className="fas fa-star" />
-                {newTargets}
-              </ItemDescriptionTableContents>
-            </ItemDescriptionTableColunm>
-            <ItemDescriptionTableColunm />
-          </ItemDescriptionTableWrap>
-        </ItemDescriptionWrap>
-      </PickItemContainer>
-    </PickItemWrap>
-  );
-});
+    // }, [targets]);
+    // const newTargets = targets.toString();
+    return (
+      <PickItemWrap>
+        <PickItemContainer>
+          <Link to={`/pick_detail/${id}`}>
+            <ItemImgWrap>
+              <ItemImgContainer>
+                <ItemImg src={img} />
+              </ItemImgContainer>
+              <ItemTextWrap>
+                <ItemText>
+                  {' '}
+                  <Icon className="fas fa-search" />
+                  VIEW
+                </ItemText>
+              </ItemTextWrap>
+            </ItemImgWrap>
+          </Link>
+          <ItemDescriptionWrap>
+            <ItemDescriptionTitleWrap>
+              <Link to={`/pick_detail/${id}`}>
+                <ItemDescriptionTitle>{name}</ItemDescriptionTitle>
+              </Link>
+              <BookingNow>
+                <BookingNowText>BOOKING NOW</BookingNowText>
+              </BookingNow>
+              <ItemDescriptionTitleEnglish>{eng}</ItemDescriptionTitleEnglish>
+            </ItemDescriptionTitleWrap>
+            <ItemDescriptionTitleDescription>
+              {des}
+            </ItemDescriptionTitleDescription>
+            <ItemDescriptionTableWrap>
+              <ItemDescriptionTableColunm>
+                <ItemDescriptionTableContents>
+                  <Icon2 className="fas fa-map-marker-alt" />
+                  {location}
+                </ItemDescriptionTableContents>
+                <ItemDescriptionTableContents>
+                  <Icon2 className="fas fa-home" />
+                  {type}
+                </ItemDescriptionTableContents>
+              </ItemDescriptionTableColunm>
+              <ItemDescriptionTableColunm>
+                <ItemDescriptionTableContents>
+                  <Icon2 className="fas fa-coins" />
+                  {`${unitConversion(minpr)} ~ ${unitConversion(maxpr)}`}
+                </ItemDescriptionTableContents>
+                <ItemDescriptionTableContents>
+                  <Icon2 className="fas fa-star" />
+                  {newTargets}
+                </ItemDescriptionTableContents>
+              </ItemDescriptionTableColunm>
+              <ItemDescriptionTableColunm />
+            </ItemDescriptionTableWrap>
+          </ItemDescriptionWrap>
+        </PickItemContainer>
+      </PickItemWrap>
+    );
+  },
+);
 
 const PickItemWrap = styled.div`
   position: relative;

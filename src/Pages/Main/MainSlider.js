@@ -4,10 +4,14 @@ import { device } from 'Components/Device';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import SliderImg from 'Images/Slider/slider-01.jpg';
+import SliderImg01 from 'Images/Slider/slider-01.jpg';
+import SliderImg02 from 'Images/Slider/slider-02.jpg';
+import SliderImg03 from 'Images/Slider/slider-03.jpg';
+import SliderImg04 from 'Images/Slider/slider-04.jpg';
+import SliderImg05 from 'Images/Slider/slider-05.jpg';
 
 const settings = {
-  // dots: true,
+  dots: true,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
@@ -22,64 +26,64 @@ const settings = {
 const MainSlider = () => (
   <SliderContainer>
     <Slider {...settings}>
-      <SliderContents>
+      <SliderContents id="1">
         <SliderBox>
-          <BoxCategory>CARE BY</BoxCategory>
-          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxCategory>PICK</BoxCategory>
+          <BoxTitle>돌채</BoxTitle>
           <BoxDescription>
-              지나간 시간의
+            잠시 쉬어가도 좋은
             <br />
-              아름다움을 담다
+            우도의 하루
           </BoxDescription>
-          <BoxButton href="/">SHOW NOW</BoxButton>
+          <BoxButton href="/pick_detail/1">SHOW NOW</BoxButton>
         </SliderBox>
       </SliderContents>
-      <SliderContents>
+      <SliderContents id="2">
         <SliderBox>
-          <BoxCategory>CARE BY</BoxCategory>
-          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxCategory>PICK</BoxCategory>
+          <BoxTitle>올모스트홈 스테이</BoxTitle>
           <BoxDescription>
-              지나간 시간의
+            일상의 여유가
             <br />
-              아름다움을 담다
+            특별한 여행이 되는 순간
           </BoxDescription>
-          <BoxButton href="/">SHOW NOW</BoxButton>
+          <BoxButton href="/pick_detail/2">SHOW NOW</BoxButton>
         </SliderBox>
       </SliderContents>
-      <SliderContents>
+      <SliderContents id="3">
         <SliderBox>
-          <BoxCategory>CARE BY</BoxCategory>
-          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxCategory>PICK</BoxCategory>
+          <BoxTitle>어라운드 빌리지</BoxTitle>
           <BoxDescription>
-              지나간 시간의
+            조용한 시골 마을에
             <br />
-              아름다움을 담다
+            감성을 입히다
           </BoxDescription>
-          <BoxButton href="/">SHOW NOW</BoxButton>
+          <BoxButton href="/pick_detail/3">SHOW NOW</BoxButton>
         </SliderBox>
       </SliderContents>
-      <SliderContents>
+      <SliderContents id="4">
         <SliderBox>
-          <BoxCategory>CARE BY</BoxCategory>
-          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxCategory>PICK</BoxCategory>
+          <BoxTitle>하다책숙소</BoxTitle>
           <BoxDescription>
-              지나간 시간의
+            무해한 휴식
             <br />
-              아름다움을 담다
+            그리고 책 한 권
           </BoxDescription>
-          <BoxButton href="/">SHOW NOW</BoxButton>
+          <BoxButton href="/pick_detail/4">SHOW NOW</BoxButton>
         </SliderBox>
       </SliderContents>
-      <SliderContents>
+      <SliderContents id="5">
         <SliderBox>
-          <BoxCategory>CARE BY</BoxCategory>
-          <BoxTitle>THE CABOCHON HOTEL</BoxTitle>
+          <BoxCategory>PICK</BoxCategory>
+          <BoxTitle>스테이소도</BoxTitle>
           <BoxDescription>
-              지나간 시간의
+            우리만의 작은 섬,
             <br />
-              아름다움을 담다
+            소도
           </BoxDescription>
-          <BoxButton href="/">SHOW NOW</BoxButton>
+          <BoxButton href="/pick_detail/5">SHOW NOW</BoxButton>
         </SliderBox>
       </SliderContents>
     </Slider>
@@ -96,7 +100,13 @@ const SliderContainer = styled.div`
 
 const SliderContents = styled.div`
   height: 400px;
-  background-image: url(${SliderImg});
+  ${props => props.id === '1' && `background-image: url(${SliderImg01})`};
+  ${props => props.id === '2' && `background-image: url(${SliderImg02})`};
+  ${props => props.id === '3' && `background-image: url(${SliderImg03})`};
+  ${props => props.id === '4' && `background-image: url(${SliderImg04})`};
+  ${props => props.id === '5' && `background-image: url(${SliderImg05})`};
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 const SliderBox = styled.div`

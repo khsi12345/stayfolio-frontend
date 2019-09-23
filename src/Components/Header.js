@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Logo from 'Images/Logo.png';
 import Close from 'Images/Close.png';
 
-const Header = () => {
-  const [mode, setMode] = useState(true);
+const Header = props => {
+  // bars on/off 세팅 로직
+  const [bars, setBars] = useState(false);
+  const handleBars = () => {
+    setBars(!bars);
+  };
+
+  // 로그인 / 로그아웃 상태 변화 로직
+  const [token, setToken] = useState(localStorage.getItem('stayfolio_token'));
+  const logout = () => {
+    localStorage.clear();
+    setToken(false);
+    setBars(false);
+    alert('로그아웃 되었습니다!');
+  };
 
   return (
     <>
@@ -65,57 +78,78 @@ const Header = () => {
                 </SocialIconList>
               </SocialWrap>
               <LoginWrap>
-                <LoginContainer>
-                  <Link to="/login">LOGIN</Link>
-                  <Divider>or</Divider>
-                  <Link to="/signup">REGISTER</Link>
-                </LoginContainer>
+                {token ? (
+                  <LoginContainer>
+                    <Link to="/mypage">MYPAGE</Link>
+                    <Divider>or</Divider>
+                    <Logout onClick={logout}>LOGOUT</Logout>
+                  </LoginContainer>
+                ) : (
+                  <LoginContainer>
+                    <Link to="/login">LOGIN</Link>
+                    <Divider>or</Divider>
+                    <Link to="/signup">REGISTER</Link>
+                  </LoginContainer>
+                )}
               </LoginWrap>
             </TopNav>
             <MainNav>
               <Link to="/">
-                <NavList home>HOME</NavList>
+                <NavList selected={props.location.pathname === '/'}>
+                  HOME
+                </NavList>
               </Link>
               <Link to="/about">
-                <NavList>ABOUT</NavList>
+                <NavList selected={props.location.pathname === '/about'}>
+                  ABOUT
+                </NavList>
               </Link>
               <Link to="/magazines">
-                <NavList>MAGAZINE</NavList>
+                <NavList selected={props.location.pathname === '/magazines'}>
+                  MAGAZINE
+                </NavList>
               </Link>
-              <Link to="/pick">
-                <NavList>PICK</NavList>
-              </Link>
-              <Link to="/">
-                <NavList>EVENT</NavList>
+              <Link to="/picks">
+                <NavList selected={props.location.pathname === '/picks'}>
+                  PICK
+                </NavList>
               </Link>
               <Link to="/">
                 <NavBooking>BOOKING</NavBooking>
               </Link>
             </MainNav>
             <BarsNav>
-              <BarsIcon className="fas fa-bars" />
+              <BarsIcon className="fas fa-bars" onClick={handleBars} />
             </BarsNav>
           </NavWrap>
         </HeaderContainer>
       </HeaderWrap>
-      <BarsMenuWrap>
-        <BarsHeader>
-          <BarsLogin>
-            <BarsAnchor href="/login">LOGIN</BarsAnchor>or
-            <BarsAnchor href="signup">REGISTER</BarsAnchor>
-          </BarsLogin>
-          <CloseBtnWrap>
-            <CloseBtn src={Close} />
-          </CloseBtnWrap>
-        </BarsHeader>
-        <BarsNavList>
-          <BarsLink href="/">HOME</BarsLink>
-          <BarsLink href="/about">ABOUT</BarsLink>
-          <BarsLink href="/magazines">MAGAZINE</BarsLink>
-          <BarsLink href="/pick">PICK</BarsLink>
-          <BarsLink href="/event">EVENT</BarsLink>
-        </BarsNavList>
-      </BarsMenuWrap>
+      {bars && (
+        <BarsMenuWrap>
+          <BarsHeader>
+            {token ? (
+              <BarsLogin>
+                <BarsAnchor to="/mypage">MYPAGE</BarsAnchor>or
+                <Logout onClick={logout}> LOGOUT</Logout>
+              </BarsLogin>
+            ) : (
+              <BarsLogin>
+                <BarsAnchor href="/login">LOGIN</BarsAnchor>or
+                <BarsAnchor href="/signup">REGISTER</BarsAnchor>
+              </BarsLogin>
+            )}
+            <CloseBtnWrap onClick={handleBars}>
+              <CloseBtn src={Close} />
+            </CloseBtnWrap>
+          </BarsHeader>
+          <BarsNavList>
+            <BarsLink href="/">HOME</BarsLink>
+            <BarsLink href="/about">ABOUT</BarsLink>
+            <BarsLink href="/magazines">MAGAZINE</BarsLink>
+            <BarsLink href="/picks">PICK</BarsLink>
+          </BarsNavList>
+        </BarsMenuWrap>
+      )}
     </>
   );
 };
@@ -296,7 +330,7 @@ const MainNav = styled.div`
 `;
 
 const NavList = styled.p`
-  ${(props) => props.home && 'border-bottom: 3px solid #000; margin-bottom: 2px;'};
+  ${props => props.selected && 'box-shadow: inset 0 -3px 0 0 #000'}
 `;
 
 const NavBooking = styled.span`
@@ -328,8 +362,6 @@ const BarsMenuWrap = styled.div`
   z-index: 99;
   background-color: #fff;
   border-bottom: 1px solid ${theme.BorderLightGray};
-
-  display: none;
 `;
 
 const BarsHeader = styled.div`
@@ -381,4 +413,8 @@ const BarsLink = styled.a`
   cursor: pointer;
 `;
 
-export default Header;
+const Logout = styled.span`
+  cursor: pointer;
+`;
+
+export default withRouter(Header);

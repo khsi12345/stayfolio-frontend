@@ -54,12 +54,12 @@ export default memo(() => (
   </PickDetailMainContentsDescriptionRightBottomWrap>
 ));
 const PickDetailMainContentsDescriptionRightBottomWrap = styled.div`
-    margin: 20px 0;
-    padding: 10px;
-    background-color: ${theme.LightGrayBG};
-    color: ${theme.MainWhite};
-    font-size: 14px;
-    line-height: 1.428571429;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: ${theme.LightGrayBG};
+  color: ${theme.MainWhite};
+  font-size: 14px;
+  line-height: 1.428571429;
   @media ${device.tablet} {
     margin-top: 20px;
     padding: 10px;
@@ -84,5 +84,6 @@ const PickDetailMainContentsDescriptionRightBottomBox = styled.div`
 `;
 const PickDetailMainContentsDescriptionRightIcon = styled.i`
   margin-right: 5px;
-  color: ${(props) => (props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`)};
+  color: ${props =>
+    props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`};
 `;

@@ -4,7 +4,6 @@ import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
 import Map from 'Components/Map';
-import Data from 'Data/magazine.json';
 
 const MagazineDetail = () => (
   <Layout>

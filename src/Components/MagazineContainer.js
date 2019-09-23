@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-const MagazineContainer = (props) => {
-  const { result } = props;
+const MagazineContainer = props => {
+  const { items } = props;
+
   return (
     <MagazineDetail>
       <MagazineImageWrap>
-        <MagazineImage src={result.url} />
-        <MagazineCover href="/">
+        <MagazineImage src={items.main_image_url} />
+        <MagazineCover href="/magazines/stay-sodo">
           <MagazineCoverButton>
             <MagazineCoverIcon className="fa fa-search" />
             VIEW
@@ -19,25 +20,26 @@ const MagazineContainer = (props) => {
       <MagazineContentWrap>
         <MagazineContentHeader>
           <MagazineContentTitle>
-            <MagazineContentTitleAnchor href="/">
-              {result.title}
+            <MagazineContentTitleAnchor href="/magazines/stay-sodo">
+              {items.name_kr}
             </MagazineContentTitleAnchor>
           </MagazineContentTitle>
           <MagazineContentType>
-            {result.type} |{' '}
-            <MagazineContentLocation>{result.location}</MagazineContentLocation>
+            <MagazineContentLocation>{items.details}</MagazineContentLocation>
           </MagazineContentType>
         </MagazineContentHeader>
         <MagazineContentBody>
           <MagazineContentSubtitle>
-            <MagazineContentSubtitleAnchor href="/">
-              {result.subtitle}
+            <MagazineContentSubtitleAnchor href="/magazines/stay-sodo">
+              {items.title}
             </MagazineContentSubtitleAnchor>
           </MagazineContentSubtitle>
           <MagazineContentDescription>
-            {result.description}
+            {items.description}
           </MagazineContentDescription>
-          <MagazineContentMore href="/">SHOW MORE +</MagazineContentMore>
+          <MagazineContentMore href="/magazines/stay-sodo">
+            SHOW MORE +
+          </MagazineContentMore>
         </MagazineContentBody>
       </MagazineContentWrap>
     </MagazineDetail>

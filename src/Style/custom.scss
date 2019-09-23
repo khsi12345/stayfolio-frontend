@@ -77,3 +77,15 @@ $wide: 1200px;
     }
   }
 }
+
+// Main 슬라이더 관련
+
+.slick-slider .slick-dots {
+  bottom: 5px;
+}
+
+// DatePicker 관련
+#startDate,
+#endDate {
+  cursor: pointer;
+}

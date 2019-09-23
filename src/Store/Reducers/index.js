@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
-import alertReducer from './AlertReducer';
+import ToastReducer from './ToastReducer';
 
 export default combineReducers({
-  // form,
-  alert: alertReducer,
+  toast: ToastReducer,
 });

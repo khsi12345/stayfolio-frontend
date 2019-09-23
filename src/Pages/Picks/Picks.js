@@ -9,7 +9,8 @@ import Pagination from 'Components/Pagination';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
-const Pick = memo(() => {
+
+const Picks = memo(() => {
   const [getPick, setPick] = useState([]);
 
   useEffect(() => {
@@ -17,7 +18,6 @@ const Pick = memo(() => {
   }, []);
 
   const LoadPciks = () => {
-    console.log(getPick, '1111');
     if (getPick.data && getPick.data !== undefined) {
       return getPick.data.result.map((ele) => (
         <PickItem
@@ -38,12 +38,12 @@ const Pick = memo(() => {
   };
 
   const pageChangeHandler = (id) => {
-    console.log(id * 12 - 1, id * 12 + 12);
+    // console.log(id * 12 - 1, id * 12 + 12);
     getPicks(`http://10.58.5.78:8080/pick?offset=${(id - 1) * 12}&limit=${(id - 1) * 12 + 12}`, setPick);
   };
   return (
     <>
-    ${console.log('렌더렌더')}
+      {/* ${console.log('렌더렌더')} */}
       <Layout>
         <PickWrap>
           <PickMainWrap>
@@ -116,4 +116,4 @@ const PickMain = styled.div`
     clear: both;
   }
 `;
-export default Pick;
+export default Picks;

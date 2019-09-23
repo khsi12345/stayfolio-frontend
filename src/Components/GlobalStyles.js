@@ -4,7 +4,7 @@ import Background from '../Images/Background.png';
 
 const GlobalStyles = createGlobalStyle`
     ${reset};
-    
+
     * {
         box-sizing: border-box;
         color: #333;
@@ -20,11 +20,11 @@ const GlobalStyles = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
-    
+
     button {
         border: none;
         &:focus {
-             outline: none;
+            outline: none;
             border: none;
         }
     }

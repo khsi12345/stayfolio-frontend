@@ -62,12 +62,12 @@ const PickDetailMainContentsDescriptionRightTopContainer = styled.div`
   line-height: 1.428571429;
 `;
 const PickDetailMainContentsDescriptionRightTopBox = styled.div`
-  display: ${(props) => (props.flex ? 'flex' : 'block')};
+  display: ${props => (props.flex ? 'flex' : 'block')};
 `;
 const PickDetailMainContentsDescriptionRightTop = styled.div`
-    /* display: ${(props) => (props.flex ? 'flex' : 'block')}; */
+    /* display: ${props => (props.flex ? 'flex' : 'block')}; */
     padding: 7px 0;
-    width: ${(props) => (props.half ? '50%' : '100%')};
+    width: ${props => (props.half ? '50%' : '100%')};
     font-size: 13px;
     border-bottom: 1px solid #ebebeb;
     letter-spacing: -1px;
@@ -78,5 +78,6 @@ const PickDetailMainContentsDescriptionRightTop = styled.div`
 `;
 const PickDetailMainContentsDescriptionRightIcon = styled.i`
   margin-right: 5px;
-  color: ${(props) => (props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`)};
+  color: ${props =>
+    props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`};
 `;

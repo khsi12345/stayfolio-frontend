@@ -1,47 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
 import LoginImg from 'Images/Login.png';
 
-const Login = () => (
-  <Layout>
-    <LoginWrap>
-      <LoginContainer>
-        <LoginHeader>
-          <LoginImage src={LoginImg} />
-        </LoginHeader>
-        <SocialWrap>
-          <SocialFacebook>Login with Facebook</SocialFacebook>
-          <SocialNaver>Login with Naver</SocialNaver>
-        </SocialWrap>
-        <EmailLoginWrap>
-          <LoginInputWrap>
-            <LoginInput
-              type="email"
-              name="email"
-              placeholder="Email Address"
-            />
-          </LoginInputWrap>
-          <LoginInputWrap>
-            <LoginInput
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
-          </LoginInputWrap>
-          <LoginButton>Login</LoginButton>
-        </EmailLoginWrap>
-        <LoginFooterWrap>
-          <FooterButton href="/signup">Sign up Now!</FooterButton>
-          <FooterButton href="/">Forgot Password?</FooterButton>
-        </LoginFooterWrap>
-      </LoginContainer>
-    </LoginWrap>
-  </Layout>
-);
+const Login = (props) => {
+  const [email, setEmail] = useState(null);
+  const updateEmail = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setEmail(value);
+  };
+
+  const [password, setPassword] = useState(null);
+  const updatePassword = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPassword(value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (email && password) {
+      axios({
+        method: 'post',
+        url: 'http://10.58.5.120:8000/account/login',
+        data: {
+          email,
+          password,
+        },
+      }).then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem('stayfolio_token', res.data.access_token);
+          props.history.push('/');
+        } else {
+          alert('아이디 혹은 비밀번호를 확인해주세요.');
+        }
+      });
+    }
+  };
+  return (
+    <Layout>
+      <LoginWrap>
+        <LoginContainer>
+          <LoginHeader>
+            <LoginImage src={LoginImg} />
+          </LoginHeader>
+          <SocialWrap>
+            <SocialFacebook>Login with Facebook</SocialFacebook>
+            <SocialNaver>Login with Naver</SocialNaver>
+          </SocialWrap>
+          <EmailLoginWrap>
+            <LoginInputWrap>
+              <LoginInput
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                onChange={updateEmail}
+              />
+            </LoginInputWrap>
+            <LoginInputWrap>
+              <LoginInput
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={updatePassword}
+              />
+            </LoginInputWrap>
+            <LoginButton onClick={handleSubmit}>Login</LoginButton>
+          </EmailLoginWrap>
+          <LoginFooterWrap>
+            <FooterButton href="/signup">Sign up Now!</FooterButton>
+            <FooterButton href="/">Forgot Password?</FooterButton>
+          </LoginFooterWrap>
+        </LoginContainer>
+      </LoginWrap>
+    </Layout>
+  );
+};
 
 const LoginWrap = styled.div`
   display: flex;
@@ -167,4 +208,4 @@ const FooterButton = styled.a`
   }
 `;
 
-export default Login;
+export default withRouter(Login);
