@@ -296,8 +296,7 @@ const MainNav = styled.div`
 `;
 
 const NavList = styled.p`
-  ${props =>
-    props.home && `border-bottom: 3px solid #000; margin-bottom: 2px;`};
+  ${(props) => props.home && 'border-bottom: 3px solid #000; margin-bottom: 2px;'};
 `;
 
 const NavBooking = styled.span`

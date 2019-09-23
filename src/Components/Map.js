@@ -8,25 +8,25 @@ const Map = () => {
   const onResize = () => {
     if (window.innerWidth % 20 === 0) {
       setBrowserWidth(window.innerWidth);
-    };
+    }
   };
 
   useEffect(() => {
     const options = {
-      center: new window.kakao.maps.LatLng(33.450701, 126.570667), 
-      level: 3
+      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+      level: 3,
     };
     const map = new window.kakao.maps.Map(mapRef.current, options);
 
-    const markerPosition  = new window.kakao.maps.LatLng(33.450701, 126.570667);
+    const markerPosition = new window.kakao.maps.LatLng(33.450701, 126.570667);
     const marker = new window.kakao.maps.Marker({
-      position: markerPosition
-    })
+      position: markerPosition,
+    });
     marker.setMap(map);
 
     const setZoomable = (zoomable) => {
-      map.setZoomable(zoomable);    
-    }
+      map.setZoomable(zoomable);
+    };
     setZoomable();
 
     window.addEventListener('resize', onResize);
@@ -34,7 +34,7 @@ const Map = () => {
   }, [browserWidth]);
 
   return <MapContainer ref={mapRef} />;
-}
+};
 
 const MapContainer = styled.div`
   width: 100%;

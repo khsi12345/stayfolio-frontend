@@ -23,7 +23,7 @@ const Routes = () => (
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/agreement" component={Agreement} />
       <Route exact path="/picks" component={Picks} />
-      <Route exact path="/pick_detail" component={PickDetail} />
+      <Route exact path="/pick_detail/:id" component={PickDetail} />
       <Route exact path="/magazines" component={Magazines} />
       <Route exact path="/magazines/stay-sodo" component={MagazineDetail} />
       <Redirect from="*" to="/" />
