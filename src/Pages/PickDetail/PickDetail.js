@@ -6,56 +6,52 @@ import SliderMain from 'Components/SliderMain';
 import KakaoMap from 'Components/Map';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
-import { getBrowserWidth } from 'Util/resize';
 import TopInfo from './TopInfo';
 import BottomInfo from './BottomInfo';
 import MoreList from './MoreList';
 import Comment from './Comment';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-const PickDetail = memo(() => 
-  // const [getWidth, setWidth] = useState();
-  // getBrowserWidth(setWidth);
-   (
-    <Layout>
-      <PickDetailWrap>
-        <PickDetailMainWrap>
-          <PickDetailMainHeader>
+const PickDetail = memo(() => (
+  <Layout>
+    <PickDetailWrap>
+      <PickDetailMainWrap>
+        <PickDetailMainHeader>
             PICK
-            <PickDetailMainHeaderSmall>
+          <PickDetailMainHeaderSmall>
               매일 하루 한번! 스테이폴리오가 추천합니다!
-            </PickDetailMainHeaderSmall>
-          </PickDetailMainHeader>
-          <PickDetailMainContainer>
-            <PickDetailMainBox>
-              <PickDetailMainContentsWrap>
-                <PickDetailMainContentsContainer>
-                  <PickDetailMainContentsHeaderWrap>
-                    <PickDetailMainContentsHeaderNameWrap>
-                      <PickDetailMainContentsHeaderName>
-                        {data.pick_info.pick_info_list[0].english_name}
-                        <PickDetailMainContentsHeaderNameIcons>
-                          <PickDetailMainContentsHeaderNameIcon facebook />
-                          <PickDetailMainContentsHeaderNameIcon />
-                        </PickDetailMainContentsHeaderNameIcons>
-                      </PickDetailMainContentsHeaderName>
-                    </PickDetailMainContentsHeaderNameWrap>
-                    <PickDetailMainContentsAdress>
-                      {data.pick_info.pick_info_list[0].location_adress}
-                    </PickDetailMainContentsAdress>
-                    <PickDetailMainContentsHeaderDescription>
-                      {data.pick_info.pick_info_list[0].descript}
-                    </PickDetailMainContentsHeaderDescription>
-                  </PickDetailMainContentsHeaderWrap>
-                  <SliderMain />
-                  <PickDetailMainContentsDescriptionWrap>
-                    <PickDetailMainContentsDescriptionContainer>
-                      <PickDetailMainContentsDescriptionLeftWrap>
-                        <PickDetailMainContentsDescriptionLeftContainer>
-                          <PickDetailMainContentsDescriptionLeftTitle>
+          </PickDetailMainHeaderSmall>
+        </PickDetailMainHeader>
+        <PickDetailMainContainer>
+          <PickDetailMainBox>
+            <PickDetailMainContentsWrap>
+              <PickDetailMainContentsContainer>
+                <PickDetailMainContentsHeaderWrap>
+                  <PickDetailMainContentsHeaderNameWrap>
+                    <PickDetailMainContentsHeaderName>
+                      {data.pick_info.pick_info_list[0].english_name}
+                      <PickDetailMainContentsHeaderNameIcons>
+                        <PickDetailMainContentsHeaderNameIcon facebook />
+                        <PickDetailMainContentsHeaderNameIcon />
+                      </PickDetailMainContentsHeaderNameIcons>
+                    </PickDetailMainContentsHeaderName>
+                  </PickDetailMainContentsHeaderNameWrap>
+                  <PickDetailMainContentsAdress>
+                    {data.pick_info.pick_info_list[0].location_adress}
+                  </PickDetailMainContentsAdress>
+                  <PickDetailMainContentsHeaderDescription>
+                    {data.pick_info.pick_info_list[0].descript}
+                  </PickDetailMainContentsHeaderDescription>
+                </PickDetailMainContentsHeaderWrap>
+                <SliderMain />
+                <PickDetailMainContentsDescriptionWrap>
+                  <PickDetailMainContentsDescriptionContainer>
+                    <PickDetailMainContentsDescriptionLeftWrap>
+                      <PickDetailMainContentsDescriptionLeftContainer>
+                        <PickDetailMainContentsDescriptionLeftTitle>
                             더욱 특별한 제주 여행이 필요하다면
-                          </PickDetailMainContentsDescriptionLeftTitle>
-                          <PickDetailMainContentsDescriptionLeft>
+                        </PickDetailMainContentsDescriptionLeftTitle>
+                        <PickDetailMainContentsDescriptionLeft>
                             제주를 바라보는 섬, 성산에서 배를 타고 바다를 느끼면
                             이내 닿는 곳 우도에 돌집 스테이, 돌채가 문을 열었다.
                             제주의 돌집이 주는 묵직하고 차분한 여운과 고요한
@@ -65,8 +61,8 @@ const PickDetail = memo(() =>
                             호스트는 제주 여행 속 진짜 제주를 만날 수 있는
                             우도에서 오랜 시간 자연스럽게 뿌리내릴 공간을 만들고
                             싶었다.
-                            <br />
-                            <br />
+                          <br />
+                          <br />
                             돌채의 공간은 가족이 머물기 좋은 ROOM A와, 2인 객실
                             ROOM B로 구성된다. A룸은 거실과 주방, 침실로 나뉘며
                             대형 사이즈의 욕조 및 사우나 시설이 갖추어져 있다.
@@ -75,8 +71,8 @@ const PickDetail = memo(() =>
                             욕조의 공간 구성이다. 두 객실 모두 돌담으로 둘러
                             쌓인 정원, 야외에서 즐길 수 있는 바베큐장을 함께
                             이용할 수 있다.
-                            <br />
-                            <br />
+                          <br />
+                          <br />
                             머무는 이들을 위해 돌채에서는 매일 아침 전복죽 조식
                             서비스와, 픽업을 제공한다. 반나절 머무는 여행지가
                             호스트가 추천해주는 가이드를 따라 아닌 돌채에서
@@ -84,66 +80,65 @@ const PickDetail = memo(() =>
                             느껴볼 수 있는 기회가 될 것이다. 우도의 풍경이
                             곳곳이 품고 있는 특별한 이야기, 마을 깊숙이 들어와야
                             보이는 진짜 우도를 돌채를 통해 경험해보자.
-                            <br />
-                            <br />
+                          <br />
+                          <br />
                             Designed by {data.pick_info.pick_info_list[0].name}
-                            <br />
+                          <br />
                             Photo by WEBMATE
-                          </PickDetailMainContentsDescriptionLeft>
-                        </PickDetailMainContentsDescriptionLeftContainer>
-                      </PickDetailMainContentsDescriptionLeftWrap>
-                      <PickDetailMainContentsDescriptionRightWrap>
-                        <TopInfo />
-                        <BottomInfo />
-                      </PickDetailMainContentsDescriptionRightWrap>
-                    </PickDetailMainContentsDescriptionContainer>
-                    <div style={{ height: '480px', overflow: 'hidden' }}>
-                      <KakaoMap />
-                    </div>
-                    <Comment />
-                  </PickDetailMainContentsDescriptionWrap>
-                </PickDetailMainContentsContainer>
-                <PicksToMoveWrap>
-                  <PciksToMoveContainer>
-                    <PickDetailSideListPageMove href="/" alt="goback">
+                        </PickDetailMainContentsDescriptionLeft>
+                      </PickDetailMainContentsDescriptionLeftContainer>
+                    </PickDetailMainContentsDescriptionLeftWrap>
+                    <PickDetailMainContentsDescriptionRightWrap>
+                      <TopInfo />
+                      <BottomInfo />
+                    </PickDetailMainContentsDescriptionRightWrap>
+                  </PickDetailMainContentsDescriptionContainer>
+                  <div style={{ height: '480px', overflow: 'hidden' }}>
+                    <KakaoMap />
+                  </div>
+                  <Comment />
+                </PickDetailMainContentsDescriptionWrap>
+              </PickDetailMainContentsContainer>
+              <PicksToMoveWrap>
+                <PciksToMoveContainer>
+                  <PickDetailSideListPageMove href="/" alt="goback">
                       리스트 페이지로 돌아가기
-                    </PickDetailSideListPageMove>
-                  </PciksToMoveContainer>
-                </PicksToMoveWrap>
-              </PickDetailMainContentsWrap>
-            </PickDetailMainBox>
-            <PickDetailSideBox>
-              <PickDetailSideBookingNow href="/" alt="booking">
+                  </PickDetailSideListPageMove>
+                </PciksToMoveContainer>
+              </PicksToMoveWrap>
+            </PickDetailMainContentsWrap>
+          </PickDetailMainBox>
+          <PickDetailSideBox>
+            <PickDetailSideBookingNow href="/" alt="booking">
                 BOOKING NOW
-              </PickDetailSideBookingNow>
-              <PickDetailSideListPageMove href="/" alt="goback" none>
+            </PickDetailSideBookingNow>
+            <PickDetailSideListPageMove href="/" alt="goback" none>
                 리스트 페이지로 돌아가기
-              </PickDetailSideListPageMove>
-              <PickDetailSidePicksWrap>
-                <PickDetailSidePicksContainer>
-                  <PickDetailSidePicksText>
+            </PickDetailSideListPageMove>
+            <PickDetailSidePicksWrap>
+              <PickDetailSidePicksContainer>
+                <PickDetailSidePicksText>
                     MORE STAYFOLIO PICK
-                  </PickDetailSidePicksText>
-                  <PickDetailSidePicksTitleLine />
-                  <PickDetailSidePicksBox>
-                    <MoreList />
-                    <MoreList />
-                    <MoreList />
-                    <MoreList />
-                    <MoreList />
-                    <MoreList />
-                    <MoreList />
-                    <MoreList />
-                  </PickDetailSidePicksBox>
-                </PickDetailSidePicksContainer>
-              </PickDetailSidePicksWrap>
-            </PickDetailSideBox>
-          </PickDetailMainContainer>
-        </PickDetailMainWrap>
-      </PickDetailWrap>
-    </Layout>
-  )
-);
+                </PickDetailSidePicksText>
+                <PickDetailSidePicksTitleLine />
+                <PickDetailSidePicksBox>
+                  <MoreList />
+                  <MoreList />
+                  <MoreList />
+                  <MoreList />
+                  <MoreList />
+                  <MoreList />
+                  <MoreList />
+                  <MoreList />
+                </PickDetailSidePicksBox>
+              </PickDetailSidePicksContainer>
+            </PickDetailSidePicksWrap>
+          </PickDetailSideBox>
+        </PickDetailMainContainer>
+      </PickDetailMainWrap>
+    </PickDetailWrap>
+  </Layout>
+));
 
 const PickDetailWrap = styled.div`
   margin-top: 103px;
@@ -419,10 +414,6 @@ const PickDetailSidePicksTitleLine = styled.div`
   width: 30px;
   height: 2px;
   background-color: ${theme.BorderLightBlack};
-`;
-const Map = styled.div`
-  height: 450px;
-  border: 2px solid red;
 `;
 const PicksToMoveWrap = styled.div`
   margin: 0;
