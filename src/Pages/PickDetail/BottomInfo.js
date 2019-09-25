@@ -4,7 +4,7 @@ import data from 'Data/pick';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
-export default memo(() => (
+export default memo((props) => (
   <PickDetailMainContentsDescriptionRightBottomWrap>
     <PickDetailMainContentsDescriptionRightBottomContainer>
       <PickDetailMainContentsDescriptionRightIcon
@@ -12,7 +12,7 @@ export default memo(() => (
         white
       />
       <PickDetailMainContentsDescriptionRightBottomBox>
-        {data.pick_info.pick_info_list[0].location_adress}
+        {props.info && props.info.full_address}
       </PickDetailMainContentsDescriptionRightBottomBox>
     </PickDetailMainContentsDescriptionRightBottomContainer>
     <PickDetailMainContentsDescriptionRightBottomContainer>
@@ -21,10 +21,10 @@ export default memo(() => (
         white
       />
       <PickDetailMainContentsDescriptionRightBottomBox>
-        {data.pick_info.pick_info_list[0].homepage}
+        {props.info && props.info.website}
       </PickDetailMainContentsDescriptionRightBottomBox>
     </PickDetailMainContentsDescriptionRightBottomContainer>
-    <PickDetailMainContentsDescriptionRightBottomContainer>
+    {/* <PickDetailMainContentsDescriptionRightBottomContainer>
       <PickDetailMainContentsDescriptionRightIcon
         className="fas fa-envelope"
         white
@@ -32,14 +32,14 @@ export default memo(() => (
       <PickDetailMainContentsDescriptionRightBottomBox>
         {data.pick_info.pick_info_list[0].email}
       </PickDetailMainContentsDescriptionRightBottomBox>
-    </PickDetailMainContentsDescriptionRightBottomContainer>
+    </PickDetailMainContentsDescriptionRightBottomContainer> */}
     <PickDetailMainContentsDescriptionRightBottomContainer>
       <PickDetailMainContentsDescriptionRightIcon
         className="fab fa-facebook-f"
         white
       />
       <PickDetailMainContentsDescriptionRightBottomBox>
-        {data.pick_info.pick_info_list[0].facebook}
+        {props.info && props.info.facebook}
       </PickDetailMainContentsDescriptionRightBottomBox>
     </PickDetailMainContentsDescriptionRightBottomContainer>
     <PickDetailMainContentsDescriptionRightBottomContainer>
@@ -48,7 +48,7 @@ export default memo(() => (
         white
       />
       <PickDetailMainContentsDescriptionRightBottomBox>
-        {data.pick_info.pick_info_list[0].tell}
+        {props.info && props.info.phone}
       </PickDetailMainContentsDescriptionRightBottomBox>
     </PickDetailMainContentsDescriptionRightBottomContainer>
   </PickDetailMainContentsDescriptionRightBottomWrap>
@@ -84,6 +84,5 @@ const PickDetailMainContentsDescriptionRightBottomBox = styled.div`
 `;
 const PickDetailMainContentsDescriptionRightIcon = styled.i`
   margin-right: 5px;
-  color: ${props =>
-    props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`};
+  color: ${(props) => (props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`)};
 `;

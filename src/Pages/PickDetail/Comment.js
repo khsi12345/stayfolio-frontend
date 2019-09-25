@@ -1,28 +1,50 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import styled from 'styled-components';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-export default memo(() => (
-  <CommentWrap>
-    <CommentContainer>
-      <CommentBox>
-        <Comment>
-          <InnerComment>
-            <CommentTextAreaBox placeholder="댓글을 입력해주세요" />
-          </InnerComment>
-          <CommentButtonWrap>
-            <CommentButton>
-              <CommentButtonSpan1>Reply</CommentButtonSpan1>
-              <CommentButtonSpan2 />
-            </CommentButton>
-          </CommentButtonWrap>
-        </Comment>
-      </CommentBox>
-      <EmptyComment>첫번째 댓글을 달아주세요 :)</EmptyComment>
-    </CommentContainer>
-  </CommentWrap>
-));
+export default memo(() => {
+  const [getToken, setToken] = useState(localStorage.getItem('stayfolio-token'));
+  const [text, setText] = useState();
+  const textChangeHandle = (e) => {
+    setText(e.target.value);
+  };
+  const commentClick = () => {
+    if (getToken === null || getToken === '' || getToken === undefined) {
+      alert('로그인을 먼저 해주세요 :)');
+    }
+  };
+  console.log(text);
+  return (
+    <CommentWrap>
+      <CommentContainer>
+        <CommentBox>
+          <Comment>
+            <InnerComment>
+              <CommentTextAreaBox
+                placeholder="댓글을 입력해주세요"
+                onChange={textChangeHandle}
+                onClick={commentClick}
+              />
+            </InnerComment>
+            <CommentButtonWrap>
+              <CommentButton
+                type="button"
+                onClick={() => {
+                  commentClick();
+                }}
+              >
+                <CommentButtonSpan1>Reply</CommentButtonSpan1>
+                <CommentButtonSpan2 />
+              </CommentButton>
+            </CommentButtonWrap>
+          </Comment>
+        </CommentBox>
+        <EmptyComment>첫번째 댓글을 달아주세요 :)</EmptyComment>
+      </CommentContainer>
+    </CommentWrap>
+  );
+});
 
 const CommentWrap = styled.div`
   padding: 15px 0;

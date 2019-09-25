@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-const Map = () => {
+const Map = ({ latitude, longitude }) => {
   const [browserWidth, setBrowserWidth] = useState(window.innerWidth);
   const mapRef = useRef(null);
 
@@ -13,12 +13,12 @@ const Map = () => {
 
   useEffect(() => {
     const options = {
-      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+      center: new window.kakao.maps.LatLng(latitude, longitude),
       level: 3,
     };
     const map = new window.kakao.maps.Map(mapRef.current, options);
 
-    const markerPosition = new window.kakao.maps.LatLng(33.450701, 126.570667);
+    const markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
     const marker = new window.kakao.maps.Marker({
       position: markerPosition,
     });
@@ -31,7 +31,7 @@ const Map = () => {
 
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
-  }, [browserWidth]);
+  }, [browserWidth, latitude, longitude]);
 
   return <MapContainer ref={mapRef} />;
 };
