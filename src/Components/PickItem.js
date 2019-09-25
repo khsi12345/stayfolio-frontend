@@ -1,37 +1,23 @@
 import React, { memo, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { unitConversion } from 'Util/conversion';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-const unitConversion = (minp) => {
-  const min = Number(minp)
-    .toString()
-    .split('');
-  let cou = 0;
-  for (let i = min.length; i > 0; i--) {
-    if (cou === 3) {
-      min.splice(i, 0, ',');
-      cou = 0;
-    }
-    cou += 1;
-  }
-  const result = min.join('');
-  return result;
-};
 
 const PickItem = memo(
   ({
     id, name, eng, des, location, minpr, maxpr, targets, type, img,
-  }) => {
-    // console.log(targets);
-    const [newTargets, setTargets] = useState(targets.toString());
-    // useEffect(() => {
+  }) =>
+  // console.log(img));
+  // const [newTargets, setTargets] = useState(targets.toString());
+  // useEffect(() => {
 
     // }, [targets]);
     // const newTargets = targets.toString();
-    return (
-      <PickItemWrap>
+    (
+       <PickItemWrap>
         <PickItemContainer>
           <Link to={`/pick_detail/${id}`}>
             <ItemImgWrap>
@@ -78,7 +64,7 @@ const PickItem = memo(
                 </ItemDescriptionTableContents>
                 <ItemDescriptionTableContents>
                   <Icon2 className="fas fa-star" />
-                  {newTargets}
+                  {targets.toString()}
                 </ItemDescriptionTableContents>
               </ItemDescriptionTableColunm>
               <ItemDescriptionTableColunm />
@@ -86,8 +72,8 @@ const PickItem = memo(
           </ItemDescriptionWrap>
         </PickItemContainer>
       </PickItemWrap>
-    );
-  },
+    )
+  ,
 );
 
 const PickItemWrap = styled.div`

@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { getBrowserWidth } from 'Util/resize';
 import theme from 'Components/Theme';
 
-const Paginatioin = memo(props => {
+const Paginatioin = memo((props) => {
   // console.log('함수 컴포넌트 시작!');
   // console.log(props);
   // console.log(getBrowserWidth())
@@ -45,7 +45,7 @@ const Paginatioin = memo(props => {
               {/* {pageBtn()} */}
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={event => {
+                onClick={(event) => {
                   props.handleClick(1);
                   currentPage(event);
                 }}
@@ -54,7 +54,7 @@ const Paginatioin = memo(props => {
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={event => {
+                onClick={(event) => {
                   props.handleClick(2);
                   currentPage(event);
                 }}
@@ -63,7 +63,7 @@ const Paginatioin = memo(props => {
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={event => {
+                onClick={(event) => {
                   props.handleClick(3);
                   currentPage(event);
                 }}
@@ -72,7 +72,7 @@ const Paginatioin = memo(props => {
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={event => {
+                onClick={(event) => {
                   props.handleClick(4);
                   currentPage(event);
                 }}
@@ -81,7 +81,7 @@ const Paginatioin = memo(props => {
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={event => {
+                onClick={(event) => {
                   props.handleClick(5);
                   currentPage(event);
                 }}
@@ -90,7 +90,7 @@ const Paginatioin = memo(props => {
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={event => {
+                onClick={(event) => {
                   props.handleClick(6);
                   currentPage(event);
                 }}
@@ -99,7 +99,7 @@ const Paginatioin = memo(props => {
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={event => {
+                onClick={(event) => {
                   props.handleClick(7);
                   currentPage(event);
                 }}
@@ -153,32 +153,30 @@ const PaginatioinNumberBoxWrap = styled.li`
 
 const PaginatioinNumberBoxContainer = styled.button`
   margin: 0 5px;
-  margin-left: ${props => (props.first ? '0px' : '')};
-  padding: ${props => (props.tablet ? '8px 30px' : '8px 15px')};
+  margin-left: ${(props) => (props.first ? '0px' : '')};
+  padding: ${(props) => (props.tablet ? '8px 30px' : '8px 15px')};
   font-size: 14px;
   border: 0;
   box-shadow: 0 1px 1px rgba(100, 100, 100, 0.3);
   line-height: 1.5;
   color: ${theme.FooterGrayFont};
   background-color: ${theme.MainWhite};
-  border-top-left-radius: ${props => (props.first ? '3px' : '')};
-  border-bottom-left-radius: ${props => (props.first ? '3px' : '')};
-  border-top-right-radius: ${props => (props.last ? '3px' : '')};
-  border-bottom-right-radius: ${props => (props.last ? '3px' : '')};
+  border-top-left-radius: ${(props) => (props.first ? '3px' : '')};
+  border-bottom-left-radius: ${(props) => (props.first ? '3px' : '')};
+  border-top-right-radius: ${(props) => (props.last ? '3px' : '')};
+  border-bottom-right-radius: ${(props) => (props.last ? '3px' : '')};
   cursor: pointer;
   :focus {
-    color: ${props =>
-      props.first
-        ? `${theme.MainBlack}`
-        : props.noneactive
-        ? `${theme.MainBlack}`
-        : `${theme.MainWhite}`};
-    background-color: ${props =>
-      props.first
-        ? `${theme.MainWhite}}`
-        : props.noneactive
-        ? `${theme.MainWhite}`
-        : `${theme.MainBlack}`};
+    color: ${(props) => (props.first
+    ? `${theme.MainBlack}`
+    : props.noneactive
+      ? `${theme.MainBlack}`
+      : `${theme.MainWhite}`)};
+    background-color: ${(props) => (props.first
+    ? `${theme.MainWhite}}`
+    : props.noneactive
+      ? `${theme.MainWhite}`
+      : `${theme.MainBlack}`)};
   }
 `;
 const Icon = styled.i``;

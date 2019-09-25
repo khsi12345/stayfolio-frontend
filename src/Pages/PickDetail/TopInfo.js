@@ -1,56 +1,65 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { unitConversion } from 'Util/conversion';
 import data from 'Data/pick';
 import theme from 'Components/Theme';
 
-export default memo(() => (
-  <PickDetailMainContentsDescriptionRightTopWrap>
-    <PickDetailMainContentsDescriptionRightTopContainer>
-      <PickDetailMainContentsDescriptionRightTopBox>
+export default memo((props) => {
+  console.log(props.info);
+  const [info, setInfo] = useState();
+  // useEffect(() => {
+  //   setInfo({ ...props.info });
+  // }, [props.info]);
+  console.log(info);
+  return (
+    <PickDetailMainContentsDescriptionRightTopWrap>
+      <PickDetailMainContentsDescriptionRightTopContainer>
+        <PickDetailMainContentsDescriptionRightTopBox>
+          <PickDetailMainContentsDescriptionRightTop>
+            <PickDetailMainContentsDescriptionRightIcon className="fas fa-home" />
+            {props.info && props.info.place_type}
+          </PickDetailMainContentsDescriptionRightTop>
+        </PickDetailMainContentsDescriptionRightTopBox>
+        <PickDetailMainContentsDescriptionRightTopBox flex>
+          <PickDetailMainContentsDescriptionRightTop half>
+            <PickDetailMainContentsDescriptionRightIcon className="fas fa-user" />
+            {`${props.info && props.info.persons_min} ~ ${props.info && props.info.persons_max} 명`}
+          </PickDetailMainContentsDescriptionRightTop>
+          <PickDetailMainContentsDescriptionRightTop half>
+            <PickDetailMainContentsDescriptionRightIcon className="fas fa-bed" />
+            {`${props.info && props.info.room_capacity} 객실`}
+          </PickDetailMainContentsDescriptionRightTop>
+        </PickDetailMainContentsDescriptionRightTopBox>
         <PickDetailMainContentsDescriptionRightTop>
-          <PickDetailMainContentsDescriptionRightIcon className="fas fa-home" />
-          {data.pick_info.pick_info_list[0].type}
+          <PickDetailMainContentsDescriptionRightIcon className="fas fa-coins" />
+          {`${props.info && unitConversion(props.info.price_min)} ~ ${props.info && unitConversion(props.info.price_max)}`}
         </PickDetailMainContentsDescriptionRightTop>
-      </PickDetailMainContentsDescriptionRightTopBox>
-      <PickDetailMainContentsDescriptionRightTopBox flex>
-        <PickDetailMainContentsDescriptionRightTop half>
-          <PickDetailMainContentsDescriptionRightIcon className="fas fa-user" />
-          {data.pick_info.pick_info_list[0].people}
+        <PickDetailMainContentsDescriptionRightTop>
+          <PickDetailMainContentsDescriptionRightIcon className="fas fa-clock" />
+          {`${props.info && props.info.check_in} ~ ${props.info && props.info.check_out}`}
         </PickDetailMainContentsDescriptionRightTop>
-        <PickDetailMainContentsDescriptionRightTop half>
-          <PickDetailMainContentsDescriptionRightIcon className="fas fa-bed" />
-          {data.pick_info.pick_info_list[0].rooms}
+        <PickDetailMainContentsDescriptionRightTopBox flex>
+          <PickDetailMainContentsDescriptionRightTop half>
+            <PickDetailMainContentsDescriptionRightIcon className="fas fa-map-marker-alt" />
+            {props.info && props.info.city}
+          </PickDetailMainContentsDescriptionRightTop>
+          <PickDetailMainContentsDescriptionRightTop half>
+            <PickDetailMainContentsDescriptionRightIcon className="fas fa-eye" />
+            {props.info && props.info.styles.toString()}
+          </PickDetailMainContentsDescriptionRightTop>
+        </PickDetailMainContentsDescriptionRightTopBox>
+        <PickDetailMainContentsDescriptionRightTop>
+          <PickDetailMainContentsDescriptionRightIcon className="fas fa-star" />
+          {props.info && props.info.targets.toString()}
         </PickDetailMainContentsDescriptionRightTop>
-      </PickDetailMainContentsDescriptionRightTopBox>
-      <PickDetailMainContentsDescriptionRightTop>
-        <PickDetailMainContentsDescriptionRightIcon className="fas fa-coins" />
-        {data.pick_info.pick_info_list[0].price}
-      </PickDetailMainContentsDescriptionRightTop>
-      <PickDetailMainContentsDescriptionRightTop>
-        <PickDetailMainContentsDescriptionRightIcon className="fas fa-clock" />
-        {data.pick_info.pick_info_list[0].time}
-      </PickDetailMainContentsDescriptionRightTop>
-      <PickDetailMainContentsDescriptionRightTopBox flex>
-        <PickDetailMainContentsDescriptionRightTop half>
-          <PickDetailMainContentsDescriptionRightIcon className="fas fa-map-marker-alt" />
-          {data.pick_info.pick_info_list[0].location}
+        <PickDetailMainContentsDescriptionRightTop>
+          <PickDetailMainContentsDescriptionRightIcon className="fas fa-heart" />
+          {props.info && props.info.amenities}
         </PickDetailMainContentsDescriptionRightTop>
-        <PickDetailMainContentsDescriptionRightTop half>
-          <PickDetailMainContentsDescriptionRightIcon className="fas fa-eye" />
-          {data.pick_info.pick_info_list[0].style}
-        </PickDetailMainContentsDescriptionRightTop>
-      </PickDetailMainContentsDescriptionRightTopBox>
-      <PickDetailMainContentsDescriptionRightTop>
-        <PickDetailMainContentsDescriptionRightIcon className="fas fa-star" />
-        {data.pick_info.pick_info_list[0].type2}
-      </PickDetailMainContentsDescriptionRightTop>
-      <PickDetailMainContentsDescriptionRightTop>
-        <PickDetailMainContentsDescriptionRightIcon className="fas fa-heart" />
-        {data.pick_info.pick_info_list[0].activity}
-      </PickDetailMainContentsDescriptionRightTop>
-    </PickDetailMainContentsDescriptionRightTopContainer>
-  </PickDetailMainContentsDescriptionRightTopWrap>
-));
+      </PickDetailMainContentsDescriptionRightTopContainer>
+    </PickDetailMainContentsDescriptionRightTopWrap>
+  );
+});
 const PickDetailMainContentsDescriptionRightTopWrap = styled.div`
   border-top: 2px solid ${theme.BorderLightBlack};
   font-size: 14px;
@@ -62,22 +71,21 @@ const PickDetailMainContentsDescriptionRightTopContainer = styled.div`
   line-height: 1.428571429;
 `;
 const PickDetailMainContentsDescriptionRightTopBox = styled.div`
-  display: ${props => (props.flex ? 'flex' : 'block')};
+  display: ${(props) => (props.flex ? 'flex' : 'block')};
 `;
 const PickDetailMainContentsDescriptionRightTop = styled.div`
-    /* display: ${props => (props.flex ? 'flex' : 'block')}; */
+    /* display: ${(props) => (props.flex ? 'flex' : 'block')}; */
     padding: 7px 0;
-    width: ${props => (props.half ? '50%' : '100%')};
+    width: ${(props) => (props.half ? '50%' : '100%')};
     font-size: 13px;
     border-bottom: 1px solid #ebebeb;
     letter-spacing: -1px;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: wrap;
+    white-space: nowrap;
     color: ${theme.FontLightGray};
 `;
 const PickDetailMainContentsDescriptionRightIcon = styled.i`
   margin-right: 5px;
-  color: ${props =>
-    props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`};
+  color: ${(props) => (props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`)};
 `;

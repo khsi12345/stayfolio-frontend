@@ -4,15 +4,15 @@ import data from 'Data/pick';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-const MoreList = memo(() => (
+const MoreList = memo((props) => (
   <MoreListWrap>
     <MoreListContainer>
       <MoreListBox>
-        <MoreListImg src={data.pick_info.pick_info_list[0].thumbnail_img} />
+        <MoreListImg src={props.im} />
       </MoreListBox>
       <MoreListName>
         <MoreListNameLink>
-              돌채
+          {props.name}
         </MoreListNameLink>
       </MoreListName>
     </MoreListContainer>

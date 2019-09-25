@@ -1,3 +1,4 @@
+$mobile: 480px;
 $tablet: 768px;
 $desktop: 992px;
 $wide: 1200px;
@@ -88,4 +89,20 @@ $wide: 1200px;
 #startDate,
 #endDate {
   cursor: pointer;
+}
+
+//공유 관련
+.fb-share-button {
+  margin: 0;
+  display: block !important;
+  span {
+    vertical-align: middle !important;
+  }
+  @media only screen and (min-width: $mobile) {
+    display: inline-block !important;
+    span {
+      margin: 0 0 0 10px;
+      vertical-align: middle !important;
+    }
+  }
 }
