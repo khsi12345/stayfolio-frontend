@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// 픽
-export const getPicks = async (url, setData) => {
+export const getApi = async (url, setData) => {
   const response = await axios.get(url);
   setData(response);
 };

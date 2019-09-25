@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import PickItem from 'Components/PickItem';
-import { getPicks } from 'Util/service';
+import { getApi } from 'Util/service';
 
 const Pick = memo(() => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    getPicks('http://10.58.5.100:8080/pick?offset=0&limit=6', setItems);
+    getApi('http://10.58.5.78:8080/pick?offset=0&limit=12', setItems);
   }, []);
   return (
     <PickWrap>

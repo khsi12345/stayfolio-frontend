@@ -2,7 +2,7 @@ import React, {
   memo, useState, useEffect, useCallback,
 } from 'react';
 import styled from 'styled-components';
-import { getPicks } from 'Util/service';
+import { getApi } from 'Util/service';
 import Layout from 'Components/Layout';
 import PickItem from 'Components/PickItem';
 import Pagination from 'Components/Pagination';
@@ -14,7 +14,7 @@ const Picks = memo(() => {
   const [getPick, setPick] = useState([]);
 
   useEffect(() => {
-    getPicks('http://10.58.5.100:8080/pick?offset=0&limit=12', setPick);
+    getApi('http://10.58.5.100:8080/pick?offset=0&limit=12', setPick);
   }, []);
 
   const LoadPicks = () => {
@@ -38,12 +38,10 @@ const Picks = memo(() => {
   };
 
   const pageChangeHandler = (id) => {
-    // console.log(id * 12 - 1, id * 12 + 12);
-    getPicks(`http://10.58.5.100:8080/pick?offset=${(id - 1) * 12}&limit=${(id - 1) * 12 + 12}`, setPick);
+    getApi(`http://10.58.5.100:8080/pick?offset=${(id - 1) * 12}&limit=${(id - 1) * 12 + 12}`, setPick);
   };
   return (
     <>
-      {/* ${console.log('렌더렌더')} */}
       <Layout>
         <PickWrap>
           <PickMainWrap>
