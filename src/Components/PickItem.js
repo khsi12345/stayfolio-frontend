@@ -17,7 +17,7 @@ const PickItem = memo(
     // }, [targets]);
     // const newTargets = targets.toString();
     (
-       <PickItemWrap>
+      <PickItemWrap>
         <PickItemContainer>
           <Link to={`/pick_detail/${id}`}>
             <ItemImgWrap>
