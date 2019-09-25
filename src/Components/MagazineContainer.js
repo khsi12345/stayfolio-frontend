@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 
-const MagazineContainer = props => {
+const MagazineContainer = (props) => {
   const { items } = props;
-
   return (
     <MagazineDetail>
       <MagazineImageWrap>
         <MagazineImage src={items.main_image_url} />
-        <MagazineCover href="/magazines/stay-sodo">
+        <MagazineCover href={`/magazines/${items.identifier}`}>
           <MagazineCoverButton>
             <MagazineCoverIcon className="fa fa-search" />
             VIEW
@@ -20,8 +19,8 @@ const MagazineContainer = props => {
       <MagazineContentWrap>
         <MagazineContentHeader>
           <MagazineContentTitle>
-            <MagazineContentTitleAnchor href="/magazines/stay-sodo">
-              {items.name_kr}
+            <MagazineContentTitleAnchor href={`/magazines/${items.identifier}`}>
+              {items.identifier_kr}
             </MagazineContentTitleAnchor>
           </MagazineContentTitle>
           <MagazineContentType>
@@ -30,14 +29,14 @@ const MagazineContainer = props => {
         </MagazineContentHeader>
         <MagazineContentBody>
           <MagazineContentSubtitle>
-            <MagazineContentSubtitleAnchor href="/magazines/stay-sodo">
+            <MagazineContentSubtitleAnchor href={`/magazines/${items.identifier}`}>
               {items.title}
             </MagazineContentSubtitleAnchor>
           </MagazineContentSubtitle>
           <MagazineContentDescription>
             {items.description}
           </MagazineContentDescription>
-          <MagazineContentMore href="/magazines/stay-sodo">
+          <MagazineContentMore href={`/magazines/${items.identifier}`}>
             SHOW MORE +
           </MagazineContentMore>
         </MagazineContentBody>

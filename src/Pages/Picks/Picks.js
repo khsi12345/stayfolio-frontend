@@ -38,12 +38,10 @@ const Picks = memo((props) => {
   };
 
   const pageChangeHandler = (id) => {
-    // console.log(id * 12 - 1, id * 12 + 12);
     getApi(`http://10.58.5.100:8080/pick?offset=${(id - 1) * 12}&limit=${(id - 1) * 12 + 12}`, setPick);
   };
   return (
     <>
-      {/* ${console.log('렌더렌더')} */}
       <Layout>
         <PickWrap>
           <PickMainWrap>

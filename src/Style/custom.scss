@@ -91,6 +91,14 @@ $wide: 1200px;
   cursor: pointer;
 }
 
+div .CalendarMonth_table {
+  margin-top: 6px;
+}
+
+.CalendarMonth_table .CalendarDay {
+  vertical-align: middle;
+}
+
 //공유 관련
 .fb-share-button {
   margin: 0;

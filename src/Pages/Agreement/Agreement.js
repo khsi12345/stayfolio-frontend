@@ -37,7 +37,7 @@ const Agreement = (props) => {
     if (email && name && password) {
       axios({
         method: 'post',
-        url: 'http://10.58.5.120:8000/account/signup',
+        url: 'http://10.58.5.189:8000/account/signup',
         data: {
           email,
           name,
@@ -55,7 +55,6 @@ const Agreement = (props) => {
       alert('입력 정보를 확인해주세요!');
     }
   };
-  console.log(email, name, password);
   return (
     <Layout>
       <SignupWrap>

@@ -12,7 +12,7 @@ const Main = () => (
     <MainWrap>
       <MainSlider />
     </MainWrap>
-    <Magazine />
+    <Magazine limit={2} />
     <Pick />
   </Layout>
 );
@@ -21,7 +21,6 @@ const MainWrap = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  /* overflow: hidden; */
   margin-top: 70px;
   @media ${device.tablet} {
     margin-top: 102px;

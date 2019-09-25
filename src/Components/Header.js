@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { showAlert, closeAlert } from 'Store/Actions';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Logo from 'Images/Logo.png';
 import Close from 'Images/Close.png';
 
-const Header = props => {
+const Header = (props) => {
   // bars on/off 세팅 로직
   const [bars, setBars] = useState(false);
   const handleBars = () => {
@@ -19,9 +22,9 @@ const Header = props => {
     localStorage.clear();
     setToken(false);
     setBars(false);
-    alert('로그아웃 되었습니다!');
+    props.showAlert({ message: '로그아웃 되었습니다!' });
   };
-
+  console.log('header props!', props);
   return (
     <>
       <HeaderWrap>
@@ -40,7 +43,12 @@ const Header = props => {
               <SearchWrap>
                 <SearchContainer>
                   <SearchInput placeholder="Search" />
-                  <SearchIcon className="fas fa-search" />
+                  <SearchIcon
+                    onClick={() => props.showAlert({
+                      message: '검색기능 점검 중입니다.',
+                    })}
+                    className="fas fa-search"
+                  />
                 </SearchContainer>
               </SearchWrap>
               <SocialWrap>
@@ -330,7 +338,7 @@ const MainNav = styled.div`
 `;
 
 const NavList = styled.p`
-  ${props => props.selected && 'box-shadow: inset 0 -3px 0 0 #000'}
+  ${(props) => props.selected && 'box-shadow: inset 0 -3px 0 0 #000'}
 `;
 
 const NavBooking = styled.span`
@@ -417,4 +425,9 @@ const Logout = styled.span`
   cursor: pointer;
 `;
 
-export default withRouter(Header);
+const mapDispatchToProps = (dispatch) => ({
+  showAlert: (options) => dispatch(showAlert(options)),
+  closeAlert: () => dispatch(closeAlert()),
+});
+
+export default compose(withRouter, connect(null, mapDispatchToProps))(Header);
