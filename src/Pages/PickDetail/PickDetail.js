@@ -199,7 +199,6 @@ const PickDetail = memo((props) => {
     </>
   );
 });
-
 const PickDetailWrap = styled.div`
   margin-top: 103px;
   padding: 0 10px;
@@ -471,10 +470,6 @@ const PickDetailSidePicksTitleLine = styled.div`
   height: 2px;
   background-color: ${theme.BorderLightBlack};
 `;
-// const Map = styled.div`
-//   height: 450px;
-//   border: 2px solid red;
-// `;
 const PicksToMoveWrap = styled.div`
   margin: 0;
   padding: 15px 0;
