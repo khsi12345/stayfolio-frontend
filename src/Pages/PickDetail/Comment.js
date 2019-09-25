@@ -14,6 +14,9 @@ export default memo(() => {
       alert('로그인을 먼저 해주세요 :)');
     }
   };
+  // const addComment = () => {
+
+  // }
   console.log(text);
   return (
     <CommentWrap>
@@ -105,9 +108,9 @@ const CommentTextAreaBox = styled.textarea`
     outline: none;
   }
 `;
-const CommentTextArea = styled.form`
+// const CommentTextArea = styled.form`
 
-`;
+// `;
 const CommentButtonWrap = styled.div`
     position: relative;
     padding: 0;

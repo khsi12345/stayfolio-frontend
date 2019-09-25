@@ -16,12 +16,17 @@ import 'Style/custom.scss';
 
 const PickDetail = memo((props) => {
   // console.log(window.location.href);
-  console.log(props);
+  // console.log(props.history);
   const [getPickDetail, setPickDetail] = useState({});
+
   useEffect(() => {
     getApi(`http://10.58.5.100:8080/pick/${props.match.params.id}`, setPickDetail);
   }, [props.match.params.id]);
   console.log(getPickDetail);
+
+  const goBackHandler = () => {
+    props.history.goBack();
+  };
   return (
     <>
       {console.log(getPickDetail.data && getPickDetail.data.place_info.full_address)}
@@ -130,7 +135,7 @@ const PickDetail = memo((props) => {
                   </PickDetailMainContentsContainer>
                   <PicksToMoveWrap>
                     <PciksToMoveContainer>
-                      <PickDetailSideListPageMove href="/" alt="goback">
+                      <PickDetailSideListPageMove alt="goback" onClick={goBackHandler}>
                       리스트 페이지로 돌아가기
                       </PickDetailSideListPageMove>
                     </PciksToMoveContainer>
@@ -141,7 +146,7 @@ const PickDetail = memo((props) => {
                 <PickDetailSideBookingNow href="/" alt="booking">
                 BOOKING NOW
                 </PickDetailSideBookingNow>
-                <PickDetailSideListPageMove href="/" alt="goback" none>
+                <PickDetailSideListPageMove onClick={goBackHandler} alt="goback" none>
                 리스트 페이지로 돌아가기
                 </PickDetailSideListPageMove>
                 <PickDetailSidePicksWrap>
