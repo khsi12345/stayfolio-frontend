@@ -27,4 +27,5 @@ const SliderMain = memo((datas) => {
     </Carousel>
   );
 });
+
 export default SliderMain;

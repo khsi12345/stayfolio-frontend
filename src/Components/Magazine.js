@@ -5,18 +5,13 @@ import axios from 'axios';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import MagazineContainer from 'Components/MagazineContainer';
-import Data from 'Data/magazine.json';
+import { getMagazines } from 'Util/service';
 
-const getMagazines = async (url, setData) => {
-  const response = await axios.get(url);
-  setData(response.data.items);
-};
-
-const Magazine = () => {
+const Magazine = (props) => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    getMagazines('http://10.58.3.43:8000/magazines?offset=0', setItems);
-  }, []);
+    getMagazines(`http://10.58.1.146:8000/magazines?offset=0&limit=${props.limit}`, setItems);
+  }, [props.limit]);
 
   return (
     <MagazineWrap>
