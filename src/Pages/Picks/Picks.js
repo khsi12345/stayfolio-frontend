@@ -14,10 +14,10 @@ const Picks = memo(() => {
   const [getPick, setPick] = useState([]);
 
   useEffect(() => {
-    getPicks('http://10.58.5.78:8080/pick?offset=0&limit=12', setPick);
+    getPicks('http://10.58.5.100:8080/pick?offset=0&limit=12', setPick);
   }, []);
 
-  const LoadPciks = () => {
+  const LoadPicks = () => {
     if (getPick.data && getPick.data !== undefined) {
       return getPick.data.result.map((ele) => (
         <PickItem
@@ -39,7 +39,7 @@ const Picks = memo(() => {
 
   const pageChangeHandler = (id) => {
     // console.log(id * 12 - 1, id * 12 + 12);
-    getPicks(`http://10.58.5.78:8080/pick?offset=${(id - 1) * 12}&limit=${(id - 1) * 12 + 12}`, setPick);
+    getPicks(`http://10.58.5.100:8080/pick?offset=${(id - 1) * 12}&limit=${(id - 1) * 12 + 12}`, setPick);
   };
   return (
     <>
@@ -55,7 +55,7 @@ const Picks = memo(() => {
             </PickMainHeader>
             <PickMainContainer>
               <PickMain>
-                {LoadPciks()}
+                {LoadPicks()}
               </PickMain>
               <Pagination handleClick={pageChangeHandler} />
             </PickMainContainer>

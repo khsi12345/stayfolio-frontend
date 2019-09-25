@@ -89,3 +89,11 @@ $wide: 1200px;
 #endDate {
   cursor: pointer;
 }
+
+div .CalendarMonth_table {
+  margin-top: 6px;
+}
+
+.CalendarMonth_table .CalendarDay {
+  vertical-align: middle;
+}
