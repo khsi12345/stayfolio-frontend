@@ -96,7 +96,7 @@ const MagazineDetail = (props) => {
             </DetailDescriptionWrap>
           </DetailContainer>
         </LocationWrap>
-        <Map />
+        <Map latitude={data.place && data.place.latitude} longitude={data.place && data.place.longitude} />
         <AddressWrap>
           <DetailContainer>
             <DetailDividerWrap>

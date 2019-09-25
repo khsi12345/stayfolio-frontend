@@ -1,8 +1,8 @@
 import { SHOW_ALERT, CLOSE_ALERT } from 'Store/Actions/types';
 
-// const INITIAL_STATE = {
-//   showAlert: false,
-// };
+const INITIAL_STATE = {
+  showAlert: false,
+};
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {

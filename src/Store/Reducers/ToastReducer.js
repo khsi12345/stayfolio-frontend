@@ -1,4 +1,4 @@
-// import { SHOW_TOAST, HIDE_TOAST } from 'Store/Actions/types';
+import { SHOW_TOAST, HIDE_TOAST } from 'Store/Actions/types';
 
 const INITIAL_STATE = {
   showToast: false,
