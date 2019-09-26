@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { showToast, hideToast } from 'Store/Actions';
+import { getApi } from 'Util/service';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
 import DatePicker from 'Components/DatePicker';
+import { unitConversion } from 'Util/conversion';
 
 const Booking = (props) => {
+  // 데이터 api
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    getApi(`http://10.58.5.100:8080/pick/${props.match.params.id}`, setData);
+  }, [props.match.params.id]);
+  // styles[0]
+
   // 예약 날짜 포맷
   const [selectedDate, setDate] = useState({
     start: '',
@@ -53,11 +63,14 @@ const Booking = (props) => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{data.data && data.data.place_info.name} | WeRbnb</title>
+      </Helmet>
       <BookingHeaderWrap>
         <BookingCoverWrap>
           <BookingCoverLine>
             <BookingTitleWrap>
-              <BookingTitle>스테이소도</BookingTitle>
+              <BookingTitle>{data.data && data.data.place_info.name}</BookingTitle>
               <BookingLogoImage
                 src="https://www.stayfolio.com/system/pictures/images/000/029/365/original/3ef8fde2b765e5e55b521b020afa444fcb6e8e4e.png?1539048665"
                 alt="logo"
@@ -69,9 +82,9 @@ const Booking = (props) => {
       <BookingContainer>
         <RoomContainer>
           <RoomTitleImage src="https://www.stayfolio.com/booking/images/our-rooms-title.png" />
-          <RoomSubtitle>제주 동쪽 끝, 우리만의 작은 섬</RoomSubtitle>
+          <RoomSubtitle>{data.data && data.data.subtitle}</RoomSubtitle>
           <RoomDetail>
-            <RoomDetailHeader>스테이 소도</RoomDetailHeader>
+            <RoomDetailHeader>{data.data && data.data.place_info.name}</RoomDetailHeader>
           </RoomDetail>
           <RoomDetailContainer>
             <RoomReserveWrap>
@@ -111,19 +124,16 @@ const Booking = (props) => {
               </BookingInputWrap>
             </RoomReserveWrap>
             <RoomDetailInfoWrap>
-              <InfoTitle>스테이 소도</InfoTitle>
-              <InfoType>기본형</InfoType>
+              <InfoTitle>{data.data && data.data.place_info.name}</InfoTitle>
+              <InfoType>{data.data && data.data.place_info.room_info.room_type}</InfoType>
               <InfoDescription>
-                STAY SODO 는 크게 두 동의 집, 바다를 바라보는 수영장으로
-                이루어져 있습니다. A동은 거실과 주방, 침실로 나뉘며, 바로 옆의
-                B동은 2인을 위한 별도의 침실입니다. 노천탕, 바베큐 데크가
-                있습니다.
+                {data.data && data.data.description.substring(0, 160)}..
               </InfoDescription>
               <InfoRoomInfo>
-                체크인 16:00 / 체크아웃 11:00 <br /> 기준 인원 1 / 최대 인원 6{' '}
+                체크인 {data.data && data.data.place_info.check_in} / 체크아웃 {data.data && data.data.place_info.check_out} <br /> 기준 인원 {data.data && data.data.place_info.persons_min} / 최대 인원 {data.data && data.data.place_info.persons_max}{' '}
                 <br /> 객실면적 80.16m2 <br /> 퀸사이즈 베드2추가침구
               </InfoRoomInfo>
-              <InfoPrice>₩450,000~</InfoPrice>
+              <InfoPrice>₩{data.data && unitConversion(data.data.place_info.price_min)}~</InfoPrice>
               <BookingButton onClick={() => props.showToast({
                 name,
                 startDate: selectedDate.formatStart,
@@ -354,7 +364,7 @@ const InfoPrice = styled.div`
   line-height: 1.42;
   font-weight: 600;
   text-align: center;
-  border-bottom: 3px solid ${theme.BorderBlack};
+  border-bottom: 1px solid ${theme.BorderGray};
 `;
 
 const BookingButton = styled.div`

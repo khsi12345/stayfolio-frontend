@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
@@ -8,6 +9,9 @@ import SignupImg from 'Images/Signup.png';
 
 const Signup = () => (
   <Layout>
+    <Helmet>
+      <title>Signup | WeRbnb</title>
+    </Helmet>
     <SignupWrap>
       <SignupContainer>
         <SignupHeader>

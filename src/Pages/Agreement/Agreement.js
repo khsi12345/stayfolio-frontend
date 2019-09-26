@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { device } from 'Components/Device';
@@ -37,7 +38,7 @@ const Agreement = (props) => {
     if (email && name && password) {
       axios({
         method: 'post',
-        url: 'http://10.58.5.189:8000/account/signup',
+        url: 'http://10.58.5.100:8080/account/signup',
         data: {
           email,
           name,
@@ -57,6 +58,9 @@ const Agreement = (props) => {
   };
   return (
     <Layout>
+      <Helmet>
+        <title>Signup | WeRbnb</title>
+      </Helmet>
       <SignupWrap>
         <SignupContainer>
           <SignupHeader>

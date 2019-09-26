@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { device } from 'Components/Device';
@@ -29,7 +30,7 @@ const Login = (props) => {
     if (email && password) {
       axios({
         method: 'post',
-        url: 'http://10.58.5.189:8000/account/login',
+        url: 'http://10.58.5.100:8080/account/login',
         data: {
           email,
           password,
@@ -44,8 +45,12 @@ const Login = (props) => {
       });
     }
   };
+
   return (
     <Layout>
+      <Helmet>
+        <title>Login | WeRbnb</title>
+      </Helmet>
       <LoginWrap>
         <LoginContainer>
           <LoginHeader>

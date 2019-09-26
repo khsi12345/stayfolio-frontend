@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { getMagazineDetail } from 'Util/service';
+import Helmet from 'react-helmet';
+import { getMagazines } from 'Util/service';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
@@ -8,14 +9,17 @@ import Map from 'Components/Map';
 
 const MagazineDetail = (props) => {
   const [data, setData] = useState([]);
+
   useEffect(() => {
-    getMagazineDetail(`http://10.58.1.146:8000/magazines/${props.match.params.id}`, setData);
+    getMagazines(`http://10.58.3.90:8080/magazines/${props.match.params.id}`).then((res) => {
+      setData(res.data.MAGAZINE);
+    });
   }, [props.match.params.id]);
-  // const {
-  //   title, title_image_url, title_text_image_url, identifier, intro, footer_image_url, contents,
-  // } = data;
   return (
     <Layout>
+      <Helmet>
+        <title>{`${data.identifier_kr} | WeRbnb`}</title>
+      </Helmet>
       <MagazineDetailWrap>
         <MainTitle style={{ backgroundImage: `url(${data.title_image_url})` }}>
           <MainImage src={data.title_text_image_url} />
