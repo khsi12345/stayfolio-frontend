@@ -9,9 +9,12 @@ import { getMagazines } from 'Util/service';
 
 const Magazine = (props) => {
   const [items, setItems] = useState([]);
+
   useEffect(() => {
-    getMagazines(`http://10.58.1.146:8000/magazines?offset=0&limit=${props.limit}`, setItems);
-  }, [props.limit]);
+    getMagazines(`http://10.58.3.90:8080/magazines?offset=${props.offset}&limit=${props.limit}`).then((res) => {
+      setItems(res.data.items);
+    });
+  }, [props.limit, props.offset]);
 
   return (
     <MagazineWrap>

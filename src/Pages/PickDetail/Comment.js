@@ -55,7 +55,7 @@ export default memo((props) => {
     setText('');
   };
   const delComment = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
   };
   const LoadCommentItems = () => {
     if (comment.data) {

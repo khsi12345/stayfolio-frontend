@@ -11,25 +11,12 @@ import { getBrowserWidth } from 'Util/resize';
 import theme from 'Components/Theme';
 
 const Paginatioin = memo((props) => {
-  // console.log('함수 컴포넌트 시작!');
-  // console.log(props);
-  // console.log(getBrowserWidth())
-  // const width = useMemo( () => getBrowserWidth(window.innerWidth), []);
-  // console.log(width);
   const [browserWidth, setBrowserWidth] = useState(window.innerWidth);
   const btnRef = useRef();
-  // console.log(browserWidth);
-  // console.log('함수본체');
   useEffect(() => {
-    // console.log('Effect');
     getBrowserWidth(setBrowserWidth);
   }, []);
-  // console.log('함수끝');
-  const currentPage = () => {
-    // console.log('22222', e.target.innerHTML);
-    // console.log('~~~~~~', btnRef.current.innerHTML);
-    // <PaginatioinNumberBoxContainer {e.target.innerHTML === btnRef.current.innerHTML}
-  };
+
   return (
     <PaginatioinWrap>
       <PaginatioinContainer>
@@ -45,63 +32,56 @@ const Paginatioin = memo((props) => {
               {/* {pageBtn()} */}
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={(event) => {
+                onClick={() => {
                   props.handleClick(1);
-                  currentPage(event);
                 }}
               >
                 {1}
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={(event) => {
+                onClick={() => {
                   props.handleClick(2);
-                  currentPage(event);
                 }}
               >
                 {2}
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={(event) => {
+                onClick={() => {
                   props.handleClick(3);
-                  currentPage(event);
                 }}
               >
                 {3}
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={(event) => {
+                onClick={() => {
                   props.handleClick(4);
-                  currentPage(event);
                 }}
               >
                 {4}
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={(event) => {
+                onClick={() => {
                   props.handleClick(5);
-                  currentPage(event);
                 }}
               >
                 {5}
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={(event) => {
+                onClick={() => {
                   props.handleClick(6);
-                  currentPage(event);
                 }}
               >
                 {6}
               </PaginatioinNumberBoxContainer>
               <PaginatioinNumberBoxContainer
                 ref={btnRef}
-                onClick={(event) => {
+                onClick={() => {
                   props.handleClick(7);
-                  currentPage(event);
                 }}
               >
                 {7}

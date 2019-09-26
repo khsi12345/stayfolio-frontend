@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { showAlert, closeAlert } from 'Store/Actions';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
@@ -43,20 +45,21 @@ const Agreement = (props) => {
           name,
           password,
         },
-      }).then((res) => {
-        if (res.status === 200) {
-          alert('회원가입을 축하합니다');
-          props.history.push('/login');
-        } else {
-          alert('회원가입에 실패했습니다');
-        }
+      }).then(() => {
+        props.showAlert({ message: '가입을 축하합니다! 로그인 해주세요 :)' });
+        props.history.push('/login');
+      }).catch(() => {
+        props.showAlert({ message: '입력 정보 양식이 틀렸습니다. 확인 후 다시 시도해주세요.' });
       });
     } else {
-      alert('입력 정보를 확인해주세요!');
+      props.showAlert({ message: '입력 정보를 확인해주세요!' });
     }
   };
   return (
     <Layout>
+      <Helmet>
+        <title>Signup | WeRbnb</title>
+      </Helmet>
       <SignupWrap>
         <SignupContainer>
           <SignupHeader>
@@ -173,4 +176,9 @@ const SocialButton = styled.div`
 
 const SignupButton = SocialButton.withComponent('div');
 
-export default withRouter(Agreement);
+const mapDispatchToProps = (dispatch) => ({
+  showAlert: (options) => dispatch(showAlert(options)),
+  closeAlert: () => dispatch(closeAlert()),
+});
+
+export default connect(null, mapDispatchToProps)(Agreement);

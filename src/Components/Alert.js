@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import { showAlert, closeAlert } from 'Store/Actions';
 
 
-const Alert = (props) => {
-  console.log('alert props!', props);
-  return (
+const Alert = (props) => 
+  // console.log('alert props!', props);
+   (
     <AlertWrap>
       <AlertBox>
         {props.options.message}
         <CloseBtn onClick={props.closeAlert}>확인</CloseBtn>
       </AlertBox>
     </AlertWrap>
-  );
-};
+  )
+;
 
 const AlertWrap = styled.div`
   display: flex;

@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import Layout from 'Components/Layout';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
 export default () => (
   <Layout>
+    <Helmet>
+      <title>About | WeRbnb</title>
+    </Helmet>
     <div>
       <AboutWrap>
         <AboutContainer>

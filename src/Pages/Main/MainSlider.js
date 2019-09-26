@@ -12,6 +12,7 @@ import SliderImg05 from 'Images/Slider/slider-05.jpg';
 
 const settings = {
   dots: true,
+  arrows: false,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
@@ -100,11 +101,11 @@ const SliderContainer = styled.div`
 
 const SliderContents = styled.div`
   height: 400px;
-  ${props => props.id === '1' && `background-image: url(${SliderImg01})`};
-  ${props => props.id === '2' && `background-image: url(${SliderImg02})`};
-  ${props => props.id === '3' && `background-image: url(${SliderImg03})`};
-  ${props => props.id === '4' && `background-image: url(${SliderImg04})`};
-  ${props => props.id === '5' && `background-image: url(${SliderImg05})`};
+  ${(props) => props.id === '1' && `background-image: url(${SliderImg01})`};
+  ${(props) => props.id === '2' && `background-image: url(${SliderImg02})`};
+  ${(props) => props.id === '3' && `background-image: url(${SliderImg03})`};
+  ${(props) => props.id === '4' && `background-image: url(${SliderImg04})`};
+  ${(props) => props.id === '5' && `background-image: url(${SliderImg05})`};
   background-size: cover;
   background-repeat: no-repeat;
 `;
