@@ -10,9 +10,9 @@ import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
 
-const Picks = memo(() => {
+const Picks = memo((props) => {
   const [getPick, setPick] = useState([]);
-
+  console.log(props);
   useEffect(() => {
     getApi('http://10.58.5.100:8080/pick?offset=0&limit=12', setPick);
   }, []);

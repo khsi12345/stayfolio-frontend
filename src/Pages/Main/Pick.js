@@ -8,7 +8,7 @@ import { getApi } from 'Util/service';
 const Pick = memo(() => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    getApi('http://10.58.5.78:8080/pick?offset=0&limit=12', setItems);
+    getApi('http://10.58.5.100:8080/pick?offset=0&limit=12', setItems);
   }, []);
   return (
     <PickWrap>

@@ -37,7 +37,7 @@ const Agreement = (props) => {
     if (email && name && password) {
       axios({
         method: 'post',
-        url: 'http://10.58.5.189:8000/account/signup',
+        url: 'http://10.58.5.100:8080/account/signup',
         data: {
           email,
           name,
