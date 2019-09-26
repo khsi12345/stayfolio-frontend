@@ -30,36 +30,40 @@ export default memo((props) => {
     }
   };
   const addComment = () => {
-    axios.post(`http://10.58.5.100:8080/pick_comment/${props.id}`,
-      { content: text },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: getToken,
-        },
-      }).then((response) => {
+    // axios.post(`http://10.58.5.100:8080/pick_comment/${props.id}`,
+    //   { content: text },
+    //   {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       Authorization: getToken,
+    //     },
+    //   }).then((response) => {
+    //   if (response.status === 200) {
+    //     getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
+    //     // console.log(comment.data.data);
+    //   }
+    // });
+
+    const commentData = commentPostApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, getToken, text);
+    commentData.then((response) => {
       if (response.status === 200) {
         getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
-        // console.log(comment.data.data);
       }
     });
-    // const result = await commentData.json();
-    // console.log(result);
-    // const commentData = commentPostApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, getToken, text);
-    // console.log(commentData);
+    commentData.catch((error) => console.log(error));
+
     setText('');
-    // setText(commentText.current.value);
-    // console.log('에드코멘');
   };
   const delComment = (e) => {
     console.log(e.target);
   };
   const LoadCommentItems = () => {
     if (comment.data) {
-      console.log(comment);
+      // console.log(comment);
       return comment.data.data.map((ele, index) => (
         <CommentItem
           delComment={delComment}
+          key={ele.comment_id}
           id={ele.comment_id}
           userName={ele.user_email}
           content={ele.content}

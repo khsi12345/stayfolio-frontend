@@ -5,30 +5,17 @@ export const getApi = async (url, setData) => {
   setData(response);
 };
 
-// export const commentPostApi = async (url, key, text) => {
-// await axios.post(url,
-//   { content: text },
-//   {
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: key,
-//     },
-
-//   });
-// const result = data;
-// return data;
-// return data;
-// console.log(data);
-// await axios({
-//   method: 'POST',
-//   url,
-//   headers: {
-//     'Content-Type': 'application/json',
-//     Authorization: key,
-//   },
-//   data: { content: text },
-// }).then((response) => response);
-// };
+export const commentPostApi = async (url, key, text) => {
+  const result = await axios.post(url,
+    { content: text },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: key,
+      },
+    });
+  return result;
+};
 
 // 매거진
 export const getMagazines = async (url, setData) => {

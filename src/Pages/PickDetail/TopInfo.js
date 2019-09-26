@@ -26,7 +26,7 @@ export default memo((props) => {
             {`${props.info && props.info.persons_min} ~ ${props.info && props.info.persons_max} 명`}
           </PickDetailMainContentsDescriptionRightTop>
           <PickDetailMainContentsDescriptionRightTop half>
-            <PickDetailMainContentsDescriptionRightIcon className="fas fa-bed" />
+            <PickDetailMainContentsDescriptionRightIcon className="fas fa-bed" border />
             {`${props.info && props.info.room_capacity} 객실`}
           </PickDetailMainContentsDescriptionRightTop>
         </PickDetailMainContentsDescriptionRightTopBox>
@@ -44,7 +44,7 @@ export default memo((props) => {
             {props.info && props.info.city}
           </PickDetailMainContentsDescriptionRightTop>
           <PickDetailMainContentsDescriptionRightTop half>
-            <PickDetailMainContentsDescriptionRightIcon className="fas fa-eye" />
+            <PickDetailMainContentsDescriptionRightIcon className="fas fa-eye" border />
             {props.info && props.info.styles.toString()}
           </PickDetailMainContentsDescriptionRightTop>
         </PickDetailMainContentsDescriptionRightTopBox>
@@ -87,5 +87,7 @@ const PickDetailMainContentsDescriptionRightTop = styled.div`
 `;
 const PickDetailMainContentsDescriptionRightIcon = styled.i`
   margin-right: 5px;
+  padding-left: ${(props) => (props.border ? '5px' : '0')};
+  border-left:${(props) => (props.border ? '1px solid #ebebeb' : 'none')};
   color: ${(props) => (props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`)};
 `;
