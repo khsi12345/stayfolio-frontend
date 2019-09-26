@@ -122,8 +122,12 @@ const Header = (props) => {
                   PICK
                 </NavList>
               </Link>
-              <Link to="/">
-                <NavBooking>BOOKING</NavBooking>
+              <Link>
+                <NavBooking onClick={() => {
+                  props.showAlert({ message: '불편을 드려 죄송합니다. 기능 점검 중입니다.' });
+                }}
+                >BOOKING
+                </NavBooking>
               </Link>
             </MainNav>
             <BarsNav>

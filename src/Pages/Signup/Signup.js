@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { showAlert, closeAlert } from 'Store/Actions';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
 import SignupImg from 'Images/Signup.png';
 
-const Signup = () => (
+const Signup = (props) => (
   <Layout>
     <Helmet>
       <title>Signup | WeRbnb</title>
@@ -18,8 +19,16 @@ const Signup = () => (
           <SignupImage src={SignupImg} />
         </SignupHeader>
         <SocialWrap>
-          <SignupFacebook>Signup with Facebook</SignupFacebook>
-          <SignupNaver>Signup with Naver</SignupNaver>
+          <SignupFacebook onClick={() => {
+            props.showAlert({ message: '불편을 드려 죄송합니다. 기능 점검 중입니다.' });
+          }}
+          >Signup with Facebook
+          </SignupFacebook>
+          <SignupNaver onClick={() => {
+            props.showAlert({ message: '불편을 드려 죄송합니다. 기능 점검 중입니다.' });
+          }}
+          >Signup with Naver
+          </SignupNaver>
           <SignupEmail href="/agreement">Signup with Email</SignupEmail>
         </SocialWrap>
       </SignupContainer>
@@ -95,4 +104,9 @@ const SignupEmail = styled(SocialButton.withComponent('a'))`
   background-color: ${theme.MainBlack};
 `;
 
-export default Signup;
+const mapDispatchToProps = (dispatch) => ({
+  showAlert: (options) => dispatch(showAlert(options)),
+  closeAlert: () => dispatch(closeAlert()),
+});
+
+export default connect(null, mapDispatchToProps)(Signup);

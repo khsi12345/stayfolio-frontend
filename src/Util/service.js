@@ -32,9 +32,3 @@ export const getApi = async (url, setData) => {
 
 // 매거진
 export const getMagazines = async (url) => await axios.get(url);
-
-// 매거진 디테일
-export const getMagazineDetail = async (url, setData) => {
-  const response = await axios.get(url);
-  setData(response.data.MAGAZINE);
-};

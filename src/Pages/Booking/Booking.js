@@ -64,7 +64,7 @@ const Booking = (props) => {
   return (
     <Layout>
       <Helmet>
-        <title>{data.data && data.data.place_info.name} | WeRbnb</title>
+        <title>{ `${data.data && data.data.place_info.name} | WeRbnb `}</title>
       </Helmet>
       <BookingHeaderWrap>
         <BookingCoverWrap>
