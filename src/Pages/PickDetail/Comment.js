@@ -52,11 +52,11 @@ export default memo((props) => {
     // console.log('에드코멘');
   };
   const delComment = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
   };
   const LoadCommentItems = () => {
     if (comment.data) {
-      console.log(comment);
+      // console.log(comment);
       return comment.data.data.map((ele, index) => (
         <CommentItem
           delComment={delComment}

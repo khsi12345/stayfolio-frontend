@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { showAlert, closeAlert } from 'Store/Actions';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
@@ -27,25 +29,25 @@ const Login = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (email && password) {
-      axios({
-        method: 'post',
-        url: 'http://10.58.5.100:8080/account/login',
-        data: {
-          email,
-          password,
-        },
+      axios.post('http://10.58.5.100:8080/account/login', {
+        email,
+        password,
       }).then((res) => {
-        if (res.status === 200) {
-          localStorage.setItem('stayfolio_token', res.data.access_token);
-          props.history.push('/');
-        } else {
-          alert('아이디 혹은 비밀번호를 확인해주세요.');
-        }
+        localStorage.setItem('stayfolio_token', res.data.access_token);
+        props.history.push('/');
+      }).catch((err) => {
+        props.showAlert({ message: '이메일 혹은 비밀번호를 확인해주세요!' });
       });
+    } else {
+      props.showAlert({ message: '이메일과 비밀번호는 꼭 입력해야합니다.' });
     }
   };
+
   return (
     <Layout>
+      <Helmet>
+        <title>Login | WeRbnb</title>
+      </Helmet>
       <LoginWrap>
         <LoginContainer>
           <LoginHeader>
@@ -76,7 +78,11 @@ const Login = (props) => {
           </EmailLoginWrap>
           <LoginFooterWrap>
             <FooterButton href="/signup">Sign up Now!</FooterButton>
-            <FooterButton href="/">Forgot Password?</FooterButton>
+            <FooterButton onClick={() => {
+              props.showAlert({ message: '불편을 드려 죄송합니다. 기능 점검 중입니다.' });
+            }}
+            >Forgot Password?
+            </FooterButton>
           </LoginFooterWrap>
         </LoginContainer>
       </LoginWrap>
@@ -198,6 +204,7 @@ const FooterButton = styled.a`
   height: 40px;
   font-weight: 600;
   text-align: center;
+  cursor: pointer;
   color: ${theme.FontGray};
   border: 1px solid ${theme.BorderDarkGray};
 
@@ -208,4 +215,9 @@ const FooterButton = styled.a`
   }
 `;
 
-export default withRouter(Login);
+const mapDispatchToProps = (dispatch) => ({
+  showAlert: (options) => dispatch(showAlert(options)),
+  closeAlert: () => dispatch(closeAlert()),
+});
+
+export default connect(null, mapDispatchToProps)(Login);

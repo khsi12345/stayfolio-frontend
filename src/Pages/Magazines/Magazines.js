@@ -1,24 +1,27 @@
+/*eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import { device } from 'Components/Device';
 import Layout from 'Components/Layout';
 import Magazine from 'Components/Magazine';
 import Pagination from 'Components/Pagination';
-import { getMagazines } from 'Util/service';
-
 
 const Magazines = () => {
-  const [items, setItems] = useState([]);
+  const [nextId, setId] = useState(0);
+
   const handlePage = (id) => {
-    getMagazines(`http://10.58.1.146:8000/magazines?offset=${(id - 1) * 5}&limit=${(id - 1) * 5 + 5}`, setItems);
+    setId((id - 1) * 5);
   };
-  useEffect(() => {
-    getMagazines('http://10.58.1.146:8000/magazines?offset=0', setItems);
-  }, []);
+
   return (
     <Layout>
+      <Helmet>
+        <title>Magazines | WeRbnb</title>
+      </Helmet>
       <MagazinesWrap>
-        <Magazine limit={5} />
+        <Magazine offset={nextId} limit={nextId+5} />
       </MagazinesWrap>
       <Pagination handleClick={handlePage} />
     </Layout>
