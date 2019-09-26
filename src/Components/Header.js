@@ -24,7 +24,7 @@ const Header = (props) => {
     setBars(false);
     props.showAlert({ message: '로그아웃 되었습니다!' });
   };
-  console.log('header props!', props);
+  // console.log('header props!', props);
   return (
     <>
       <HeaderWrap>
