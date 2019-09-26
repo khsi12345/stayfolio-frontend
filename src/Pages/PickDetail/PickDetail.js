@@ -22,7 +22,7 @@ const PickDetail = memo((props) => {
   useEffect(() => {
     getApi(`http://10.58.5.100:8080/pick/${props.match.params.id}`, setPickDetail);
   }, [props.match.params.id]);
-  console.log(getPickDetail);
+  // console.log(getPickDetail);
 
   const goBackHandler = () => {
     props.history.goBack();
@@ -130,7 +130,7 @@ const PickDetail = memo((props) => {
                           longitude={getPickDetail.data && getPickDetail.data.place_info.longitude}
                         />
                       </div>
-                      <Comment />
+                      <Comment id={props.match.params.id} />
                     </PickDetailMainContentsDescriptionWrap>
                   </PickDetailMainContentsContainer>
                   <PicksToMoveWrap>
