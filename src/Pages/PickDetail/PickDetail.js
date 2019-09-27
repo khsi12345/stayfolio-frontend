@@ -33,12 +33,14 @@ const PickDetail = memo((props) => {
     console.log(props);
     props.history.push(`/picks/${props.match.params.id}`);
   };
+  console.log(get.data && get.data.images[0]);
   return (
     <>
       {console.log(get.data && get.data.place_info.full_address)}
       <Layout>
         <Helmet>
           <title>{`${get.data && get.data.identifier} | WeRbnb`}</title>
+
         </Helmet>
         <Wrap>
           <MainWrap>
