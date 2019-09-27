@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { showToast, hideToast } from 'Store/Actions';
+import {
+  showToast, hideToast, showAlert, closeAlert,
+} from 'Store/Actions';
 import { getApi } from 'Util/service';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
@@ -17,7 +20,6 @@ const Booking = (props) => {
   useEffect(() => {
     getApi(`http://10.58.5.100:8080/pick/${props.match.params.id}`, setData);
   }, [props.match.params.id]);
-  // styles[0]
 
   // 예약 날짜 포맷
   const [selectedDate, setDate] = useState({
@@ -60,6 +62,43 @@ const Booking = (props) => {
     setMessage(value);
   };
 
+  // 토큰
+  const [token, setToken] = useState(localStorage.getItem('stayfolio_token'));
+
+  // 예약하기 포스트 이벤트
+  console.log(selectedDate);
+  const handleBooking = () => {
+    if (selectedDate.formatStart !== '' && selectedDate.formatEnd !== '' && name !== '' && number !== '' && message !== '') {
+      axios({
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token,
+        },
+        url: 'http://10.58.4.100:8000/booking',
+        data: {
+          bill_total: data.data.place_info.price_min,
+          check_in: selectedDate.formatStart,
+          check_out: selectedDate.formatEnd,
+          id: props.match.params.id,
+          phone_number: number,
+          special_request: message,
+        },
+      }).then(() => {
+        props.showToast({
+          name,
+          startDate: selectedDate.formatStart,
+          endDate: selectedDate.formatEnd,
+          message,
+          number,
+        });
+      }).catch((res) => {
+        props.showAlert({ message: '만실입니다. 다른 숙소를 찾아봐주세요!' });
+      });
+    } else {
+      props.showAlert({ message: '입력 정보 양식이 틀렸습니다. 확인 후 다시 시도해주세요.' });
+    }
+  };
 
   return (
     <Layout>
@@ -134,14 +173,7 @@ const Booking = (props) => {
                 <br /> 객실면적 80.16m2 <br /> 퀸사이즈 베드2추가침구
               </InfoRoomInfo>
               <InfoPrice>₩{data.data && unitConversion(data.data.place_info.price_min)}~</InfoPrice>
-              <BookingButton onClick={() => props.showToast({
-                name,
-                startDate: selectedDate.formatStart,
-                endDate: selectedDate.formatEnd,
-                message,
-                number,
-              })}
-              >Booking
+              <BookingButton onClick={handleBooking}>Booking
               </BookingButton>
             </RoomDetailInfoWrap>
           </RoomDetailContainer>
@@ -387,6 +419,8 @@ const BookingButton = styled.div`
 const mapDispatchToProps = (dispatch) => ({
   showToast: (options) => dispatch(showToast(options)),
   hideToast: () => dispatch(hideToast()),
+  showAlert: (options) => dispatch(showAlert(options)),
+  closeAlert: () => dispatch(closeAlert()),
 });
 
 export default connect(null, mapDispatchToProps)(Booking);
