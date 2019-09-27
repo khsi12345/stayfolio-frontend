@@ -5,6 +5,7 @@ import Layout from 'Components/Layout';
 import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
+// temp
 export default () => (
   <Layout>
     <Helmet>
