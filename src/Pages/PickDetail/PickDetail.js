@@ -60,6 +60,7 @@ const PickDetail = memo((props) => {
                           <div
                             className="fb-share-button"
                             data-href={`http://52.79.222.164:3000/pick_detail/${props.match.params.id}}`}
+
                             data-layout="button_count"
                             data-size="small"
                           >

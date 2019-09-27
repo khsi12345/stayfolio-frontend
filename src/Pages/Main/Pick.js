@@ -8,7 +8,7 @@ import { getApi } from 'Util/service';
 const Pick = memo(() => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    getApi('http://10.58.5.100:8080/pick?offset=0&limit=12', setItems);
+    getApi('http://54.180.30.126:8000/pick?offset=0&limit=12', setItems);
   }, []);
   return (
     <PickWrap>
@@ -43,15 +43,9 @@ const PickWrap = styled.div`
   margin: 30px auto 15px;
   padding: 0 15px 30px;
   min-height: 934px;
-  @media ${device.tablet} {
-    width: 750px;
-  }
-  @media ${device.desktop} {
-    width: 970px;
-  }
-  @media ${device.wide} {
-    width: 1170px;
-  }
+  width: 100%;
+  max-width: 1170px;
+  padding: 0 15px;
 `;
 
 const PickMainHeader = styled.h2`

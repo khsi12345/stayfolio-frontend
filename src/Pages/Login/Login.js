@@ -30,7 +30,7 @@ const Login = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (email && password) {
-      axios.post('http://10.58.5.100:8080/account/login', {
+      axios.post('http://54.180.30.126:8000/account/login', {
         email,
         password,
       }).then((res) => {
@@ -47,7 +47,7 @@ const Login = (props) => {
 
   const responseFacebook = (res) => {
     if (res) {
-      axios.post('http://10.58.5.100:8080/account/FacebookAuth', {
+      axios.post('http://54.180.30.126:8000/account/FacebookAuth', {
         name: res.name,
         email: res.email,
         accessToken: res.accessToken,

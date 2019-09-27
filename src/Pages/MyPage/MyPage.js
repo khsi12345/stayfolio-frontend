@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import { getApi } from 'Util/service';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
+
+// const [info, setInfo] = useState([]);
+// useEffect(() => {
+//   getApi('http://10.58.2.143:8000/booking', setInfo);
+// }, []);
 
 export default () => (
   <Layout>
@@ -13,9 +19,9 @@ export default () => (
     <MyPageWrap>
       <MyPageContainer>
         <Title>
-          MYPAGE
+            MYPAGE
           <TitleDsc>
-            예약정보와 구매정보를 확인하세요!
+              예약정보와 구매정보를 확인하세요!
           </TitleDsc>
         </Title>
         <NoticeWrap>
@@ -23,7 +29,7 @@ export default () => (
             <NoticeContainer>
               <NoticeTitleWrap>
                 <NoticeTitle>
-                  NOTICE
+                    NOTICE
                 </NoticeTitle>
               </NoticeTitleWrap>
               <NoticeBody>
@@ -64,7 +70,6 @@ export default () => (
     </MyPageWrap>
   </Layout>
 );
-
 const MyPageWrap = styled.div`
   height: 100%;
   margin: 0 auto;
