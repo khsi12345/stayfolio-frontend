@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import axios from 'axios';
+import FacebookLogin from 'react-facebook-login';
 import { connect } from 'react-redux';
 import { showAlert, closeAlert } from 'Store/Actions';
 import { device } from 'Components/Device';
@@ -34,12 +35,29 @@ const Login = (props) => {
         password,
       }).then((res) => {
         localStorage.setItem('stayfolio_token', res.data.access_token);
+        props.showAlert({ message: '로그인 성공!' });
         props.history.push('/');
       }).catch((err) => {
         props.showAlert({ message: '이메일 혹은 비밀번호를 확인해주세요!' });
       });
     } else {
       props.showAlert({ message: '이메일과 비밀번호는 꼭 입력해야합니다.' });
+    }
+  };
+
+  const responseFacebook = (res) => {
+    if (res) {
+      axios.post('http://10.58.5.100:8080/account/FacebookAuth', {
+        name: res.name,
+        email: res.email,
+        accessToken: res.accessToken,
+      }).then((res) => {
+        localStorage.setItem('stayfolio_token', res.data.access_token);
+        props.showAlert({ message: '페이스북 로그인 성공!' });
+        props.history.push('/');
+      });
+    } else {
+      props.showAlert({ message: '로그인에 실패했습니다. 다시 시도해주세요.' });
     }
   };
 
@@ -54,8 +72,18 @@ const Login = (props) => {
             <LoginImage src={LoginImg} />
           </LoginHeader>
           <SocialWrap>
-            <SocialFacebook>Login with Facebook</SocialFacebook>
-            <SocialNaver>Login with Naver</SocialNaver>
+            <FacebookLogin
+              appId="2383738828621764"
+              fields="name,email,picture"
+              callback={responseFacebook}
+              cssClass="my-facebook-button-class"
+              icon="fa-facebook"
+            />
+            <SocialNaver onClick={() => {
+              props.showAlert({ message: '불편을 드려 죄송합니다. 기능 점검 중입니다.' });
+            }}
+            >Login with Naver
+            </SocialNaver>
           </SocialWrap>
           <EmailLoginWrap>
             <LoginInputWrap>
@@ -144,10 +172,6 @@ const SocialButton = styled.div`
   line-height: 45px;
   text-align: center;
   cursor: pointer;
-`;
-
-const SocialFacebook = styled(SocialButton.withComponent('a'))`
-  background-color: #3868b9;
 `;
 
 const SocialNaver = styled(SocialButton.withComponent('a'))`
