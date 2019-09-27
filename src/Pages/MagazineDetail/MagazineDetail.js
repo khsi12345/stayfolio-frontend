@@ -10,7 +10,7 @@ import Map from 'Components/Map';
 const MagazineDetail = (props) => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    getMagazines(`http://10.58.3.90:8080/magazines/${props.match.params.id}`).then((res) => {
+    getMagazines(`http://54.180.30.126:8000/magazines/${props.match.params.id}`).then((res) => {
       setData(res.data.MAGAZINE);
     });
   }, [props.match.params.id]);

@@ -59,13 +59,13 @@ const PickDetail = memo((props) => {
                           {/* <MainContentsHeaderNameIcons> */}
                           <div
                             className="fb-share-button"
-                            data-href="https://www.naver.com"
+                            data-href={`https://13.125.229.229/pick_detail/${props.match.params.id}`}
                             data-layout="button_count"
                             data-size="small"
                           >
                             <a
                               target="_blank"
-                              href="https://www.naver.com"
+                              href={`https://13.125.229.229/pick_detail/${props.match.params.id}`}
                               className="fb-xfbml-parse-ignore"
                             >공유하기
                             </a>

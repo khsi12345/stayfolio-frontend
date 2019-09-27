@@ -30,20 +30,6 @@ export default memo((props) => {
     }
   };
   const addComment = () => {
-    // axios.post(`http://10.58.5.100:8080/pick_comment/${props.id}`,
-    //   { content: text },
-    //   {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       Authorization: getToken,
-    //     },
-    //   }).then((response) => {
-    //   if (response.status === 200) {
-    //     getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
-    //     // console.log(comment.data.data);
-    //   }
-    // });
-
     const commentData = commentPostApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, getToken, text);
     commentData.then((response) => {
       if (response.status === 200) {
