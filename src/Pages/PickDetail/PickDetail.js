@@ -73,7 +73,6 @@ const PickDetail = memo((props) => {
                             >공유하기
                             </a>
                           </div>
-
                           {/* <MainContentsHeaderNameIcon /> */}
                           {/* </MainContentsHeaderNameIcons> */}
                         </MainContentsHeaderName>
