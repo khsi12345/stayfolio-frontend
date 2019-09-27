@@ -18,7 +18,7 @@ export default memo((props) => {
   //   setToken(localStorage.getItem('stayfolio_token'));
   // }, []);
   useEffect(() => {
-    getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
+    getApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, setComment);
   }, [props.id]);
 
   const textChangeHandle = (e) => {
@@ -30,7 +30,7 @@ export default memo((props) => {
     }
   };
   const addComment = () => {
-    axios.post(`http://10.58.5.100:8080/pick_comment/${props.id}`,
+    axios.post(`http://54.180.30.126:8000/pick_comment/${props.id}`,
       { content: text },
       {
         headers: {
@@ -39,7 +39,7 @@ export default memo((props) => {
         },
       }).then((response) => {
       if (response.status === 200) {
-        getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
+        getApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, setComment);
         // console.log(comment.data.data);
       }
     });

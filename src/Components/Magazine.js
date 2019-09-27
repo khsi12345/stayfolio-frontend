@@ -11,7 +11,7 @@ const Magazine = (props) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    getMagazines(`http://10.58.3.90:8080/magazines?offset=${props.offset}&limit=${props.limit}`).then((res) => {
+    getMagazines(`http://54.180.30.126:8000/magazines?offset=${props.offset}&limit=${props.limit}`).then((res) => {
       setItems(res.data.items);
     });
   }, [props.limit, props.offset]);

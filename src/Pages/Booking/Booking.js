@@ -18,7 +18,7 @@ const Booking = (props) => {
   // 데이터 api
   const [data, setData] = useState([]);
   useEffect(() => {
-    getApi(`http://10.58.5.100:8080/pick/${props.match.params.id}`, setData);
+    getApi(`http://54.180.30.126:8000/pick/${props.match.params.id}`, setData);
   }, [props.match.params.id]);
 
   // 예약 날짜 포맷
@@ -66,7 +66,6 @@ const Booking = (props) => {
   const [token, setToken] = useState(localStorage.getItem('stayfolio_token'));
 
   // 예약하기 포스트 이벤트
-  console.log(selectedDate);
   const handleBooking = () => {
     if (selectedDate.formatStart !== '' && selectedDate.formatEnd !== '' && name !== '' && number !== '' && message !== '') {
       axios({
@@ -75,7 +74,7 @@ const Booking = (props) => {
           'Content-Type': 'application/json',
           Authorization: token,
         },
-        url: 'http://10.58.4.100:8000/booking',
+        url: 'http://54.180.30.126:8000/booking',
         data: {
           bill_total: data.data.place_info.price_min,
           check_in: selectedDate.formatStart,
