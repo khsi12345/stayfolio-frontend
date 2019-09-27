@@ -2,6 +2,7 @@ import React, {
   memo, useState, useEffect, useCallback,
 } from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import { getApi } from 'Util/service';
 import Layout from 'Components/Layout';
 import PickItem from 'Components/PickItem';
@@ -43,6 +44,9 @@ const Picks = memo((props) => {
   return (
     <>
       <Layout>
+        <Helmet>
+          <title>Picks | WeRbnb</title>
+        </Helmet>
         <PickWrap>
           <PickMainWrap>
             <PickMainHeader>

@@ -1,5 +1,6 @@
 import React, { memo, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 import data from 'Data/pick';
 import { getApi } from 'Util/service';
 import Layout from 'Components/Layout';
@@ -17,37 +18,45 @@ import 'Style/custom.scss';
 const PickDetail = memo((props) => {
   // console.log(window.location.href);
   // console.log(props.history);
-  const [getPickDetail, setPickDetail] = useState({});
+  const [get, set] = useState({});
 
   useEffect(() => {
-    getApi(`http://54.180.30.126:8000/pick/${props.match.params.id}`, setPickDetail);
+    getApi(`http://54.180.30.126:8000/pick/${props.match.params.id}`, set);
   }, [props.match.params.id]);
-  // console.log(getPickDetail);
+  console.log(get);
 
   const goBackHandler = () => {
     props.history.goBack();
   };
+
+  const goBooking = () => {
+    console.log(props);
+    props.history.push(`/picks/${props.match.params.id}`);
+  };
   return (
     <>
-      {console.log(getPickDetail.data && getPickDetail.data.place_info.full_address)}
+      {console.log(get.data && get.data.place_info.full_address)}
       <Layout>
-        <PickDetailWrap>
-          <PickDetailMainWrap>
-            <PickDetailMainHeader>
+        <Helmet>
+          <title>{`${get.data && get.data.identifier} | WeRbnb`}</title>
+        </Helmet>
+        <Wrap>
+          <MainWrap>
+            <MainHeader>
             PICK
-              <PickDetailMainHeaderSmall>
+              <MainHeaderSmall>
               매일 하루 한번! 스테이폴리오가 추천합니다!
-              </PickDetailMainHeaderSmall>
-            </PickDetailMainHeader>
-            <PickDetailMainContainer>
-              <PickDetailMainBox>
-                <PickDetailMainContentsWrap>
-                  <PickDetailMainContentsContainer>
-                    <PickDetailMainContentsHeaderWrap>
-                      <PickDetailMainContentsHeaderNameWrap>
-                        <PickDetailMainContentsHeaderName>
-                          {getPickDetail.data && getPickDetail.data.identifier.toUpperCase()}
-                          {/* <PickDetailMainContentsHeaderNameIcons> */}
+              </MainHeaderSmall>
+            </MainHeader>
+            <MainContainer>
+              <MainBox>
+                <MainContentsWrap>
+                  <MainContentsContainer>
+                    <MainContentsHeaderWrap>
+                      <MainContentsHeaderNameWrap>
+                        <MainContentsHeaderName>
+                          {get.data && get.data.identifier.toUpperCase()}
+                          {/* <MainContentsHeaderNameIcons> */}
                           <div
                             className="fb-share-button"
                             data-href="https://www.naver.com"
@@ -62,28 +71,28 @@ const PickDetail = memo((props) => {
                             </a>
                           </div>
 
-                          {/* <PickDetailMainContentsHeaderNameIcon /> */}
-                          {/* </PickDetailMainContentsHeaderNameIcons> */}
-                        </PickDetailMainContentsHeaderName>
-                      </PickDetailMainContentsHeaderNameWrap>
-                      <PickDetailMainContentsAdress>
-                        {getPickDetail.data && getPickDetail.data.place_info.full_address}
-                      </PickDetailMainContentsAdress>
-                      <PickDetailMainContentsHeaderDescription>
-                        {getPickDetail.data && getPickDetail.data.title}
-                      </PickDetailMainContentsHeaderDescription>
-                    </PickDetailMainContentsHeaderWrap>
-                    <SliderMain datas={getPickDetail.data && getPickDetail.data.images} />
-                    <PickDetailMainContentsDescriptionWrap>
-                      <PickDetailMainContentsDescriptionContainer>
-                        <PickDetailMainContentsDescriptionLeftWrap>
-                          <PickDetailMainContentsDescriptionLeftContainer>
-                            <PickDetailMainContentsDescriptionLeftTitle>
-                              {getPickDetail.data && getPickDetail.data.subtitle}
-                            </PickDetailMainContentsDescriptionLeftTitle>
-                            <PickDetailMainContentsDescriptionLeft>
-                              {/* {getPickDetail.data && getPickDetail.data.description} */}
-                              제주를 바라보는 섬, 성산에서 배를 타고 바다를 느끼면
+                          {/* <MainContentsHeaderNameIcon /> */}
+                          {/* </MainContentsHeaderNameIcons> */}
+                        </MainContentsHeaderName>
+                      </MainContentsHeaderNameWrap>
+                      <MainContentsAdress>
+                        {get.data && get.data.place_info.full_address}
+                      </MainContentsAdress>
+                      <MainContentsHeaderDescription>
+                        {get.data && get.data.title}
+                      </MainContentsHeaderDescription>
+                    </MainContentsHeaderWrap>
+                    <SliderMain datas={get.data && get.data.images} />
+                    <MainContentsDescriptionWrap>
+                      <MainContentsDescriptionContainer>
+                        <MainContentsDescriptionLeftWrap>
+                          <MainContentsDescriptionLeftContainer>
+                            <MainContentsDescriptionLeftTitle>
+                              {get.data && get.data.subtitle}
+                            </MainContentsDescriptionLeftTitle>
+                            <MainContentsDescriptionLeft>
+                              {get.data && get.data.description}
+                              {/* 제주를 바라보는 섬, 성산에서 배를 타고 바다를 느끼면
                             이내 닿는 곳 우도에 돌집 스테이, 돌채가 문을 열었다.
                             제주의 돌집이 주는 묵직하고 차분한 여운과 고요한
                             우도의 밤을 경험할 수 있는 돌채는 특별히 무엇을 하지
@@ -115,47 +124,47 @@ const PickDetail = memo((props) => {
                               <br />
                             Designed by {data.pick_info.pick_info_list[0].name}
                               <br />
-                            Photo by WEBMATE
-                            </PickDetailMainContentsDescriptionLeft>
-                          </PickDetailMainContentsDescriptionLeftContainer>
-                        </PickDetailMainContentsDescriptionLeftWrap>
-                        <PickDetailMainContentsDescriptionRightWrap>
-                          <TopInfo info={getPickDetail.data && getPickDetail.data.place_info} />
-                          <BottomInfo info={getPickDetail.data && getPickDetail.data.place_info} />
-                        </PickDetailMainContentsDescriptionRightWrap>
-                      </PickDetailMainContentsDescriptionContainer>
-                      <div style={{ height: '480px', overflow: 'hidden' }}>
+                            Photo by WEBMATE */}
+                            </MainContentsDescriptionLeft>
+                          </MainContentsDescriptionLeftContainer>
+                        </MainContentsDescriptionLeftWrap>
+                        <MainContentsDescriptionRightWrap>
+                          <TopInfo info={get.data && get.data.place_info} />
+                          <BottomInfo info={get.data && get.data.place_info} />
+                        </MainContentsDescriptionRightWrap>
+                      </MainContentsDescriptionContainer>
+                      <div className="kakaomap_wrap">
                         <KakaoMap
-                          latitude={getPickDetail.data && getPickDetail.data.place_info.latitude}
-                          longitude={getPickDetail.data && getPickDetail.data.place_info.longitude}
+                          latitude={get.data && get.data.place_info.latitude}
+                          longitude={get.data && get.data.place_info.longitude}
                         />
                       </div>
                       <Comment id={props.match.params.id} />
-                    </PickDetailMainContentsDescriptionWrap>
-                  </PickDetailMainContentsContainer>
+                    </MainContentsDescriptionWrap>
+                  </MainContentsContainer>
                   <PicksToMoveWrap>
                     <PciksToMoveContainer>
-                      <PickDetailSideListPageMove alt="goback" onClick={goBackHandler}>
+                      <SideListPageMove alt="goback" onClick={goBackHandler}>
                       리스트 페이지로 돌아가기
-                      </PickDetailSideListPageMove>
+                      </SideListPageMove>
                     </PciksToMoveContainer>
                   </PicksToMoveWrap>
-                </PickDetailMainContentsWrap>
-              </PickDetailMainBox>
-              <PickDetailSideBox>
-                <PickDetailSideBookingNow href="/" alt="booking">
+                </MainContentsWrap>
+              </MainBox>
+              <SideBox>
+                <SideBookingNow alt="booking" onClick={goBooking}>
                 BOOKING NOW
-                </PickDetailSideBookingNow>
-                <PickDetailSideListPageMove onClick={goBackHandler} alt="goback" none>
+                </SideBookingNow>
+                <SideListPageMove onClick={goBackHandler} alt="goback" none>
                 리스트 페이지로 돌아가기
-                </PickDetailSideListPageMove>
-                <PickDetailSidePicksWrap>
-                  <PickDetailSidePicksContainer>
-                    <PickDetailSidePicksText>
+                </SideListPageMove>
+                <SidePicksWrap>
+                  <SidePicksContainer>
+                    <SidePicksText>
                     MORE STAYFOLIO PICK
-                    </PickDetailSidePicksText>
-                    <PickDetailSidePicksTitleLine />
-                    <PickDetailSidePicksBox>
+                    </SidePicksText>
+                    <SidePicksTitleLine />
+                    <SidePicksBox>
                       <MoreList
                         im="https://stayfolio.com/system/pictures/images/000/037/802/medium/3a19d9e569a43c623aef74ec2bf1eb942eb514ed.jpeg?1567587529"
                         name="올모스트홈 스테이"
@@ -193,18 +202,23 @@ const PickDetail = memo((props) => {
                         https://stayfolio.com/system/pictures/images/000/028/550/medium/32c283f4127986e0e0e0467751991394667142d8.jpg?1535418446"
                         name="서림연가"
                       />
-                    </PickDetailSidePicksBox>
-                  </PickDetailSidePicksContainer>
-                </PickDetailSidePicksWrap>
-              </PickDetailSideBox>
-            </PickDetailMainContainer>
-          </PickDetailMainWrap>
-        </PickDetailWrap>
+                      <MoreList
+                        im="
+                        https://stayfolio.com/system/pictures/images/000/007/486/medium/427fc8ae2ca80f1aba060f131d35e34e2d16d15b.jpg?1447224133"
+                        name="호텔 카푸치노"
+                      />
+                    </SidePicksBox>
+                  </SidePicksContainer>
+                </SidePicksWrap>
+              </SideBox>
+            </MainContainer>
+          </MainWrap>
+        </Wrap>
       </Layout>
     </>
   );
 });
-const PickDetailWrap = styled.div`
+const Wrap = styled.div`
   margin-top: 103px;
   padding: 0 10px;
   @media ${device.tablet} {
@@ -223,10 +237,10 @@ const PickDetailWrap = styled.div`
   }
 `;
 
-const PickDetailMainWrap = styled.div`
+const MainWrap = styled.div`
   padding-bottom: 100px;
 `;
-const PickDetailMainHeader = styled.h2`
+const MainHeader = styled.h2`
   display: none;
   @media ${device.tablet} {
     display: block;
@@ -239,21 +253,21 @@ const PickDetailMainHeader = styled.h2`
     font-size: 32px;
   }
 `;
-const PickDetailMainHeaderSmall = styled.small`
+const MainHeaderSmall = styled.small`
   display: block;
   margin-top: 3px;
   color: ${theme.FontGray};
   font-weight: 400;
   font-size: 14px;
 `;
-const PickDetailMainContainer = styled.div`
+const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   @media ${device.desktop} {
     flex-direction: row;
   }
 `;
-const PickDetailMainBox = styled.div`
+const MainBox = styled.div`
   position: relative;
   padding: 0;
   width: 100%;
@@ -264,7 +278,7 @@ const PickDetailMainBox = styled.div`
     width: 75%;
   }
 `;
-const PickDetailMainContentsWrap = styled.div`
+const MainContentsWrap = styled.div`
   padding-bottom: 0;
   @media ${device.tablet} {
     padding-right: 0;
@@ -276,7 +290,7 @@ const PickDetailMainContentsWrap = styled.div`
     border-right: 1px solid ${theme.BorderMoreLightGray};
   }
 `;
-const PickDetailMainContentsContainer = styled.div`
+const MainContentsContainer = styled.div`
   padding: 15px;
   background-color: ${theme.MainWhite};
   line-height: 1.428571429;
@@ -288,26 +302,28 @@ const PickDetailMainContentsContainer = styled.div`
     padding: 30px;
   }
 `;
-const PickDetailMainContentsHeaderWrap = styled.div`
+const MainContentsHeaderWrap = styled.div`
   position: relative;
   border-top: 5px solid ${theme.BorderBlack};
 `;
-const PickDetailMainContentsHeaderNameWrap = styled.div`
+const MainContentsHeaderNameWrap = styled.div`
   line-height: 1.428571429;
   font-size: 14px;
 `;
-const PickDetailMainContentsHeaderName = styled.h2`
+const MainContentsHeaderName = styled.h2`
+display: flex;
+align-items: center;
   margin: 10px 0;
   font-size: 28px;
   font-weight: 500;
   line-height: 1.1;
 `;
-// const PickDetailMainContentsHeaderNameIcons = styled.div`
+// const MainContentsHeaderNameIcons = styled.div`
 //   display: inline-block;
 //   margin-top: 10px;
 //   margin-left: 10px;
 // `;
-// const PickDetailMainContentsHeaderNameIcon = styled.span`
+// const MainContentsHeaderNameIcon = styled.span`
 //   display: inline-block;
 //   margin-left: 10px;
 //   padding-bottom: 5px;
@@ -315,7 +331,7 @@ const PickDetailMainContentsHeaderName = styled.h2`
 //   height: 24px;
 //   cursor: pointer;
 // `;
-const PickDetailMainContentsAdress = styled.small`
+const MainContentsAdress = styled.small`
   display: none;
   @media ${device.wide} {
     display: block;
@@ -325,13 +341,13 @@ const PickDetailMainContentsAdress = styled.small`
     color: #8ba27e;
   }
 `;
-const PickDetailMainContentsHeaderDescription = styled.div`
+const MainContentsHeaderDescription = styled.div`
   padding: 5px 0;
   font-size: 14px;
   line-height: 1.428571429;
   color: ${theme.FontLessGray2};
 `;
-const PickDetailMainContentsDescriptionWrap = styled.div`
+const MainContentsDescriptionWrap = styled.div`
   /* margin: 0 -15px; */
   font-size: 14px;
   line-height: 1.428571429;
@@ -340,7 +356,7 @@ const PickDetailMainContentsDescriptionWrap = styled.div`
     content: ' ';
   }
 `;
-const PickDetailMainContentsDescriptionContainer = styled.div`
+const MainContentsDescriptionContainer = styled.div`
   flex-direction: column;
   @media ${device.tablet} {
     padding: 15px 0;
@@ -354,15 +370,15 @@ const PickDetailMainContentsDescriptionContainer = styled.div`
     overflow: hidden;
   }
 `;
-const PickDetailMainContentsDescriptionLeftWrap = styled.div`
+const MainContentsDescriptionLeftWrap = styled.div`
   @media ${device.desktop} {
     position: relative;
-    padding-left: 15px;
+    /* padding-left: 15px; */
     padding-right: 15px;
     width: 66.6666666667%;
   }
 `;
-const PickDetailMainContentsDescriptionLeftContainer = styled.div`
+const MainContentsDescriptionLeftContainer = styled.div`
   @media ${device.desktop} {
     line-height: 1.4;
   }
@@ -371,27 +387,28 @@ const PickDetailMainContentsDescriptionLeftContainer = styled.div`
   font-size: 14px;
   line-height: 180%;
 `;
-const PickDetailMainContentsDescriptionLeftTitle = styled.div`
+const MainContentsDescriptionLeftTitle = styled.div`
   margin: 10px 0;
   color: ${theme.FontLessGray2};
   font-size: 15px;
   font-weight: 700;
   line-height: 1.1;
 `;
-const PickDetailMainContentsDescriptionLeft = styled.div`
+const MainContentsDescriptionLeft = styled.div`
   font-size: 14px;
   color: ${theme.FontLessGray2};
+  white-space: pre-line;
 `;
-const PickDetailMainContentsDescriptionRightWrap = styled.div`
+const MainContentsDescriptionRightWrap = styled.div`
   position: relative;
   font-size: 14px;
   line-height: 1.428571429;
   @media ${device.desktop} {
-    padding: 0 15px;
+    padding: 0;
     width: 33.3333333333%;
   }
 `;
-const PickDetailSideBox = styled.div`
+const SideBox = styled.div`
   position: relative;
   padding: 0;
   @media ${device.tablet} {
@@ -401,7 +418,7 @@ const PickDetailSideBox = styled.div`
     width: 25%;
   }
 `;
-const PickDetailSideBookingNow = styled.a`
+const SideBookingNow = styled.a`
   display: none;
   cursor: pointer !important;
   @media ${device.desktop} {
@@ -415,7 +432,7 @@ const PickDetailSideBookingNow = styled.a`
     background-color: ${theme.BorderBlack};
   }
 `;
-const PickDetailSideListPageMove = styled.a`
+const SideListPageMove = styled.a`
   display: ${(props) => (props.none ? 'none' : 'block')};
   height: 45px;
   line-height: 45px;
@@ -435,14 +452,14 @@ const PickDetailSideListPageMove = styled.a`
     cursor: pointer !important;
   }
 `;
-const PickDetailSidePicksWrap = styled.div`
+const SidePicksWrap = styled.div`
   margin-top: 10px;
   padding-top: 30px;
   border-top: 1px solid ${theme.BorderMoreLightGray};
   font-size: 14px;
   line-height: 1.428571429;
 `;
-const PickDetailSidePicksContainer = styled.div`
+const SidePicksContainer = styled.div`
   padding: 20px 10px 0;
   @media ${device.tablet} {
     border-radius: 10px;
@@ -454,26 +471,32 @@ const PickDetailSidePicksContainer = styled.div`
     background-color: rgba(0, 0, 0, 0);
   }
 `;
-const PickDetailSidePicksBox = styled.div`
+const SidePicksBox = styled.div`
   display: flex;
   flex-direction: row;
   /* width: 33.3%; */
   flex-wrap: wrap;
 `;
-const PickDetailSidePicksText = styled.div`
+const SidePicksText = styled.div`
   padding-bottom: 10px;
   font-size: 20px;
   font-weight: 600;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   line-height: 1.428571429;
+  color: ${theme.MainWhite};
+  @media ${device.desktop} {
   color: ${theme.BorderLightBlack};
+  }
 `;
-const PickDetailSidePicksTitleLine = styled.div`
+const SidePicksTitleLine = styled.div`
   margin: 10px auto 30px;
   width: 30px;
   height: 2px;
+  background-color: ${theme.MainWhite};
+  @media ${device.desktop} {
   background-color: ${theme.BorderLightBlack};
+  }
 `;
 const PicksToMoveWrap = styled.div`
   margin: 0;
