@@ -17,5 +17,25 @@ export const commentPostApi = async (url, key, text) => {
   return result;
 };
 
+export const commentDelApi = async (url, key) => {
+  const result = await axios.delete(url,
+    {
+      headers: {
+        Authorization: key,
+      },
+    });
+  return result;
+};
+
+export const commentModifedApi = async (url, key) => {
+  const result = await axios.post(url,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: key,
+      },
+    });
+  return result;
+};
 // 매거진
 export const getMagazines = async (url) => await axios.get(url);

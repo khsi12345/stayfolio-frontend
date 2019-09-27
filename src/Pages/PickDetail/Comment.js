@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { commentPostApi, getApi } from 'Util/service';
+import { commentPostApi, commentDelApi, getApi } from 'Util/service';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import CommentItem from './CommentItem';
@@ -18,7 +18,7 @@ export default memo((props) => {
   //   setToken(localStorage.getItem('stayfolio_token'));
   // }, []);
   useEffect(() => {
-    getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
+    getApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, setComment);
   }, [props.id]);
 
   const textChangeHandle = (e) => {
@@ -44,18 +44,34 @@ export default memo((props) => {
     //   }
     // });
 
-    const commentData = commentPostApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, getToken, text);
+    const commentData = commentPostApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, getToken, text);
     commentData.then((response) => {
       if (response.status === 200) {
-        getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
+        getApi(`http://54.180.30.126:8000/${props.id}`, setComment);
       }
     });
     commentData.catch((error) => console.log(error));
 
     setText('');
   };
-  const delComment = (e) => {
-    // console.log(e.target);
+  const delComment = (commentId) => {
+    const result = commentDelApi(`http://54.180.30.126:8000/pick_comment/${props.id}/${commentId}/editing`, getToken);
+    result.then((response) => {
+      if (response.status === 200) {
+        getApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, setComment);
+      }
+    });
+  };
+  const modifedComment = (getModifedCommentItemContent, commentId) => {
+    console.log(getModifedCommentItemContent);
+    // setText(getModifedCommentItemContent);
+    const result = commentPostApi(`http://54.180.30.126:8000/pick_comment/${props.id}/${commentId}/editing`, getToken, getModifedCommentItemContent);
+    result.then((response) => {
+      if (response.status === 200) {
+        getApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, setComment);
+      }
+    });
+    result.catch((error) => console.log(error.message));
   };
   const LoadCommentItems = () => {
     if (comment.data) {
@@ -63,6 +79,7 @@ export default memo((props) => {
       return comment.data.data.map((ele, index) => (
         <CommentItem
           delComment={delComment}
+          modifedComment={modifedComment}
           key={ele.comment_id}
           id={ele.comment_id}
           userName={ele.user_email}

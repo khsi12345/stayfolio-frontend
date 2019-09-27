@@ -3,10 +3,20 @@ import styled from 'styled-components';
 import theme from 'Components/Theme';
 
 export default memo(({
-  delComment, id, userName, content,
+  modifedComment, delComment, id, userName, content,
 }) => {
   const [date, setDate] = useState(new Date());
+  const [view, setView] = useState(false);
+  const [text, setText] = useState();
+  // const [hide, setHide] = useState('true');
   // console.log(props);
+  const modifedOnClickHandler = () => {
+    setView(!view);
+  };
+  const modifedText = (e) => {
+    setText(e.target.value);
+    console.log(text);
+  };
   return (
     <CommentList>
       <CommentItemWrap>
@@ -16,14 +26,33 @@ export default memo(({
         </CommentImgBox>
         <CommentContentsWrap>
           <CommentTime>
-            {date.getFullYear()}-{date.getMonth() + 1}-{date.getDate()} {date.getHours()}:{date.getMinutes()}
+            `{date.getFullYear()}-{date.getMonth() + 1}-{date.getDate()} {date.getHours()}:{date.getMinutes()}`
           </CommentTime>
-          <CommentDel id={id} onClick={delComment}>
+          {view ? (
+            <CommentDel onClick={() => {
+              modifedOnClickHandler();
+              modifedComment(text, id);
+            }}
+            >
+                  수정 확인
+            </CommentDel>
+          ) : (
+            <CommentDel onClick={modifedOnClickHandler}>
+                  수정
+            </CommentDel>
+          )}
+          <CommentDel onClick={() => delComment(id)}>
                   삭제
           </CommentDel>
           <CommentText>
             {content}
           </CommentText>
+          <CommentTextAreaBoxModifed
+            view={view}
+            onChange={(e) => modifedText(e)}
+          >
+            {content}
+          </CommentTextAreaBoxModifed>
         </CommentContentsWrap>
       </CommentItemWrap>
     </CommentList>
@@ -56,6 +85,7 @@ const CommentName = styled.p`
   margin: 0 0 10px;
 `;
 const CommentContentsWrap = styled.div`
+  position: relative;
   width: 75%;
 `;
 const CommentTime = styled.p`
@@ -66,11 +96,26 @@ const CommentTime = styled.p`
 `;
 const CommentDel = styled.a`
   cursor: pointer;
+  margin-right:10px;
   font-size: 13px;
   color: ${theme.FooterGrayFont};
 `;
 const CommentText = styled.div`
   color: #7a7a7a;
+  white-space: pre-line;
   word-break: break-all;
   word-wrap: break-word;
+`;
+const CommentTextAreaBoxModifed = styled.textarea`
+  position: absolute;
+  display: ${(props) => (props.view ? 'block' : 'none')};
+  top: 23px;
+  width: 100%;
+  border: 1px solid ${theme.LightGrayBG};
+  border-radius: 3px;
+  background-color: ${theme.CommentGray};
+  resize: none;
+  :focus {
+    outline: none;
+  }
 `;

@@ -99,17 +99,36 @@ div .CalendarMonth_table {
   vertical-align: middle;
 }
 
+.kakaomap_wrap {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  overflow: hidden;
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    height: 480px;
+    overflow: hidden;
+  }
+}
+
 //공유 관련
 .fb-share-button {
   margin: 0;
-  display: block !important;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
   span {
     vertical-align: middle !important;
   }
+  .fb-xfbml-parse-ignore {
+    margin: 0 0 10px 10px;
+  }
   @media only screen and (min-width: $mobile) {
-    display: inline-block !important;
+    display: inline-block;
     span {
-      margin: 0 0 0 10px;
+      margin: 0 0 10px 10px;
       vertical-align: middle !important;
     }
   }
