@@ -33,12 +33,14 @@ const PickDetail = memo((props) => {
     console.log(props);
     props.history.push(`/picks/${props.match.params.id}`);
   };
+  console.log(get.data && get.data.images[0]);
   return (
     <>
       {console.log(get.data && get.data.place_info.full_address)}
       <Layout>
         <Helmet>
           <title>{`${get.data && get.data.identifier} | WeRbnb`}</title>
+
         </Helmet>
         <Wrap>
           <MainWrap>
@@ -59,13 +61,14 @@ const PickDetail = memo((props) => {
                           {/* <MainContentsHeaderNameIcons> */}
                           <div
                             className="fb-share-button"
-                            data-href={`https://13.125.229.229/pick_detail/${props.match.params.id}`}
+                            data-href={`http://52.79.222.164:3000/pick_detail/${props.match.params.id}}`}
+
                             data-layout="button_count"
                             data-size="small"
                           >
                             <a
                               target="_blank"
-                              href={`https://13.125.229.229/pick_detail/${props.match.params.id}`}
+                              href={`http://52.79.222.164:3000/pick_detail/${props.match.params.id}}`}
                               className="fb-xfbml-parse-ignore"
                             >공유하기
                             </a>

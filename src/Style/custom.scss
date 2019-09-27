@@ -116,8 +116,9 @@ div .CalendarMonth_table {
 //공유 관련
 .fb-share-button {
   margin: 0;
-  display: flex;
-  align-items: center;
+  display: inline-block;
+  // display: flex;
+  // align-items: center;
   font-size: 11px;
   span {
     vertical-align: middle !important;
@@ -126,7 +127,7 @@ div .CalendarMonth_table {
     margin: 0 0 10px 10px;
   }
   @media only screen and (min-width: $mobile) {
-    display: inline-block;
+    // display: inline-block;
     span {
       margin: 0 0 10px 10px;
       vertical-align: middle !important;
