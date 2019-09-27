@@ -19,11 +19,6 @@ const Signup = (props) => (
           <SignupImage src={SignupImg} />
         </SignupHeader>
         <SocialWrap>
-          <SignupFacebook onClick={() => {
-            props.showAlert({ message: '불편을 드려 죄송합니다. 기능 점검 중입니다.' });
-          }}
-          >Signup with Facebook
-          </SignupFacebook>
           <SignupNaver onClick={() => {
             props.showAlert({ message: '불편을 드려 죄송합니다. 기능 점검 중입니다.' });
           }}
@@ -94,10 +89,6 @@ const SocialButton = styled.div`
 
 const SignupNaver = styled(SocialButton.withComponent('a'))`
   background-color: #3eaf0e;
-`;
-
-const SignupFacebook = styled(SocialButton.withComponent('a'))`
-  background-color: #3868b9;
 `;
 
 const SignupEmail = styled(SocialButton.withComponent('a'))`

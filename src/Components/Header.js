@@ -24,7 +24,6 @@ const Header = (props) => {
     setBars(false);
     props.showAlert({ message: '로그아웃 되었습니다!' });
   };
-  // console.log('header props!', props);
   return (
     <>
       <HeaderWrap>
@@ -122,13 +121,13 @@ const Header = (props) => {
                   PICK
                 </NavList>
               </Link>
-              <Link>
+              <div>
                 <NavBooking onClick={() => {
                   props.showAlert({ message: '불편을 드려 죄송합니다. 기능 점검 중입니다.' });
                 }}
                 >BOOKING
                 </NavBooking>
-              </Link>
+              </div>
             </MainNav>
             <BarsNav>
               <BarsIcon className="fas fa-bars" onClick={handleBars} />
@@ -350,6 +349,7 @@ const NavBooking = styled.span`
   color: #fff;
   padding: 4px 8px;
   line-height: 50px;
+  cursor: pointer;
 `;
 
 const BarsNav = styled.div`
