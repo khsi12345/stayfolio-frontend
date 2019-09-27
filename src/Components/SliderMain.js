@@ -12,9 +12,9 @@ const SliderMain = memo((datas) => {
   // }, [datas.datas]);
   const Slider = () => {
     if (datas.datas && datas.datas !== undefined) {
-      return datas.datas.map((ele) => (
+      return datas.datas.map((ele, index) => (
         <div>
-          <img src={ele} />
+          <img key={index + 1} src={ele} />
         </div>
       ));
     }

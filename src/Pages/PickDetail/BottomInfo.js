@@ -5,55 +5,55 @@ import theme from 'Components/Theme';
 import { device } from 'Components/Device';
 
 export default memo((props) => (
-  <PickDetailMainContentsDescriptionRightBottomWrap>
-    <PickDetailMainContentsDescriptionRightBottomContainer>
-      <PickDetailMainContentsDescriptionRightIcon
+  <MainContentsDescriptionRightBottomWrap>
+    <MainContentsDescriptionRightBottomContainer>
+      <MainContentsDescriptionRightIcon
         className="fas fa-map-signs"
         white
       />
-      <PickDetailMainContentsDescriptionRightBottomBox>
+      <MainContentsDescriptionRightBottomBox>
         {props.info && props.info.full_address}
-      </PickDetailMainContentsDescriptionRightBottomBox>
-    </PickDetailMainContentsDescriptionRightBottomContainer>
-    <PickDetailMainContentsDescriptionRightBottomContainer>
-      <PickDetailMainContentsDescriptionRightIcon
+      </MainContentsDescriptionRightBottomBox>
+    </MainContentsDescriptionRightBottomContainer>
+    <MainContentsDescriptionRightBottomContainer>
+      <MainContentsDescriptionRightIcon
         className="fas fa-desktop"
         white
       />
-      <PickDetailMainContentsDescriptionRightBottomBox>
+      <MainContentsDescriptionRightBottomBox>
         {props.info && props.info.website}
-      </PickDetailMainContentsDescriptionRightBottomBox>
-    </PickDetailMainContentsDescriptionRightBottomContainer>
-    {/* <PickDetailMainContentsDescriptionRightBottomContainer>
-      <PickDetailMainContentsDescriptionRightIcon
+      </MainContentsDescriptionRightBottomBox>
+    </MainContentsDescriptionRightBottomContainer>
+    {/* <MainContentsDescriptionRightBottomContainer>
+      <MainContentsDescriptionRightIcon
         className="fas fa-envelope"
         white
       />
-      <PickDetailMainContentsDescriptionRightBottomBox>
+      <MainContentsDescriptionRightBottomBox>
         {data.pick_info.pick_info_list[0].email}
-      </PickDetailMainContentsDescriptionRightBottomBox>
-    </PickDetailMainContentsDescriptionRightBottomContainer> */}
-    <PickDetailMainContentsDescriptionRightBottomContainer>
-      <PickDetailMainContentsDescriptionRightIcon
+      </MainContentsDescriptionRightBottomBox>
+    </MainContentsDescriptionRightBottomContainer> */}
+    <MainContentsDescriptionRightBottomContainer>
+      <MainContentsDescriptionRightIcon
         className="fab fa-facebook-f"
         white
       />
-      <PickDetailMainContentsDescriptionRightBottomBox>
+      <MainContentsDescriptionRightBottomBox>
         {props.info && props.info.facebook}
-      </PickDetailMainContentsDescriptionRightBottomBox>
-    </PickDetailMainContentsDescriptionRightBottomContainer>
-    <PickDetailMainContentsDescriptionRightBottomContainer>
-      <PickDetailMainContentsDescriptionRightIcon
+      </MainContentsDescriptionRightBottomBox>
+    </MainContentsDescriptionRightBottomContainer>
+    <MainContentsDescriptionRightBottomContainer>
+      <MainContentsDescriptionRightIcon
         className="fas fa-phone-alt"
         white
       />
-      <PickDetailMainContentsDescriptionRightBottomBox>
+      <MainContentsDescriptionRightBottomBox>
         {props.info && props.info.phone}
-      </PickDetailMainContentsDescriptionRightBottomBox>
-    </PickDetailMainContentsDescriptionRightBottomContainer>
-  </PickDetailMainContentsDescriptionRightBottomWrap>
+      </MainContentsDescriptionRightBottomBox>
+    </MainContentsDescriptionRightBottomContainer>
+  </MainContentsDescriptionRightBottomWrap>
 ));
-const PickDetailMainContentsDescriptionRightBottomWrap = styled.div`
+const MainContentsDescriptionRightBottomWrap = styled.div`
   margin: 20px 0;
   padding: 10px;
   background-color: ${theme.LightGrayBG};
@@ -69,20 +69,20 @@ const PickDetailMainContentsDescriptionRightBottomWrap = styled.div`
     line-height: 1.428571429;
   }
 `;
-const PickDetailMainContentsDescriptionRightBottomContainer = styled.a`
+const MainContentsDescriptionRightBottomContainer = styled.a`
   display: flex;
   padding: 2px;
   font-size: 14px;
   line-height: 1.428571429;
 `;
-const PickDetailMainContentsDescriptionRightBottomBox = styled.div`
+const MainContentsDescriptionRightBottomBox = styled.div`
   font-size: 14px;
   line-height: 1.428571429;
   white-space: wrap;
   text-overflow: ellipsis;
   color: ${theme.MainWhite};
 `;
-const PickDetailMainContentsDescriptionRightIcon = styled.i`
+const MainContentsDescriptionRightIcon = styled.i`
   margin-right: 5px;
   color: ${(props) => (props.white ? `${theme.MainWhite}` : `${theme.FontLightGray}`)};
 `;
