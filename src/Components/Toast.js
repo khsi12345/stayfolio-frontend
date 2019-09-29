@@ -7,9 +7,9 @@ const Toast = (props) => {
     <ToastWrap>
       <ToastMessage>예약이 완료되었습니다!</ToastMessage>
       <ToastMessage>예약자명 : {options.name}</ToastMessage>
-      <ToastMessage>연락처 : {options.number}</ToastMessage>
+      <ToastMessage>연락처 : {options.mobile}</ToastMessage>
       <ToastMessage>기간 : {options.startDate} ~ {options.endDate}</ToastMessage>
-      <ToastMessage>요청사항 : {options.message}</ToastMessage>
+      <ToastMessage>요청사항 : {options.remark}</ToastMessage>
     </ToastWrap>
   );
 };
