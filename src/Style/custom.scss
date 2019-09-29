@@ -54,7 +54,7 @@ $wide: 1200px;
     padding: 0;
   }
   .carousel {
-    position: absolute;
+    position: relative;
     display: flex;
     .slider-wrapper {
       width: 756px !important;
