@@ -40,7 +40,10 @@ const PickDetail = memo((props) => {
       <Layout>
         <Helmet>
           <title>{`${get.data && get.data.identifier} | WeRbnb`}</title>
-
+          <meta
+            property="og:image"
+            content={`${get.data && get.data.main_image_url}`}
+          />
         </Helmet>
         <Wrap>
           <MainWrap>
@@ -61,14 +64,14 @@ const PickDetail = memo((props) => {
                           {/* <MainContentsHeaderNameIcons> */}
                           <div
                             className="fb-share-button"
-                            data-href={`http://10.58.5.100:8080/pick_detail/${props.match.params.id}}`}
+                            data-href={`http://52.79.222.164:3000/pick_detail/${props.match.params.id}}`}
 
                             data-layout="button_count"
                             data-size="small"
                           >
                             <a
                               target="_blank"
-                              href={`http://10.58.5.100:8080/pick_detail/${props.match.params.id}}`}
+                              href={`http://52.79.222.164:3000/pick_detail/${props.match.params.id}}`}
                               className="fb-xfbml-parse-ignore"
                             >공유하기
                             </a>
