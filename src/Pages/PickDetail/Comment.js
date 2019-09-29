@@ -33,7 +33,7 @@ export default memo((props) => {
     const commentData = commentPostApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, getToken, text);
     commentData.then((response) => {
       if (response.status === 200) {
-        getApi(`http://10.58.5.100:8080/${props.id}`, setComment);
+        getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
       }
     });
     commentData.catch((error) => console.log(error));
