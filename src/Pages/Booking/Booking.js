@@ -18,7 +18,7 @@ const Booking = (props) => {
   // 데이터 api
   const [data, setData] = useState([]);
   useEffect(() => {
-    getApi(`http://54.180.30.126:8000/pick/${props.match.params.id}`, setData);
+    getApi(`http://10.58.5.100:8080/pick/${props.match.params.id}`, setData);
   }, [props.match.params.id]);
 
   // 예약 날짜 포맷
@@ -74,7 +74,7 @@ const Booking = (props) => {
           'Content-Type': 'application/json',
           Authorization: token,
         },
-        url: 'http://54.180.30.126:8000/booking',
+        url: 'http://10.58.5.100:8080/booking',
         data: {
           bill_total: data.data.place_info.price_min,
           check_in: selectedDate.formatStart,

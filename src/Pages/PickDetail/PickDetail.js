@@ -61,14 +61,14 @@ const PickDetail = memo((props) => {
                           {/* <MainContentsHeaderNameIcons> */}
                           <div
                             className="fb-share-button"
-                            data-href={`http://52.79.222.164:3000/pick_detail/${props.match.params.id}}`}
+                            data-href={`http://10.58.5.100:8080/pick_detail/${props.match.params.id}}`}
 
                             data-layout="button_count"
                             data-size="small"
                           >
                             <a
                               target="_blank"
-                              href={`http://52.79.222.164:3000/pick_detail/${props.match.params.id}}`}
+                              href={`http://10.58.5.100:8080/pick_detail/${props.match.params.id}}`}
                               className="fb-xfbml-parse-ignore"
                             >공유하기
                             </a>
@@ -95,39 +95,6 @@ const PickDetail = memo((props) => {
                             </MainContentsDescriptionLeftTitle>
                             <MainContentsDescriptionLeft>
                               {get.data && get.data.description}
-                              {/* 제주를 바라보는 섬, 성산에서 배를 타고 바다를 느끼면
-                            이내 닿는 곳 우도에 돌집 스테이, 돌채가 문을 열었다.
-                            제주의 돌집이 주는 묵직하고 차분한 여운과 고요한
-                            우도의 밤을 경험할 수 있는 돌채는 특별히 무엇을 하지
-                            않아도 평온한 휴식의 시간을, 일상에서 수고로움으로
-                            지친 마음에 작은 위로를 건네준다. 이 공간을 만든
-                            호스트는 제주 여행 속 진짜 제주를 만날 수 있는
-                            우도에서 오랜 시간 자연스럽게 뿌리내릴 공간을 만들고
-                            싶었다.
-                              <br />
-                              <br />
-                            돌채의 공간은 가족이 머물기 좋은 ROOM A와, 2인 객실
-                            ROOM B로 구성된다. A룸은 거실과 주방, 침실로 나뉘며
-                            대형 사이즈의 욕조 및 사우나 시설이 갖추어져 있다.
-                            객실 안에는 안마 의자와 스타일러 등을 구비해 여행의
-                            편의를 높였다. B동은 주방과 침실, 대형 사이즈의
-                            욕조의 공간 구성이다. 두 객실 모두 돌담으로 둘러
-                            쌓인 정원, 야외에서 즐길 수 있는 바베큐장을 함께
-                            이용할 수 있다.
-                              <br />
-                              <br />
-                            머무는 이들을 위해 돌채에서는 매일 아침 전복죽 조식
-                            서비스와, 픽업을 제공한다. 반나절 머무는 여행지가
-                            호스트가 추천해주는 가이드를 따라 아닌 돌채에서
-                            머무르며 느껴보는 우도는 또 다른 매력의 제주를
-                            느껴볼 수 있는 기회가 될 것이다. 우도의 풍경이
-                            곳곳이 품고 있는 특별한 이야기, 마을 깊숙이 들어와야
-                            보이는 진짜 우도를 돌채를 통해 경험해보자.
-                              <br />
-                              <br />
-                            Designed by {data.pick_info.pick_info_list[0].name}
-                              <br />
-                            Photo by WEBMATE */}
                             </MainContentsDescriptionLeft>
                           </MainContentsDescriptionLeftContainer>
                         </MainContentsDescriptionLeftWrap>
