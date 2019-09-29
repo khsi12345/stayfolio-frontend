@@ -341,7 +341,6 @@ const MainContentsDescriptionContainer = styled.div`
 const MainContentsDescriptionLeftWrap = styled.div`
   @media ${device.desktop} {
     position: relative;
-    /* padding-left: 15px; */
     padding-right: 15px;
     width: 66.6666666667%;
   }

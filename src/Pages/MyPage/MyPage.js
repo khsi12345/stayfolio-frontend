@@ -1,75 +1,89 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import axios from 'axios';
 import { getApi } from 'Util/service';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import Layout from 'Components/Layout';
+import { unitConversion } from 'Util/conversion';
 
-// const [info, setInfo] = useState([]);
-// useEffect(() => {
-//   getApi('http://10.58.5.100:8080/booking', setInfo);
-// }, []);
+export default () => {
+  const [token, setToken] = useState(localStorage.getItem('stayfolio_token'));
+  const [info, setInfo] = useState([]);
+  useEffect(() => {
+    axios({
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+      url: 'http://10.58.5.100:8080/account/mypage',
+    }).then((res) => {
+      setInfo(res.data);
+    });
+  }, [token]);
 
-export default () => (
-  <Layout>
-    <Helmet>
-      <title>My page | WeRbnb</title>
-    </Helmet>
-    <MyPageWrap>
-      <MyPageContainer>
-        <Title>
-            MYPAGE
-          <TitleDsc>
+  return (
+    <Layout>
+      <Helmet>
+        <title>My page | WeRbnb</title>
+      </Helmet>
+      <MyPageWrap>
+        <MyPageContainer>
+          <Title>
+              MYPAGE
+            <TitleDsc>
               예약정보와 구매정보를 확인하세요!
-          </TitleDsc>
-        </Title>
-        <NoticeWrap>
-          <NoticeInnerWrap>
-            <NoticeContainer>
-              <NoticeTitleWrap>
-                <NoticeTitle>
-                    NOTICE
-                </NoticeTitle>
-              </NoticeTitleWrap>
-              <NoticeBody>
-                <NoticeSentence>등록된 번호로 예약안내 MMS가 발송됩니다. 문자를 확인해주세요.</NoticeSentence>
-                <NoticeSentence>예약내용을 변경하거나 취소를 희망할 경우 호스트에게 먼저 알려주세요. 예약취소 및 변경은 해당 스테이의 운영원칙하에 이루어집니다.</NoticeSentence>
-                <NoticeSentence>시스템 오류, 결제 등의 기타 문의는 010-9930-6082, info@werbnb.com로 연락 부탁 드립니다.</NoticeSentence>
-              </NoticeBody>
-            </NoticeContainer>
-          </NoticeInnerWrap>
-        </NoticeWrap>
-        <MyInfoWrap>
-          <MyInfoTitle href="/mypage"><ActiveInfo>예약 정보</ActiveInfo></MyInfoTitle>
-          <MyInfoTitle href="/mypage">바우처 정보</MyInfoTitle>
-        </MyInfoWrap>
-        <BookingContainer>
-          <BookingInfoWrap>
-            <BookingCategory>숙소명</BookingCategory>
-            <BookingDetail>스테이 소도</BookingDetail>
-          </BookingInfoWrap>
-          <BookingInfoWrap>
-            <BookingCategory>예약일</BookingCategory>
-            <BookingDetail>2019-10-16 ~ 2019-10-17</BookingDetail>
-          </BookingInfoWrap>
-          <BookingInfoWrap>
-            <BookingCategory>예약자명</BookingCategory>
-            <BookingDetail>권순규</BookingDetail>
-          </BookingInfoWrap>
-          <BookingInfoWrap>
-            <BookingCategory>총 금액</BookingCategory>
-            <BookingDetail>₩450,000</BookingDetail>
-          </BookingInfoWrap>
-          <BookingInfoWrap>
-            <BookingCategory>연락처</BookingCategory>
-            <BookingDetail>010-9930-6082</BookingDetail>
-          </BookingInfoWrap>
-        </BookingContainer>
-      </MyPageContainer>
-    </MyPageWrap>
-  </Layout>
-);
+            </TitleDsc>
+          </Title>
+          <NoticeWrap>
+            <NoticeInnerWrap>
+              <NoticeContainer>
+                <NoticeTitleWrap>
+                  <NoticeTitle>
+                      NOTICE
+                  </NoticeTitle>
+                </NoticeTitleWrap>
+                <NoticeBody>
+                  <NoticeSentence>등록된 번호로 예약안내 MMS가 발송됩니다. 문자를 확인해주세요.</NoticeSentence>
+                  <NoticeSentence>예약내용을 변경하거나 취소를 희망할 경우 호스트에게 먼저 알려주세요. 예약취소 및 변경은 해당 스테이의 운영원칙하에 이루어집니다.</NoticeSentence>
+                  <NoticeSentence>시스템 오류, 결제 등의 기타 문의는 010-9930-6082, info@werbnb.com로 연락 부탁 드립니다.</NoticeSentence>
+                </NoticeBody>
+              </NoticeContainer>
+            </NoticeInnerWrap>
+          </NoticeWrap>
+          <MyInfoWrap>
+            <MyInfoTitle href="/mypage"><ActiveInfo>예약 정보</ActiveInfo></MyInfoTitle>
+            <MyInfoTitle href="/mypage">바우처 정보</MyInfoTitle>
+          </MyInfoWrap>
+          <BookingContainer>
+            <BookingInfoWrap>
+              <BookingCategory>숙소명</BookingCategory>
+              <BookingDetail>{info[0] && info[0].place_name}</BookingDetail>
+            </BookingInfoWrap>
+            <BookingInfoWrap>
+              <BookingCategory>예약일</BookingCategory>
+              <BookingDetail>{info[0] && `${info[0].check_in} ~ ${info[0].check_out}`}</BookingDetail>
+            </BookingInfoWrap>
+            <BookingInfoWrap>
+              <BookingCategory>예약자명</BookingCategory>
+              <BookingDetail>{info[0] && info[0].name}</BookingDetail>
+            </BookingInfoWrap>
+            <BookingInfoWrap>
+              <BookingCategory>총 금액</BookingCategory>
+              <BookingDetail>{info[0] && `₩${unitConversion(info[0].bill_total)}`}</BookingDetail>
+            </BookingInfoWrap>
+            <BookingInfoWrap>
+              <BookingCategory>연락처</BookingCategory>
+              <BookingDetail>{info[0] && info[0].mobile}</BookingDetail>
+            </BookingInfoWrap>
+          </BookingContainer>
+        </MyPageContainer>
+      </MyPageWrap>
+    </Layout>
+  );
+};
 const MyPageWrap = styled.div`
   height: 100%;
   margin: 0 auto;

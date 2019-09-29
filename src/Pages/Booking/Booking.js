@@ -46,20 +46,20 @@ const Booking = (props) => {
     setName(value);
   };
 
-  const [number, setNumber] = useState('');
-  const updateNumber = (event) => {
+  const [mobile, setMobile] = useState('');
+  const updateMobile = (event) => {
     const {
       target: { value },
     } = event;
-    setNumber(value);
+    setMobile(value);
   };
 
-  const [message, setMessage] = useState('');
-  const updateMessage = (event) => {
+  const [remark, setRemark] = useState('');
+  const updateRemark = (event) => {
     const {
       target: { value },
     } = event;
-    setMessage(value);
+    setRemark(value);
   };
 
   // 토큰
@@ -67,29 +67,29 @@ const Booking = (props) => {
 
   // 예약하기 포스트 이벤트
   const handleBooking = () => {
-    if (selectedDate.formatStart !== '' && selectedDate.formatEnd !== '' && name !== '' && number !== '' && message !== '') {
+    if (selectedDate.formatStart !== '' && selectedDate.formatEnd !== '' && name !== '' && mobile !== '' && remark !== '') {
       axios({
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
           Authorization: token,
         },
-        url: 'http://10.58.5.100:8080/booking',
+        url: `http://10.58.5.100:8080/booking/${props.match.params.id}`,
         data: {
+          name,
           bill_total: data.data.place_info.price_min,
           check_in: selectedDate.formatStart,
           check_out: selectedDate.formatEnd,
-          id: props.match.params.id,
-          phone_number: number,
-          special_request: message,
+          remark,
+          mobile,
         },
       }).then(() => {
         props.showToast({
           name,
           startDate: selectedDate.formatStart,
           endDate: selectedDate.formatEnd,
-          message,
-          number,
+          remark,
+          mobile,
         });
       }).catch((res) => {
         props.showAlert({ message: '만실입니다. 다른 숙소를 찾아봐주세요!' });
@@ -98,7 +98,7 @@ const Booking = (props) => {
       props.showAlert({ message: '입력 정보 양식이 틀렸습니다. 확인 후 다시 시도해주세요.' });
     }
   };
-
+  console.log(name, remark, mobile);
   return (
     <Layout>
       <Helmet>
@@ -149,15 +149,15 @@ const Booking = (props) => {
                 <BookingInput
                   type="tel"
                   name="number"
-                  onChange={updateNumber}
+                  onChange={updateMobile}
                 />
               </BookingInputWrap>
               <BookingInputWrap>
                 <BookingInfo>요청사항</BookingInfo>
                 <BookingInput
                   type="text"
-                  name="message"
-                  onChange={updateMessage}
+                  name="remark"
+                  onChange={updateRemark}
                 />
               </BookingInputWrap>
             </RoomReserveWrap>
