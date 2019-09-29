@@ -8,7 +8,7 @@ import Layout from 'Components/Layout';
 
 // const [info, setInfo] = useState([]);
 // useEffect(() => {
-//   getApi('http://10.58.2.143:8000/booking', setInfo);
+//   getApi('http://10.58.2.143:8080/booking', setInfo);
 // }, []);
 
 export default () => (

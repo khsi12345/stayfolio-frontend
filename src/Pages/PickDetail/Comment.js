@@ -18,7 +18,7 @@ export default memo((props) => {
   //   setToken(localStorage.getItem('stayfolio_token'));
   // }, []);
   useEffect(() => {
-    getApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, setComment);
+    getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
   }, [props.id]);
 
   const textChangeHandle = (e) => {
@@ -30,10 +30,10 @@ export default memo((props) => {
     }
   };
   const addComment = () => {
-    const commentData = commentPostApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, getToken, text);
+    const commentData = commentPostApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, getToken, text);
     commentData.then((response) => {
       if (response.status === 200) {
-        getApi(`http://54.180.30.126:8000/${props.id}`, setComment);
+        getApi(`http://10.58.5.100:8080/${props.id}`, setComment);
       }
     });
     commentData.catch((error) => console.log(error));
@@ -41,20 +41,20 @@ export default memo((props) => {
     setText('');
   };
   const delComment = (commentId) => {
-    const result = commentDelApi(`http://54.180.30.126:8000/pick_comment/${props.id}/${commentId}/editing`, getToken);
+    const result = commentDelApi(`http://10.58.5.100:8080/pick_comment/${props.id}/${commentId}/editing`, getToken);
     result.then((response) => {
       if (response.status === 200) {
-        getApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, setComment);
+        getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
       }
     });
   };
   const modifedComment = (getModifedCommentItemContent, commentId) => {
     console.log(getModifedCommentItemContent);
     // setText(getModifedCommentItemContent);
-    const result = commentPostApi(`http://54.180.30.126:8000/pick_comment/${props.id}/${commentId}/editing`, getToken, getModifedCommentItemContent);
+    const result = commentPostApi(`http://10.58.5.100:8080/pick_comment/${props.id}/${commentId}/editing`, getToken, getModifedCommentItemContent);
     result.then((response) => {
       if (response.status === 200) {
-        getApi(`http://54.180.30.126:8000/pick_comment/${props.id}`, setComment);
+        getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
       }
     });
     result.catch((error) => console.log(error.message));

@@ -21,7 +21,7 @@ const PickDetail = memo((props) => {
   const [get, set] = useState({});
 
   useEffect(() => {
-    getApi(`http://54.180.30.126:8000/pick/${props.match.params.id}`, set);
+    getApi(`http://10.58.5.100:8080/pick/${props.match.params.id}`, set);
   }, [props.match.params.id]);
   console.log(get);
 
