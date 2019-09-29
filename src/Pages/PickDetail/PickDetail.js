@@ -16,27 +16,21 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'Style/custom.scss';
 
 const PickDetail = memo((props) => {
-  // console.log(window.location.href);
-  // console.log(props.history);
   const [get, set] = useState({});
 
   useEffect(() => {
-    getApi(`http://54.180.30.126:8000/pick/${props.match.params.id}`, set);
+    getApi(`http://10.58.5.100:8080/pick/${props.match.params.id}`, set);
   }, [props.match.params.id]);
-  console.log(get);
 
   const goBackHandler = () => {
     props.history.goBack();
   };
 
   const goBooking = () => {
-    console.log(props);
     props.history.push(`/picks/${props.match.params.id}`);
   };
-  console.log(get.data && get.data.images[0]);
   return (
     <>
-      {console.log(get.data && get.data.place_info.full_address)}
       <Layout>
         <Helmet>
           <title>{`${get.data && get.data.identifier} | WeRbnb`}</title>
@@ -78,7 +72,6 @@ const PickDetail = memo((props) => {
                             >공유하기
                             </a>
                           </div>
-
                           {/* <MainContentsHeaderNameIcon /> */}
                           {/* </MainContentsHeaderNameIcons> */}
                         </MainContentsHeaderName>
