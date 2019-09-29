@@ -51,7 +51,8 @@ const Login = (props) => {
         name: res.name,
         email: res.email,
         accessToken: res.accessToken,
-      }).then((res) => {
+      }).then((ress) => {
+        console.log(ress);
         localStorage.setItem('stayfolio_token', res.data.access_token);
         props.showAlert({ message: '페이스북 로그인 성공!' });
         props.history.push('/');
