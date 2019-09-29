@@ -2,21 +2,19 @@ import React, {
   memo, useState, useEffect, useRef,
 } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { showAlert, closeAlert } from 'Store/Actions';
 import { commentPostApi, commentDelApi, getApi } from 'Util/service';
 import { device } from 'Components/Device';
 import theme from 'Components/Theme';
 import CommentItem from './CommentItem';
 
-export default memo((props) => {
+const Comment = memo((props) => {
   const [getToken, setToken] = useState(localStorage.getItem('stayfolio_token'));
   const [text, setText] = useState();
   const commentText = useRef('');
   const [comment, setComment] = useState([]);
 
-  // useEffect(() => {
-  //   setToken(localStorage.getItem('stayfolio_token'));
-  // }, []);
   useEffect(() => {
     getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
   }, [props.id]);
@@ -26,7 +24,7 @@ export default memo((props) => {
   };
   const commentClick = () => {
     if (getToken === null || getToken === '' || getToken === undefined) {
-      alert('로그인을 먼저 해주세요 :)');
+      props.showAlert({ message: '로그인을 먼저 해주세요 :)' });
     }
   };
   const addComment = () => {
@@ -36,7 +34,9 @@ export default memo((props) => {
         getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
       }
     });
-    commentData.catch((error) => console.log(error));
+    commentData.catch((error) => {
+      props.showAlert({ message: '댓글 작성이 실패했습니다.' });
+    });
 
     setText('');
   };
@@ -49,19 +49,18 @@ export default memo((props) => {
     });
   };
   const modifedComment = (getModifedCommentItemContent, commentId) => {
-    console.log(getModifedCommentItemContent);
-    // setText(getModifedCommentItemContent);
     const result = commentPostApi(`http://10.58.5.100:8080/pick_comment/${props.id}/${commentId}/editing`, getToken, getModifedCommentItemContent);
     result.then((response) => {
       if (response.status === 200) {
         getApi(`http://10.58.5.100:8080/pick_comment/${props.id}`, setComment);
       }
     });
-    result.catch((error) => console.log(error.message));
+    result.catch((error) => {
+      props.showAlert({ message: '댓글 수정이 실패했습니다.' });
+    });
   };
   const LoadCommentItems = () => {
     if (comment.data) {
-      // console.log(comment);
       return comment.data.data.map((ele, index) => (
         <CommentItem
           delComment={delComment}
@@ -78,7 +77,7 @@ export default memo((props) => {
     <CommentWrap>
       <CommentContainer>
         <CommentBox>
-          <Comment>
+          <OuterComment>
             <InnerComment>
               <CommentTextAreaBox
                 placeholder="댓글을 입력해주세요"
@@ -100,10 +99,8 @@ export default memo((props) => {
                 <CommentButtonSpan2 />
               </CommentButton>
             </CommentButtonWrap>
-          </Comment>
+          </OuterComment>
         </CommentBox>
-        {/* <EmptyComment>첫번째 댓글을 달아주세요 :)</EmptyComment> */}
-        {/* <CommentItem delComment={delComment} text={text} /> */}
         {comment.data !== undefined && comment.data.data.length > 0
           ? LoadCommentItems() : <EmptyComment>첫번째 댓글을 달아주세요 :)</EmptyComment>}
       </CommentContainer>
@@ -135,7 +132,7 @@ const CommentBox = styled.form`
   font-size:14px;
   line-height: 1.428571429;
 `;
-const Comment = styled.div`
+const OuterComment = styled.div`
   display: block;
   @media ${device.desktop} {
     display: flex;
@@ -167,9 +164,6 @@ const CommentTextAreaBox = styled.textarea`
     outline: none;
   }
 `;
-// const CommentTextArea = styled.form`
-
-// `;
 const CommentButtonWrap = styled.div`
     position: relative;
     padding-top: 15px;
@@ -218,11 +212,16 @@ const CommentButtonSpan2 = styled.span`
   text-align: center;
 `;
 const EmptyComment = styled.div`
-  /* margin-top: 20px; */
-  /* display: ${(props) => (props.none ? 'none' : 'block')}; */
   padding: 20px 0;
   text-align: center;
   font-size: 14px;
   line-height: 1.428571429;
   color: ${theme.FontLessGray};
 `;
+
+const mapDispatchToProps = (dispatch) => ({
+  showAlert: (options) => dispatch(showAlert(options)),
+  closeAlert: () => dispatch(closeAlert()),
+});
+
+export default connect(null, mapDispatchToProps)(Comment);

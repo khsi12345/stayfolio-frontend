@@ -8,14 +8,11 @@ export default memo(({
   const [date, setDate] = useState(new Date());
   const [view, setView] = useState(false);
   const [text, setText] = useState();
-  // const [hide, setHide] = useState('true');
-  // console.log(props);
   const modifedOnClickHandler = () => {
     setView(!view);
   };
   const modifedText = (e) => {
     setText(e.target.value);
-    console.log(text);
   };
   return (
     <CommentList>

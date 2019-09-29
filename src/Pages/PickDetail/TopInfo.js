@@ -5,12 +5,7 @@ import data from 'Data/pick';
 import theme from 'Components/Theme';
 
 export default memo((props) => {
-  // console.log(props.info);
   const [info, setInfo] = useState();
-  // useEffect(() => {
-  //   setInfo({ ...props.info });
-  // }, [props.info]);
-  // console.log(info);
   return (
     <MainContentsDescriptionRightTopWrap>
       <MainContentsDescriptionRightTopContainer>
