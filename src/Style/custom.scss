@@ -8,7 +8,7 @@ $wide: 1200px;
   width: 100% !important;
 }
 .carousel {
-  position: absolute;
+  position: relative;
   display: flex;
   // background-color: rgba(0, 0, 0, 0.7);
   .slider-wrapper {
@@ -54,7 +54,7 @@ $wide: 1200px;
     padding: 0;
   }
   .carousel {
-    position: absolute;
+    position: relative;
     display: flex;
     .slider-wrapper {
       width: 756px !important;
