@@ -44,6 +44,8 @@ const PickDetail = memo((props) => {
             property="og:image"
             content={`${get.data && get.data.main_image_url}`}
           />
+          <meta property="og:title" content={`${get.data && get.data.identifier} | WeRbnb`} />
+          <meta property="og:description" content={`${get.data && get.data.subtitle}`} />
         </Helmet>
         <Wrap>
           <MainWrap>
