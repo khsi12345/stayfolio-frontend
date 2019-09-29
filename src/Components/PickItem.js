@@ -79,6 +79,7 @@ const PickItem = memo(
 const PickItemWrap = styled.div`
   position: relative;
   padding: 0 15px;
+  width: 100%;
   @media ${device.tablet} {
     width: 50%;
   }
