@@ -18,7 +18,7 @@ const Booking = (props) => {
   // 데이터 api
   const [data, setData] = useState([]);
   useEffect(() => {
-    getApi(`http://10.58.5.100:8080/pick/${props.match.params.id}`, setData);
+    getApi(`http://15.164.171.176:8000/pick/${props.match.params.id}`, setData);
   }, [props.match.params.id]);
 
   // 예약 날짜 포맷
@@ -74,7 +74,7 @@ const Booking = (props) => {
           'Content-Type': 'application/json',
           Authorization: token,
         },
-        url: `http://10.58.5.100:8080/booking/${props.match.params.id}`,
+        url: `http://15.164.171.176:8000/booking/${props.match.params.id}`,
         data: {
           name,
           bill_total: data.data.place_info.price_min,
@@ -98,7 +98,6 @@ const Booking = (props) => {
       props.showAlert({ message: '입력 정보 양식이 틀렸습니다. 확인 후 다시 시도해주세요.' });
     }
   };
-  console.log(name, remark, mobile);
   return (
     <Layout>
       <Helmet>
