@@ -18,7 +18,7 @@ export default () => {
         'Content-Type': 'application/json',
         Authorization: token,
       },
-      url: 'http://10.58.5.100:8080/account/mypage',
+      url: 'http://15.164.171.176:8000/account/mypage',
     }).then((res) => {
       setInfo(res.data);
     });
