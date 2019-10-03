@@ -17,11 +17,11 @@
 - Node.js
 - Express
 
-#### Coding Convention Reference
+#### 참조 코딩 컨벤션
 
 eslint-airbnb
 
-#### Page
+#### 페이지
 
 - Main / react-slick, font-awesome
 - Signup
@@ -33,7 +33,7 @@ eslint-airbnb
 - Pick Detail / react-responsive-carousel, comment, kakao map
 - Booking / airbnb react-dates, moment.js, redux
 
-#### Detail
+#### 세부사항
 
 - 공통적으로 사용되는 함수는 Util 디렉토리에 모듈화 후 사용
 - api 관련 함수 모듈화
