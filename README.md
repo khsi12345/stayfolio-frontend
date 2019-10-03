@@ -1,4 +1,4 @@
-#### Wecode 3기 프로젝트 WeRbnb
+## Wecode 3기 프로젝트 WeRbnb
 
 숙소 큐레이션 사이트 stayfolio 클론 프로젝트
 
