@@ -2,7 +2,7 @@
 
 숙소 큐레이션 사이트 stayfolio 클론 프로젝트  
 
-[![프로젝트](/src/Images/Logo.png)](http://13.125.211.165/){:target="_blank"}
+[![프로젝트](/src/Images/Logo.png)](http://13.125.211.165/)
 
 #### 기술 스택
 
